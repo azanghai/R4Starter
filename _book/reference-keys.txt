@@ -22,3 +22,4 @@ url-your-book-url-like-httpsbookdown.orgyihuibookdown
 传统虚无假设显著性检验nhst基础
 asa关于p值的原则
 一类和二类错误type-i-and-type-ii-errors
+实验的功效真的那么重要吗
