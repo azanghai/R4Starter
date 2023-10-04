@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>在开始之前 | R语言入门</title>
+  <meta name="description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="在开始之前 | R语言入门" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="github-repo" content="azanghai/R4Starter" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="在开始之前 | R语言入门" />
+  
+  <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  
+
+<meta name="author" content="文庭" />
+
+
+<meta name="date" content="2023-10-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="cross.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习形式"><i class="fa fa-check"></i>学习形式</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i>在开始之前</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究和可重复性"><i class="fa fa-check"></i>开放研究和可重复性</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究"><i class="fa fa-check"></i>开放研究</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如何进行可重复的研究"><i class="fa fa-check"></i>如何进行可重复的研究</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如果你需要一些指南"><i class="fa fa-check"></i>如果你需要一些指南</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#研究功效experimental-power"><i class="fa fa-check"></i>研究功效（Experimental Power）</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#介绍"><i class="fa fa-check"></i>介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#帮助我们改进本节课程"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>2</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>2.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="2.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>2.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>3</b> Parts</a></li>
+<li class="chapter" data-level="4" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>4</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>4.1</b> Footnotes</a></li>
+<li class="chapter" data-level="4.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>4.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>5</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>5.1</b> Equations</a></li>
+<li class="chapter" data-level="5.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>5.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="5.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>5.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>6</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>6.1</b> Publishing</a></li>
+<li class="chapter" data-level="6.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>6.2</b> 404 pages</a></li>
+<li class="chapter" data-level="6.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>6.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言入门</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="在开始之前" class="section level1 unnumbered hasAnchor">
+<h1>在开始之前<a href="在开始之前.html#在开始之前" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="开放研究和可重复性" class="section level2 unnumbered hasAnchor">
+<h2>开放研究和可重复性<a href="在开始之前.html#开放研究和可重复性" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在本节课中，我们将介绍开放研究的关键概念，并讨论心理、生物医学和生命科学领域所谓的”复制危机”，它导致了开放研究运动，我们还将讨论在您自己的研究中采用可重复的研究实践的重要性，并介绍可以将其纳入自己的研究工作流程中的各种工具和流程，以便您进行可重复的研究。</p>
+<div id="开放研究" class="section level3 unnumbered hasAnchor">
+<h3>开放研究<a href="在开始之前.html#开放研究" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>大家可以观看下面的视频了解<a href="https://www.youtube.com/watch?v=nfHOnuo1T2o">开放研究的简史</a> （Youtube视频）和对应<a href="https://docs.google.com/presentation/d/1UOkWayJ5J7j2Xg1Y05sbkK-iWtlkAVvtalOu4VuEq4c/edit#slide=id.g875f6a825d_0_346">幻灯片</a>（存储在谷歌云盘服务上），也可直接阅读下方由<a href="https://glarity.app/zh-CN">AI生成的总结</a>。</p>
+<blockquote>
+<p>视频内容主要讲述了心理学和生物医学科学领域中所谓的”复制危机”，以及研究领域随着这一危机的出现而发生的变化。文章指出，许多研究结果在复制实验中无法得到验证，甚至存在虚假阳性的情况。这是因为研究者在进行研究时存在一些问题，比如选择性地报告数据、删除异常值、进行多次统计分析等，这些行为被称为”p-hacking”。为了解决这些问题，一些组织和机构开始致力于推动开放研究和透明度，改变学术奖励制度，提供培训，教授研究者如何进行更好的研究。此外，还提到了一些解决这一问题的方法，如增加实验的样本量、改变学术奖励机制、加强对开放研究和透明度的教育培训等。</p>
+</blockquote>
+<blockquote>
+<h3 id="highlights" class="hasAnchor">Highlights<a href="在开始之前.html#highlights" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>💡 “复制危机”：心理学和生物医学科学领域存在许多研究结果无法复制的问题。</li>
+<li>💡 “p-hacking”：研究者存在选择性报告数据、删除异常值、进行多次统计分析等行为，导致虚假阳性结果。</li>
+<li>💡 开放研究和透明度：一些组织和机构致力于推动开放研究和透明度，改善研究质量。</li>
+<li>💡 学术奖励机制：需要改变学术奖励机制，从数量导向转向质量导向。</li>
+<li>💡 培训和教育：研究者需要接受培训和教育，学习开放研究和透明度的实践方法。</li>
+</ul>
+</blockquote>
+<p>同时，我们还推荐阅读由<a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124">Ionnidis（2005）撰写的论文</a>（可选），该论文可以说开启了围绕可重复性的对话，并在过去几年中对心理学和整个生物医学科学研究产生了深刻的影响。同样的，在2019年<a href="https://www.nature.com/articles/d41586-019-01307-2">Dorothy Bishop的文章</a>准确的捕获了几年后发生的情况。</p>
+</div>
+</div>
+<div id="如何进行可重复的研究" class="section level2 unnumbered hasAnchor">
+<h2>如何进行可重复的研究<a href="在开始之前.html#如何进行可重复的研究" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>习惯了<strong>旧的</strong>研究方式的研究人员面临的最大挑战之一是他们认为自己不具备采用开放和可重复的研究实践的知识或技术技能。但这并不难！在运行实验之前，您可以预先注册您的假设，以便在分析和编写结果时，可以证明您的预测确实是在数据收集之前做出的。您还可以将您的研究数据与您的代码一起开放（并且公平），以便其他人可以重新创建您的分析。并通过在预印本服务器（例如 <a href="https://psyarxiv.com/">PsyArXiv</a> 或 <a href="https://www.biorxiv.org/">bioRxiv</a>或<a href="https://osf.io/">OSF</a>）上发布您的研究文章）在提交给期刊之前，您将研究结果向所有人公开。采用<strong>R</strong> 等开源软件还意味着您产生的任何研究成果都可以由能够访问您的数据和代码的其他人重新产生。使用开放工具使我们能够生成开放（且可重用）数据和代码的原则是课程背后的基本理念。观看下面的<a href="https://www.youtube.com/watch?v=BscWSJFmsHE">视频</a>（Youtube平台）和对应<a href="https://docs.google.com/presentation/d/1WzSk2Ra-OLrMCPTCoQoKoF_utsq_TNu53TxoXEC82Lw/edit#slide=id.p">幻灯片</a>（存储在谷歌云盘服务上）或者下面由<a href="https://glarity.app/zh-CN">AI生成的总结</a>。在视频中讨论了如何采用开放且可重复的研究实践。</p>
+<blockquote>
+<p>在这个演讲中，介绍了一些你可以在自己的工作流程中采用的研究实践，这将最终使你的研究更加开放和可复制。研究领域的快速变化突显了软件和计算基础设施的广泛采用，这些都是研究人员将其研究变得更加开放和可复制的方式。政治家们也对此表示关注，一些大学也高度参与开放研究实践。许多资助机构现在要求研究人员在获得资助时采用开放研究实践。开放研究不仅仅是指开放数据和代码，还包括预注册研究假设、建立可复制的数据处理和分析流程、使用开放科学方法等。采用开放和可复制的研究实践不仅使研究结果更具可信度，还有助于促进大规模合作和提高研究人员的效率。</p>
+</blockquote>
+<blockquote>
+<h3 id="highlights-1" class="hasAnchor">Highlights<a href="在开始之前.html#highlights-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>💡 研究领域的快速变化突显了软件和计算基础设施的广泛采用，以使研究更加开放和可复制。</li>
+<li>💡 政治家们也对开放研究实践表示关注，一些大学也高度参与其中。</li>
+<li>💡 许多资助机构要求研究人员在获得资助时采用开放研究实践。</li>
+<li>💡 开放研究不仅仅是指开放数据和代码，还包括预注册研究假设、建立可复制的数据处理和分析流程、使用开放科学方法等。</li>
+<li>💡 采用开放和可复制的研究实践不仅使研究结果更具可信度，还有助于促进大规模合作和提高研究人员的效率。</li>
+</ul>
+</blockquote>
+<div id="如果你需要一些指南" class="section level3 unnumbered hasAnchor">
+<h3>如果你需要一些指南<a href="在开始之前.html#如果你需要一些指南" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>可以阅读这一篇论文，<a href="https://psycnet.apa.org/fulltext/2019-80290-002.pdf">Crüwell et al. (2019)</a>介绍了可以采取哪些措施来使您自己的研究更加开放。</p>
+<p>对于心理学而言，<a href="https://royalsocietypublishing.org/doi/10.1098/rsos.220099">Gerald Haeffel</a>提到了心理学需要更多地关注理论发展（并鼓励发表反驳理论的结果）。</p>
+</div>
+</div>
+<div id="研究功效experimental-power" class="section level2 unnumbered hasAnchor">
+<h2>研究功效（Experimental Power）<a href="在开始之前.html#研究功效experimental-power" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在这一部分我们将讨论研究的功效（Power），以及为什么它而很重要。“可重复性危机（replication crisis）”揭示的一个观点是，研究往往对感兴趣的效应大小缺乏足够的统计功效（也就是说,即使效应存在,你的实验也不太可能找到它）。很多问题都源于研究人员没有花足够时间考虑他们研究设计的统计功效问题。即使统计功效不足的研究确实发现了感兴趣的效应,效应大小本身也会被高估(从而为未来基于这一错误效应大小估计进行功效计算的工作带来问题)。</p>
+<p>一个解决方案是在实验设计过程中进行数据模拟。使用R有许多方法可以做到这一点,CRAN(the Comprehensive R Archive Network)上有几个包提供了用于不同设计的数据模拟功能。</p>
+<div id="介绍" class="section level3 unnumbered hasAnchor">
+<h3>介绍<a href="在开始之前.html#介绍" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="理解统计" class="section level4 unnumbered hasAnchor">
+<h4>理解统计<a href="在开始之前.html#理解统计" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>假设有一个检验，有95%的概率可以正确诊断出一个人没有患有某种疾病。 （特异性= 0.95）。同时，这个检验还拥有80%的准确率，可以正确诊断出某人患有某种疾病（敏感性=0.8）。最后，这种疾病的实际患病率为1%。</p>
+<p>现在看来这种检验如何？95%的准确率可以诊断出一个人没有患病，80%的准确率可以诊断出一个人患有某种疾病。看起来还不错？让我们继续看下去。</p>
+<p>在10000个人中，当患病率为1%时。有100个人患有某种疾病。由于检验的敏感性为0.8，在100名患者中，80%被检测出来了（80人真阳性），20%没有被检测出来（20人假阴性）。在剩余9900名实际没有患病的人群中，由于特异性为0.95。95%的人被正确诊断为未患病（9405名真阴性），但是5%的人却被错误诊断为阳性（495名假阳性）。<strong>也就是说，检测结果报告575人（80+495）患有某种疾病，但是其中有495名假阳性，即86%的人被误诊为患病了（假阳性）</strong><span class="citation">(<a href="#ref-colquhoun2014">Colquhoun 2014</a>)</span>,</p>
+<p>现在你是否对统计学有了一些新的理解？</p>
+</div>
+<div id="传统虚无假设显著性检验nhst基础" class="section level4 unnumbered hasAnchor">
+<h4>传统虚无假设显著性检验（NHST）基础<a href="在开始之前.html#传统虚无假设显著性检验nhst基础" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>对于有两个实验组的差异，通常来说：</p>
+<ul>
+<li>零假设（H<sub>0</sub>）：这两个实验组之间没有统计学上的显著差异;</li>
+<li>实验假设（H<sub>1</sub>）：两个实验组之间存在统计学上显著的差异。</li>
+</ul>
+<p>通常情况下，我们拒绝H<sub>0</sub>。当然，这是建立在比较两个实验组统计测试结果为<em>p</em> &lt; 0.05（这是研究人员通常选择的alpha (α)水平）。</p>
+</div>
+<div id="什么是统计的显著性" class="section level4 unnumbered hasAnchor">
+<h4>什么是统计的显著性？<a href="在开始之前.html#什么是统计的显著性" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>假设随机分配一组人接受治疗和安慰剂。我们测量每种治疗的平均反应,并希望知道观察到的两种平均值之间的差异是否真实(不为零),或者它是否可能仅由机会产生。 如果显著性测试的结果是<em>p</em> = 0.05,我们可以做出以下陈述:</p>
+<blockquote>
+<p>如果实际上没有效应(如果真实的平均值之间的差异为零),则观察到的值等于或大于实际观察值的概率将是<em>p</em> = 0.05。换句话说,仅由概率产生至少和我们一样大的差异的概率是5%。</p>
+</blockquote>
+<p>但是，许多研究者甚至无法正确定义p值的含义，这很令人担忧，2016年,美国统计协会（American Statistical Association， ASA）不得不发表一篇文章,提醒研究人员p值可以得出什么结论,什么不能。</p>
+</div>
+<div id="asa关于p值的原则" class="section level4 unnumbered hasAnchor">
+<h4>ASA关于p值的原则<a href="在开始之前.html#asa关于p值的原则" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>p值可以指示数据与特定统计模型的不兼容程度。</li>
+<li>p值不测量所研究的假设为真的概率,也不测量数据仅由随机机会产生的概率。</li>
+<li>科学结论和商业或政策决策不应仅根据p值是否通过特定阈值来做出。</li>
+<li>正确的推理需要充分报告和透明度。</li>
+<li>p值或统计显著性不能衡量效应的大小或结果的重要性。</li>
+<li>p值本身不能很好地衡量关于模型或假设的证据。<span class="citation">(<a href="#ref-wasserstein2016">Wasserstein and Lazar 2016</a>)</span></li>
+</ul>
+</div>
+<div id="一类和二类错误type-i-and-type-ii-errors" class="section level4 unnumbered hasAnchor">
+<h4>一类和二类错误（Type I and Type II Errors）<a href="在开始之前.html#一类和二类错误type-i-and-type-ii-errors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+</div>
+</div>
+<div id="帮助我们改进本节课程" class="section level2 unnumbered hasAnchor">
+<h2>帮助我们改进本节课程<a href="在开始之前.html#帮助我们改进本节课程" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>此处应插入文本和反馈二维码或问卷链接</em></p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-colquhoun2014" class="csl-entry">
+Colquhoun, David. 2014. <span>“An Investigation of the False Discovery Rate and the Misinterpretation of p-Values.”</span> <em>Royal Society Open Science</em> 1 (3): 140216. <a href="https://doi.org/10.1098/rsos.140216">https://doi.org/10.1098/rsos.140216</a>.
+</div>
+<div id="ref-wasserstein2016" class="csl-entry">
+Wasserstein, Ronald L., and Nicole A. Lazar. 2016. <span>“The ASA Statement on p-Values: Context, Process, and Purpose.”</span> <em>The American Statistician</em> 70 (2): 129–33. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cross.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-BeforeStart.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
