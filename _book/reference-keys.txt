@@ -2,7 +2,6 @@ fig:nice-fig
 tab:nice-tab
 eq:binom
 thm:tri
-在开始之前
 cross
 chapters-and-sub-chapters
 captioned-figures-and-tables
@@ -18,8 +17,6 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
+tab:unnamed-chunk-1
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
-传统虚无假设显著性检验nhst基础
-asa关于p值的原则
-一类和二类错误type-i-and-type-ii-errors
-实验的功效真的那么重要吗
+等效性检验equivalence-testing
