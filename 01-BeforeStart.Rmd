@@ -94,11 +94,52 @@
 
 #### 实验的功效真的那么重要吗？ {.unnumbered}
 
-Cohen (1992)描述了为什么实验功效这么重要（以及当实验功效不足时会发生什么）。低功效的研究发现一个真实效应的可能性更低，同时有问题的研究实践（QRPs）还会有可能再不存在显著效应时显示一个更高的效应存在。在报告中提及了他当时进行的对《Journal of Abnormal and
-Social Psychology》1960年卷的回顾研究结果，以及Sedlmeier和Gigerenzer（1989）对同一杂志1984年卷的回顾研究结果。
+Cohen (1992)描述了为什么实验功效这么重要（以及当实验功效不足时会发生什么）。低功效的研究发现一个真实效应的可能性更低，同时有问题的研究实践（QRPs）还会有可能再不存在显著效应时显示一个更高的效应存在。在报告中提及了他当时进行的对《Journal of Abnormal and Social Psychology》1960年卷的回顾研究结果，以及Sedlmeier和Gigerenzer（1989）对同一杂志1984年卷的回顾研究结果。
 
-在1960年，《Journal of Abnormal and
-Social Psychology》中报告的实验，用于检测中等效应大小的平均功效为0.48。而到了1984年，这个数值降至0.25（换句话说，即使效应存在，只有25%的机会找到效应！）。
+在1960年，《Journal of Abnormal and Social Psychology》中报告的实验，用于检测中等效应大小的平均功效为0.48。而到了1984年，这个数值降至0.25（换句话说，即使效应存在，只有25%的机会找到效应！）。
+
+Button等人（2013年）在《自然·神经科学评论》（Nature Reviews Neuroscience）中指出，小样本量削弱了神经科学研究的可靠性。Nord等人（2017年）在《神经科学杂志》中强调了神经科学研究中力量的广泛异质性。
+
+#### Cohen's d（标准化平均偏差、鉴别力指数） {.unnumbered}
+
+Cohen's d 是一种用于衡量效应大小的统计指标。在统计学中，效应大小是指独立变量对因变量的影响程度。在这里的上下文中，它与实验的“功效”（Power）有关。功效（1-β）与以下因素相关：
+
+ - 样本量（N）：样本量越大，发现实际效应的概率越高，功效越大。
+
+ - 效应大小：效应大小越大，检测到效应的可能性越高，从而功效越大。
+
+ - α水平：这是犯第一类错误（错误地拒绝零假设）的概率。常用的α水平是0.05。
+
+Cohen (1992) 提出，一个合理的功效目标应该是大约0.8。这意味着有80%的概率检测到实际存在的效应。功效为0.8（β为0.20,即犯第二类错误的概率），结合α为0.05，意味着与各自错误相关的风险比是4:1（β:α）。
+
+在衡量效应大小时，Cohen's d 和 Pearson's r是常用的指标。对于不同的效应大小，它们的值分别为：
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+effect_sizes <- data.frame(
+  "Effect Size" = c("Cohen’s d", "Pearson’s r"),
+  "Small Effect" = c(0.2, 0.1),
+  "Medium Effect" = c(0.5, 0.3),
+  "Large Effect" = c(0.8, 0.5)
+)
+
+kable(effect_sizes, caption = "Cohen's d 和 Pearson's r 的效应大小")
+```
+
+#### 等效性检验（Equivalence Testing）
+
+关于等效性检验，推荐阅读Daniël Lakens等人的[心理学研究中的等效性检验：教程](https://journals.sagepub.com/doi/full/10.1177/2515245918770963)（Equivalence Testing for Psychological Research: A Tutorial）
+
+#### 数据模拟{-}
+
+在这里，我们向大家推荐几个用于数据模拟的包（package）。
+
+ - [faux: Simulation for Factorial Designs](https://debruine.github.io/faux/)
+ 
+ - [SIMR](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12504)
+ 
+
+
 
 
 ## 帮助我们改进本节课程 {.unnumbered}
