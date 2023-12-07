@@ -126,7 +126,7 @@ effect_sizes <- data.frame(
 kable(effect_sizes, caption = "Cohen's d 和 Pearson's r 的效应大小")
 ```
 
-#### 等效性检验（Equivalence Testing）
+#### 等效性检验（Equivalence Testing）{-}
 
 关于等效性检验，推荐阅读Daniël Lakens等人的[心理学研究中的等效性检验：教程](https://journals.sagepub.com/doi/full/10.1177/2515245918770963)（Equivalence Testing for Psychological Research: A Tutorial）
 
