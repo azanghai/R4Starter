@@ -1,10 +1,10 @@
-fig:nice-fig
-tab:nice-tab
+tab:unnamed-chunk-1
+fig:figure01
+fig:figure02
+fig:figure03
 eq:binom
 thm:tri
-cross
-chapters-and-sub-chapters
-captioned-figures-and-tables
+等效性检验equivalence-testing
 parts
 footnotes-and-citations
 footnotes
@@ -17,9 +17,4 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
-<<<<<<< HEAD
-=======
-tab:unnamed-chunk-1
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
-等效性检验equivalence-testing
->>>>>>> f759bbe5c72a6fbff6a6602aa12ebc4eced12c09

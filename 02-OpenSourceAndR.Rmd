@@ -1,0 +1,99 @@
+# 开源软件和R语言{-}
+
+## 开源软件{-}
+
+### 概述{-}
+
+如果您想进行开放且可重复的研究，您应该在工作流程中使用开源软件。使用专有软件进行的研究不能轻易被其他人复制。
+
+开源软件是被许可可以自由修改、重新混合和改进的软件。它通常是免费使用的，并以开放交流、协作参与、快速原型制作、透明度、精英管理和面向社区的开发等原则为中心。开源运动始于 20 世纪 80 年代初，部分原因是[打印机](https://medium.com/@amogh/the-story-of-open-source-so-far-bfcb685d85a4)的出现，并在该十年以[Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman)建立的[自由软件基金会](https://en.wikipedia.org/wiki/Free_Software_Foundation)的形式进一步发展。20 世纪 90 年代末，[开源倡议](https://opensource.org/)发起，旨在提高人们对开源软件的认识和采用，并在开源实践社区之间架起桥梁。
+
+开源软件由许多人制作，并在符合 OSD 的许可证下分发，该许可证授予以修改和未修改的形式使用、研究、更改和共享该软件的所有权利。软件自由对于实现开源软件的社区开发至关重要。
+
+有大量可用的开源软件 - 您会发现其中一些不仅在本单元的背景下有用，而且在您如何学习以及如何进行研究的背景下也很有用。
+
+[这里是一个有趣的 CNBC 视频（Youtube平台）](https://youtu.be/SpeDK1TPbew)，讨论了开源软件的兴起 - 它最后提到需要以开放的方式合作应对环境、癌症和阿尔茨海默病等全球挑战。
+
+### 统计与科学计算{-}
+
+#### R 与 RStudio Desktop{-}
+
+不言而喻，R 和 RStudio Desktop 是与本课程相关的开源软件的两个最明显的示例。就用于数据分析和统计建模的其他开源语言而言，您可能还对 Python 和 Julia 感兴趣。
+
+<center>
+[![R logo](Pictures/r_logo.jpeg){width=15%}](https://www.r-project.org)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![RStudio logo](Pictures/RStudio-Logo-Flat.png){width=25%}](https://www.r-project.org)
+</center>
+
+#### Python{-}
+
+虽然 R 往往是对数据整理、数据可视化和统计建模感兴趣的人的首选语言，但从更通用的意义上来说，Python 可以说是“更好”的语言。Python 被机器学习社区广泛使用（仅举例）。
+
+<center>
+[![Python logo](Pictures/python-logo-master-v3-TM.png){width=25%}](https://www.python.org)
+</center>
+
+#### Octave {-}
+
+您可能听说过甚至使用过 MATLAB 进行数值计算。有一个开源的等效项，称为GNU Octave，您可能有兴趣查看一下。
+
+<center>
+[![Octave logo](Pictures/gnuoctave.jpg){width=25%}](https://www.gnu.org/software/octave/)
+</center>
+
+#### 文档创建{-}
+
+到目前为止，您可能主要使用 Microsoft Word 来编写文档。[LibreOffice](https://www.libreoffice.org/)是一个与 Microsoft Office 套件相当的优秀开源软件，提供了大量用于文档编写、处理电子表格和创建演示文稿的应用程序。
+
+<center>
+[![LibreOffice logo](Pictures/LibreOffice-6.4.png){width=25%}](https://www.libreoffice.org/)
+</center>
+
+如果您有兴趣使用[Markdown](https://www.markdownguide.org/)进行写作（这确实很容易掌握），您可能会对使用[HackMD](https://opensource.com/article/19/7/enable-collaboration-hackmd)感兴趣。HackMD 是一款 Markdown 编辑器，可让您与他人一起编写协作文档和演示文稿。
+
+<center>
+[![HackMD logo](Pictures/hack_md.png){width=25%}](https://opensource.com/article/19/7/enable-collaboration-hackmd)
+</center>
+
+#### 构建实验{-}
+
+[PsychoPy](https://www.psychopy.org/)提供了一个出色的开源解决方案来构建收集人类数据的实验，并且通过配套托管网站[Pavlovia](https://pavlovia.org/)提供了一种易于使用的方法来在线运行 PsychoPy 实验。PsychoPy 已经存在很多年了，并且有许多预先构建的实验模板，您可以根据需要进行调整。[这里](https://link.springer.com/article/10.3758/s13428-018-01193-y)有一个很好的参考资料描述了 PsychoPy 环境。
+
+<center>
+[![PsychPy logo](Pictures/psychopyLogoOnlineStrap_h480.png){width=25%}](https://www.psychopy.org)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Pavlovia logo](Pictures/pavlovia.png){width=25%}](https://pavlovia.org)
+</center>
+
+#### Linux{-}
+
+Linux 操作系统是使用最广泛的开源软件之一。您可以选择使用[Linux](https://www.linux.org/)来运行计算机，而不是在 Windows 或 Mac OS 上运行计算机。Linux 运行着世界上大多数互联网服务器，并且在学术环境中变得越来越流行。Linux 指的是一堆开源的类 Unix 操作系统。它由[Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds)于 1991 年开发并发布。
+
+<center>
+[![Linux logo](Pictures/linux.jpg){width=25%}](https://www.linux.org/)
+</center>
+
+一些最流行的 Linux 发行版是[Ubuntu](https://ubuntu.com/)（我目前使用的^[笔者注：这里指原文的作者Prof. Andrew Stewart。可以看得出他确实是一名开源软件的爱好者，当在课上谈起Linux时，他讲了许多并十分推荐我们尝试Linux，并且眼睛似乎都在放光 ]）、[Fedora](https://getfedora.org/en/workstation/download/)和[Debian](https://www.debian.org/)。如果您真的想进入计算方面的研究，那么探索 Linux 的世界就很重要。
+
+<center>
+[![Ubuntu logo](Pictures/ubuntu-logo112.png){width=20%}](https://ubuntu.com)[![Fedora logo](Pictures/Fedora-Logo.jpg){width=25%}]((https://getfedora.org/en/workstation/download/))[![Debian logo](Pictures/openlogo.ps.jpg){width=15%}](https://www.debian.org)
+</center>
+
+#### 更多开源软件{-}
+
+如果您对开源软件的其他示例感兴趣，您可能有兴趣查看[Tech Radar](https://www.techradar.com/uk/best/best-open-source-software) 网站上的开源替代品列表。
+
+<center>
+[![open source software logo](Pictures/oss.png){width=75%}](https://www.techradar.com/uk/best/best-open-source-software)
+</center>
+
+## 开始使用 R 和 RStudio Desktop{-}
+
+在下面的内容中，将向介绍R语言和RStudio Desktop，这是一种集成开发环境 (IDE)，您将使用它来编写可重复的代码，涉及数据的整理、可视化、摘要和统计建模。R 和 RStudio Desktop 都是开源软件的示例。开源是进行可重复研究的关键，因为开源软件是免费的并向所有人开放。
+
+在下面的视频中，我将向您介绍 R 并讨论在我们的研究分析工作流程中采用此类工具的重要性。
+
+
+
+
+
+## 帮助我们改进本节课程 {.unnumbered}
+
+*此处应插入文本和反馈二维码或问卷链接*
