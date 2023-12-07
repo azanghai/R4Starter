@@ -17,3 +17,9 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
+<<<<<<< HEAD
+=======
+tab:unnamed-chunk-1
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
+等效性检验equivalence-testing
+>>>>>>> f759bbe5c72a6fbff6a6602aa12ebc4eced12c09
