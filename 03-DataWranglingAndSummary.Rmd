@@ -1,0 +1,332 @@
+# 数据整理和总结{-}
+
+在本次研讨会中，我将向您介绍许多关键包，Tidyverse这些包包含大量用于处理整齐格式数据的函数。通过使我们的数据整理可重现（即，通过用 R 进行编码），我们可以在添加新数据时轻松地重新运行分析流程的此阶段。数据整理阶段的可重复性是分析过程的关键部分，但在需要确保其可重复性方面经常被忽视。本次研讨会分为两个部分。第一个重点是数据整理，第二部分是数据总结。
+
+## 数据整理{-}
+
+### 概述{-}
+
+我们将首先了解Tidyverse中的一些关键工具，这些工具使我们能够整理和整理数据，使其达到我们可视化和建模所需的格式。Tidyverse 是一个相互“很好地配合”的软件包的集合。它们基于一个共同的理念，即数据以矩形格式（即行和列）表示。这些矩形结构在 Tidyverse 中被称为tibbles。如果您有兴趣，可以在此处tibbles阅读R4DS 书籍中的更多信息。
+
+请观看以下视频，我将在其中引导您完成此工作表。然后我希望您通过在自己的计算机上编写（并运行）脚本来完成内容。
+
+<center>
+<iframe src="【在此输入视频地址-数据整理】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+</center>
+
+### 加载Tidyverse{-}
+
+让我们首先看一下数据整理。我们将从 Tidyverse 附带的数据集开始。该数据集`mpg`包含 1999 年至 2008 年美国 38 种流行车型的燃油经济性数据。
+
+首先，我们需要tidyverse使用以下内容加载库：
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+如果您在没有先在计算机上安装 Tidyverse 的情况下运行此行，您将遇到错误。R 包只需要安装一次，因此如果您想第一次将其加载到库中，则需要使用`install.packages(*packagename*)`。
+
+对于`tidyverse`我们需要安装它：
+
+```{r eval=FALSE}
+install.packages(tidyverse)
+```
+
+安装`tidyverse`后，您可以使用`library()`功能将其加载到您的库中。您只需在计算机上安装一次软件包（除非您已更新 R 或者您想要安装特定软件包的最新版本）。当您编写 R 脚本时，您永远不想在脚本主体中拥有该函数`install.packages()`，就好像其他人运行您的脚本一样，这会更新他们计算机上的包（他们可能不想要）。
+
+### 数据集mpg {-}
+
+`mpg`数据集作为`Tidyverse`包帮助文件的一部分被加载，可以使用`help(mpg)`或者`?mpg`来查看，我们可以看到下面的说明：
+
+> Description  
+This dataset contains a subset of the fuel economy data that the EPA makes available on http://fueleconomy.gov. It contains only models which had a new release every year between 1999 and 2008 - this was used as a proxy for the popularity of the car.
+>  
+> A data frame with 234 rows and 11 variables.
+>  
+> manufacturer - manufacturer  
+model - model name  
+displ - engine displacement, in litres  
+year - year of manufacture  
+cyl - number of cylinders  
+trans -type of transmission  
+drv-f = front-wheel drive, r = rear wheel drive, 4 = 4wd  
+cty - city miles per gallon  
+hwy - highway miles per gallon  
+fl - fuel type  
+class - “type” of car 
+
+### 使用`head()`和`str()` {-}
+
+我们可以通过多种方式探索 `Tidyverse` 加载的数据集`mpg`。如果我们想查看数据集的前 6 行，我们可以使用该`head()`函数。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+head(mpg)
+```
+
+我们看到它是一个`tibble`或者说一个矩形数据框，由行和列组成。这是每个观察对应一行的格式`tidy`。我们将在 R 中运行的大多数分析都涉及`tidy`数据。在 `Tidyverse` 中，`tibble`是表示数据的标准方式。您将花费大量时间整理和整理数据以将其转换为这种格式！通过使用您编写的脚本在 R 中执行此操作，您可以使这个关键阶段可重现。您可以在更新的或不同的数据集上再次运行脚本,因此可能会节省您大量时间！
+
+我们还可以使用 询问有关数据集结构的信息`str()`。这将告诉我们有关列的信息、每个变量的类型、行数等。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+str(mpg)
+```
+
+### 用`select()`选择列{-}
+
+如果我们愿意，我们可以使用该`select()`函数选择其中一列。下面我们只选择标题为`manufacturer`的列。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>%
+  select(manufacturer)
+```
+
+与`select()`功能相关的是`rename()`和您想的一样，它重命名一列。
+
+我们还可以使用该`distinct()`函数查看数据集中的不同汽车制造商。这为我们提供了不同的制造商名称。如果您想检查数据集是否有（例如）参与者 ID 的重复项，此功能会非常方便。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>%
+  distinct(manufacturer)
+```
+
+### 用`filter()`选择行{-}
+
+有时我们可能只想选择数据集中的行子集。我们可以使用该`filter()`函数来做到这一点。例如，在这里我们过滤数据集以仅包含“honda”制造的汽车。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>%
+  filter(manufacturer == "honda")
+```
+
+请注意，我们使用的运算符`==`表示“等于”。这是一个逻辑运算符,其他逻辑运算符包括小于`<`、大于`>`、小于等于`<=`、大于等于`>=`和不等于`!=`。
+
+下面我们过滤制造商为“honda”且制造年份为“1999”的情况。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>% 
+  filter(manufacturer == "honda" & year == "1999")
+```
+
+### 组合功能{-}
+
+我们可以结合使用`filter()`和`select()`来过滤制造商为“honda”、制造年份为“1999”的情况，并且我们只想显示这两列以及告诉我们燃油经济性的列(`cty`和`hwy`)。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>% 
+  filter(manufacturer == "honda" & year == "1999") %>%
+  select(manufacturer, year, cty, hwy)
+```
+
+通过组合几个函数，您可以想象我们可以非常简单地构建一些相当复杂的数据整理规则。
+
+### 管道操作符`%>%` {-}
+
+请注意，在上面的这些示例中，我们使用了`%>%`运算符 - 这称为管道，允许我们将信息从管道的一侧传递到另一侧。您可以将其读作“然后”。Tidyverse 中的所有函数（例如`select()`和`filter()`）都称为动词（verbs），它们本身描述了自己的作用。管道是 Tidyverse 中最常用的运算符之一，它允许我们将不同的代码行链接在一起 - 每行的输出作为输入传递到下一行。在此示例中，数据集`mpg`被传递到`distinct()`函数，我们在其中请求不同（即唯一）制造商的列表。这个输出本身就是一个向量。向量是一种基本数据结构，包含相同类型的元素 - 例如，一堆数字。我们可以在管道链中添加另一行来告诉我们这个向量中有多少个元素。我们可以将其大声朗读为“获取数据集 `mpg`，然后计算出不同的制造商名称，然后对它们进行计数”。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>% 
+  distinct(manufacturer) %>%
+  count()
+```
+
+### 整理数据集{-}
+
+#### 整理变量名称{-}
+
+目前，汽车制造商名称均为小写。如果它们采用标题大小写（即每个单词的第一个字母大写），看起来会好得多。我们可以使用该`mutate()`函数创建一个新列 - 这次，新列的名称,即是我们要使用该str_to_title()函数修改旧列的名称。这将覆盖该列并将`manufacturer`其替换为首字母大写的新版本。
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>%
+  mutate(manufacturer = str_to_title(manufacturer))
+```
+
+列`model`也是小写的。我们也来让他首字母大写。我们可以使用该`mutate()`函数同时处理多个列，如下所示：
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>%
+  mutate(manufacturer = str_to_title(manufacturer), model = str_to_title(model))
+```
+
+数据集里有很多列，所以我们只选择manufacturer, model, year, transmission 和 hwy列：
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mpg %>%
+  mutate(manufacturer = str_to_title(manufacturer), model = str_to_title(model)) %>%
+  select(manufacturer, model, year, trans, hwy)
+```
+
+#### 重新编码变量{-}
+
+在现实世界中，数据集（Data Frames）并不总是以整齐的格式到达我们的计算机。通常，您需要先进行一些数据整理，然后才能对它们进行任何有用的操作。我们将看一个示例，说明如何从杂乱的数据变为整洁的数据。使用的数据集可以在[这里下载](插入下载链接)
+
+```{r message=FALSE, warning=FALSE, results='hide'}
+my_messy_data <- read_csv("Dataset/my_data.csv")
+my_messy_data
+```
+
+我们对 24 名参与者和 4 个条件进行了反应时间实验，他们在我们的数据文件中编号为 1-4。
+
+```{r message=FALSE, warning=FALSE}
+head(my_messy_data)
+```
+
+这是一种重复测量设计，其中一个因素（启动类型,即`Prime Type`）具有两个水平（A 与 B），第二个因素（目标类型,即`Target Type`）具有两个水平（A 与 B）。我们想要重新编码我们的数据框，以便它更好地匹配我们的实验设计。首先我们需要像这样重新编码 4 个情况（`Condition`）：
+
+重新编码`Condition`列如下：   
+ - Condition 1 = Prime A, Target A  
+ - Condition 2 = Prime A, Target B  
+ - Condition 3 = Prime B, Target A  
+ - Condition 4 = Prime B, Target B  
+
+```{r message=FALSE, warning=FALSE}
+my_messy_data %>% 
+  mutate(condition = recode(condition,
+                            "1" = "PrimeA_TargetA",
+                            "2" = "PrimeA_TargetB", 
+                            "3" = "PrimeB_TargetA", 
+                            "4" = "PrimeB_TargetB")) %>%
+  head()
+```
+
+我们现在需要将我们的条件列分成两个 - 一个用于我们的第一个因素（Prime），另一个用于我们的第二个因素（Target）。`separate()` 函数正是做这个的 - 当与管道化的tibble一起使用时，它需要知道我们想要分离哪一列，通过分离原始列来创建什么新列，以及我们想要基于什么来进行分离。在下面的示例中，我们告诉 `separate()` 我们想要将标记为 `condition` 的列分成两个新列，称为 `Prime` 和 `Target`，并且我们想要在要被分离的列中出现 `_` 的任何地方进行这种分离。
+
+```{r message=FALSE, warning=FALSE}
+my_messy_data %>% 
+  mutate(condition = recode(condition,
+                            "1" = "PrimeA_TargetA",
+                            "2" = "PrimeA_TargetB", 
+                            "3" = "PrimeB_TargetA", 
+                            "4" = "PrimeB_TargetB")) %>%
+  separate(col = "condition", into = c("Prime", "Target"), sep = "_")
+```
+
+```{r message=FALSE, warning=FALSE}
+my_messy_data %>% 
+  mutate(condition = recode(condition,
+                            "1" = "PrimeA_TargetA",
+                            "2" = "PrimeA_TargetB", 
+                            "3" = "PrimeB_TargetA", 
+                            "4" = "PrimeB_TargetB")) %>%
+  separate(col = "condition", into = c("Prime", "Target"), sep = "_") %>%
+  mutate(Prime = factor(Prime), Target = factor(Target))
+```
+
+### pivot 函数{-}
+
+我们将在 R 中进行的大多数分析都要求数据处于整洁或长格式。在这样的数据集中，一行对应一个观测值。在现实世界中，数据很少处于适合分析的正确格式。在 R 中，`pivot_wider()` 和 `pivot_longer()` 函数被设计用来重塑我们的数据文件。首先，让我们加载一个处于宽格式的数据文件（即，每行有多个观测值）。它来自一个我们进行了四种条件（标记为 Condition1、Condition2、Condition3 和 Condition4）的实验。除了有四种条件的每一列之外，我们还有一列对应于参与者 ID。数据集中的每个单元格对应一个反应时间（以毫秒为单位）。
+
+```{r}
+my_wide_data <- read_csv("Dataset/my_wide_data.csv")
+```
+
+#### pivot_longer() 函数{-}
+
+```{r}
+head(my_wide_data)
+```
+
+所以，我们可以看到数据文件是宽格式的。我们想要将其重塑为长格式。我们可以使用 `pivot_longer()` 函数来做到这一点。
+
+最低限度地，我们需要指定我们想要重塑的数据框架，我们想要转换为长格式的列，我们正在创建的新列的名称，以及将保存我们重塑数据框架（data frame）的值的列的名称。我们将输出映射到一个我称之为 `my_longer_data` 的变量。
+
+```{r message=FALSE, warning=FALSE, results='hide'}
+my_longer_data <- my_wide_data %>%
+  pivot_longer(cols = c(Condition1, Condition2, Condition3, Condition4), 
+               names_to = "Condition", 
+               values_to = "RT")
+```
+
+现在我们来看看重塑后的数据框架的样子
+
+```{r message=FALSE, warning=FALSE}
+head(my_longer_data)
+```
+
+所以你可以看到我们的数据现在是长格式（或tidy格式），每行一个观察。注意我们的`Condition`列没有被编码为因子。由于我们的数据集需要反映我们实验的结构，因此让我们将该列转换为因子 - 注意在以下代码中我们现在正在“保存”更改，因为我们没有将输出映射到变量名上。
+
+```{r message=FALSE, warning=FALSE}
+my_longer_data %>%
+  mutate(Condition = factor(Condition)) %>%
+  head()
+```
+
+#### pivot_wider()函数{-}
+
+我们可以使用 `pivot_wider()` 函数来重塑长数据框，使其从长格式转换为宽格式。它的工作方式类似于 `pivot_longer()`。让我们拿我们新的、长的、数据框并将其转回宽格式。使用 `pivot_wider()` 时，我们最低需要指定我们想要重塑的数据框，并指定一对参数（`names_from` 和 `values_from`），这些参数描述了从哪个列获取输出列的名称，以及从哪个列获取单元格值。
+
+```{r message=FALSE, warning=FALSE,results='hide'}
+my_wider_data <- my_longer_data %>%
+  pivot_wider(names_from = "Condition", 
+              values_from = "RT")
+```
+
+我们可以检查我们的数据集是否已经回到宽格式。
+
+```{r message=FALSE, warning=FALSE}
+head(my_wider_data)
+```
+
+### 合并两个数据集{-}
+
+有时你可能需要合并两个数据集。例如，你可能有一个包含阅读时间数据的数据集（就像上面那个）和另一个包含第一个数据集中参与者的个体差异测量的数据集。我们如何才能合并这两个数据集，以便最终得到一个既包括阅读时间数据又包括个体差异测量（我们可能稍后想要协变掉）的数据集？幸运的是，`dplyr` 包包含了许多连接函数，允许你将不同的tibbles连接在一起。首先，让我们加载包含个体差异测量的数据。该数据集可以在这里[下载](插入链接)
+
+```{r message=FALSE, warning=FALSE}
+individual_diffs <- read_csv("Dataset/individual_diffs.csv")
+```
+
+让我们看看个体差异数据的前几行。这个数据集包含了我们参与者的ID号以及智商（`iq`列）和工作记忆（`wm`列）的测量值。
+
+```{r message=FALSE, warning=FALSE}
+head(individual_diffs)
+```
+
+#### 完全合并{-}
+
+我们可以使用其中一个连接函数来组合。有多种选择，包括 `full_join()`，它包括了我们想要连接的第一个或第二个 tibble 中的所有行。其他选项包括 `inner_join()`，它包括了第一个和第二个 tibble 中的所有行，以及 `left_join()` 和 `right_join()`。
+
+```{r message=FALSE, warning=FALSE}
+combined_data <- full_join(my_longer_data, individual_diffs, by = "ID")
+```
+
+我们现在看到我们的数据集按照我们的预期组合在一起了。
+
+```{r message=FALSE, warning=FALSE}
+combined_data
+```
+
+#### 左合并{-}
+
+当然，你可能会想，我们可以简单地使用Excel对我们想要的列进行剪切和粘贴，从一个数据集转移到另一个数据集。但是，如果我们的个体差异文件包含了10,000个参与者的ID（以随机顺序排列），而我们只对在两个数据集匹配的情况下进行合并感兴趣呢？
+
+```{r message=FALSE, warning=FALSE, results='hide'}
+large_ind_diffs <- read_csv("Dataset/large_ind_diffs.csv")
+```
+
+```{r message=FALSE, warning=FALSE}
+head(large_ind_diffs)
+```
+
+我们实际上可以使用另一个连接函数（`left_join()`）来组合这两个数据集，但只在第一个数据集（函数调用中的`my_longer_data`）的ID与另一个数据集匹配的情况下进行组合。
+
+```{r message=FALSE, warning=FALSE}
+left_join(my_longer_data, large_ind_diffs, by = "ID")
+```
+
+## 作业{-}
+
+尝试通过使用 RStudio Desktop 编写你的第一个脚本来重现上面的内容。
+
+## 概括你的数据{-}
+
+### 概述{-}
+
+一旦数据集被整理好，我们通常想要做的第一件事之一就是生成摘要统计数据。在这个研讨会中，我们将使用内置于 `tidyverse` 中的 `mpg` 数据集。这个数据集包含了许多不同制造商生产的汽车的信息（如发动机大小、燃油经济性等）。我们如何生成（例如）按汽车制造商分组的某个变量的平均值和标准偏差？请观看以下视频，我将引导你完成这个工作表。然后，我希望你通过在自己的机器上编写（并运行）脚本来完成内容。
+
+在继续之前，请记得为这节课设置一个 .Rproj 文件。在你的脚本中，你首先需要加载 tidyverse。
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+rm(list=ls())
+```
+
+### 使用 `group_by()` 和 `summarise()` {-}
+

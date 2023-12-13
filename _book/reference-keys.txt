@@ -5,7 +5,7 @@ fig:figure03
 eq:binom
 thm:tri
 做好准备上手编写代码
-parts
+数据集mpg
 footnotes-and-citations
 footnotes
 citations
@@ -18,4 +18,9 @@ publishing
 pages
 metadata-for-sharing
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
-开始使用
+使用head和str
+用select选择列
+用filter选择行
+管道操作符
+pivot-函数
+pivot_longer-函数

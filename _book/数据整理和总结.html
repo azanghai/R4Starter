@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>数据整理和总结 | R语言入门</title>
+  <meta name="description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="数据整理和总结 | R语言入门" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="github-repo" content="azanghai/R4Starter" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="数据整理和总结 | R语言入门" />
+  
+  <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  
+
+<meta name="author" content="文庭" />
+
+
+<meta name="date" content="2023-12-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="开源软件和r语言.html"/>
+<link rel="next" href="footnotes-and-citations.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习形式"><i class="fa fa-check"></i>学习形式</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i>在开始之前</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究和可重复性"><i class="fa fa-check"></i>开放研究和可重复性</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究"><i class="fa fa-check"></i>开放研究</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如何进行可重复的研究"><i class="fa fa-check"></i>如何进行可重复的研究</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如果你需要一些指南"><i class="fa fa-check"></i>如果你需要一些指南</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#研究功效experimental-power"><i class="fa fa-check"></i>研究功效（Experimental Power）</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#介绍"><i class="fa fa-check"></i>介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#总结"><i class="fa fa-check"></i>总结</a></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#帮助我们改进本节课程"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i>开源软件和R语言</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件"><i class="fa fa-check"></i>开源软件</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#概述"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#统计与科学计算"><i class="fa fa-check"></i>统计与科学计算</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始使用-r-和-rstudio-desktop"><i class="fa fa-check"></i>开始使用 R 和 RStudio Desktop</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#为什么是r"><i class="fa fa-check"></i>为什么是R？</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件-1"><i class="fa fa-check"></i>开源软件</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#选择合适的软件做合适的工作"><i class="fa fa-check"></i>选择合适的软件做合适的工作</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源与闭源软件"><i class="fa fa-check"></i>开源与闭源软件</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r-vs.-spss"><i class="fa fa-check"></i>R vs. SPSS</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#关于r的书籍"><i class="fa fa-check"></i>关于R的书籍</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#hadley-wickham"><i class="fa fa-check"></i>Hadley Wickham</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r语言被许多机构广泛使用"><i class="fa fa-check"></i>R语言被许多机构广泛使用</a></li>
+<li class="chapter" data-level="1.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>1.0.1</b> 做好准备！上手编写代码！</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#入门"><i class="fa fa-check"></i>入门</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#好的编码风格"><i class="fa fa-check"></i>好的编码风格</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始你的第一个脚本"><i class="fa fa-check"></i>开始你的第一个脚本</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#帮助我们改进本节课程-1"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i>数据整理和总结</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据整理"><i class="fa fa-check"></i>数据整理</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-1"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#加载tidyverse"><i class="fa fa-check"></i>加载Tidyverse</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据集mpg"><i class="fa fa-check"></i>数据集mpg</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用head和str"><i class="fa fa-check"></i>使用<code>head()</code>和<code>str()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用select选择列"><i class="fa fa-check"></i>用<code>select()</code>选择列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用filter选择行"><i class="fa fa-check"></i>用<code>filter()</code>选择行</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#组合功能"><i class="fa fa-check"></i>组合功能</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#管道操作符"><i class="fa fa-check"></i>管道操作符<code>%&gt;%</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#整理数据集"><i class="fa fa-check"></i>整理数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#pivot-函数"><i class="fa fa-check"></i>pivot 函数</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#合并两个数据集"><i class="fa fa-check"></i>合并两个数据集</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业"><i class="fa fa-check"></i>作业</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概括你的数据"><i class="fa fa-check"></i>概括你的数据</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-2"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用-group_by-和-summarise"><i class="fa fa-check"></i>使用 <code>group_by()</code> 和 <code>summarise()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>2</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>2.1</b> Footnotes</a></li>
+<li class="chapter" data-level="2.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>2.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>3</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>3.1</b> Equations</a></li>
+<li class="chapter" data-level="3.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>3.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="3.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>3.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>4</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>4.1</b> Publishing</a></li>
+<li class="chapter" data-level="4.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>4.2</b> 404 pages</a></li>
+<li class="chapter" data-level="4.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>4.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言入门</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="数据整理和总结" class="section level1 unnumbered hasAnchor">
+<h1>数据整理和总结<a href="数据整理和总结.html#数据整理和总结" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>在本次研讨会中，我将向您介绍许多关键包，Tidyverse这些包包含大量用于处理整齐格式数据的函数。通过使我们的数据整理可重现（即，通过用 R 进行编码），我们可以在添加新数据时轻松地重新运行分析流程的此阶段。数据整理阶段的可重复性是分析过程的关键部分，但在需要确保其可重复性方面经常被忽视。本次研讨会分为两个部分。第一个重点是数据整理，第二部分是数据总结。</p>
+<div id="数据整理" class="section level2 unnumbered hasAnchor">
+<h2>数据整理<a href="数据整理和总结.html#数据整理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="概述-1" class="section level3 unnumbered hasAnchor">
+<h3>概述<a href="数据整理和总结.html#概述-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们将首先了解Tidyverse中的一些关键工具，这些工具使我们能够整理和整理数据，使其达到我们可视化和建模所需的格式。Tidyverse 是一个相互“很好地配合”的软件包的集合。它们基于一个共同的理念，即数据以矩形格式（即行和列）表示。这些矩形结构在 Tidyverse 中被称为tibbles。如果您有兴趣，可以在此处tibbles阅读R4DS 书籍中的更多信息。</p>
+<p>请观看以下视频，我将在其中引导您完成此工作表。然后我希望您通过在自己的计算机上编写（并运行）脚本来完成内容。</p>
+<center>
+<iframe src="【在此输入视频地址-数据整理】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+</iframe>
+</center>
+</div>
+<div id="加载tidyverse" class="section level3 unnumbered hasAnchor">
+<h3>加载Tidyverse<a href="数据整理和总结.html#加载tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>让我们首先看一下数据整理。我们将从 Tidyverse 附带的数据集开始。该数据集<code>mpg</code>包含 1999 年至 2008 年美国 38 种流行车型的燃油经济性数据。</p>
+<p>首先，我们需要tidyverse使用以下内容加载库：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="数据整理和总结.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>如果您在没有先在计算机上安装 Tidyverse 的情况下运行此行，您将遇到错误。R 包只需要安装一次，因此如果您想第一次将其加载到库中，则需要使用<code>install.packages(*packagename*)</code>。</p>
+<p>对于<code>tidyverse</code>我们需要安装它：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="数据整理和总结.html#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(tidyverse)</span></code></pre></div>
+<p>安装<code>tidyverse</code>后，您可以使用<code>library()</code>功能将其加载到您的库中。您只需在计算机上安装一次软件包（除非您已更新 R 或者您想要安装特定软件包的最新版本）。当您编写 R 脚本时，您永远不想在脚本主体中拥有该函数<code>install.packages()</code>，就好像其他人运行您的脚本一样，这会更新他们计算机上的包（他们可能不想要）。</p>
+</div>
+<div id="数据集mpg" class="section level3 unnumbered hasAnchor">
+<h3>数据集mpg<a href="数据整理和总结.html#数据集mpg" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>mpg</code>数据集作为<code>Tidyverse</code>包帮助文件的一部分被加载，可以使用<code>help(mpg)</code>或者<code>?mpg</code>来查看，我们可以看到下面的说明：</p>
+<blockquote>
+<p>Description<br />
+This dataset contains a subset of the fuel economy data that the EPA makes available on <a href="http://fueleconomy.gov" class="uri">http://fueleconomy.gov</a>. It contains only models which had a new release every year between 1999 and 2008 - this was used as a proxy for the popularity of the car.</p>
+<p>A data frame with 234 rows and 11 variables.</p>
+<p>manufacturer - manufacturer<br />
+model - model name<br />
+displ - engine displacement, in litres<br />
+year - year of manufacture<br />
+cyl - number of cylinders<br />
+trans -type of transmission<br />
+drv-f = front-wheel drive, r = rear wheel drive, 4 = 4wd<br />
+cty - city miles per gallon<br />
+hwy - highway miles per gallon<br />
+fl - fuel type<br />
+class - “type” of car</p>
+</blockquote>
+</div>
+<div id="使用head和str" class="section level3 unnumbered hasAnchor">
+<h3>使用<code>head()</code>和<code>str()</code><a href="数据整理和总结.html#使用head和str" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们可以通过多种方式探索 <code>Tidyverse</code> 加载的数据集<code>mpg</code>。如果我们想查看数据集的前 6 行，我们可以使用该<code>head()</code>函数。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="数据整理和总结.html#cb3-1" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 11
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29
+## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29
+## 3 audi         a4      2    2008     4 manual(m6) f        20    31
+## 4 audi         a4      2    2008     4 auto(av)   f        21    30
+## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26
+## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26
+## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+<p>我们看到它是一个<code>tibble</code>或者说一个矩形数据框，由行和列组成。这是每个观察对应一行的格式<code>tidy</code>。我们将在 R 中运行的大多数分析都涉及<code>tidy</code>数据。在 <code>Tidyverse</code> 中，<code>tibble</code>是表示数据的标准方式。您将花费大量时间整理和整理数据以将其转换为这种格式！通过使用您编写的脚本在 R 中执行此操作，您可以使这个关键阶段可重现。您可以在更新的或不同的数据集上再次运行脚本,因此可能会节省您大量时间！</p>
+<p>我们还可以使用 询问有关数据集结构的信息<code>str()</code>。这将告诉我们有关列的信息、每个变量的类型、行数等。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="数据整理和总结.html#cb5-1" tabindex="-1"></a><span class="fu">str</span>(mpg)</span></code></pre></div>
+<pre><code>## tibble [234 × 11] (S3: tbl_df/tbl/data.frame)
+##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
+##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
+##  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
+##  $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
+##  $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...
+##  $ trans       : chr [1:234] &quot;auto(l5)&quot; &quot;manual(m5)&quot; &quot;manual(m6)&quot; &quot;auto(av)&quot; ...
+##  $ drv         : chr [1:234] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...
+##  $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...
+##  $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...
+##  $ fl          : chr [1:234] &quot;p&quot; &quot;p&quot; &quot;p&quot; &quot;p&quot; ...
+##  $ class       : chr [1:234] &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; ...</code></pre>
+</div>
+<div id="用select选择列" class="section level3 unnumbered hasAnchor">
+<h3>用<code>select()</code>选择列<a href="数据整理和总结.html#用select选择列" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果我们愿意，我们可以使用该<code>select()</code>函数选择其中一列。下面我们只选择标题为<code>manufacturer</code>的列。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="数据整理和总结.html#cb7-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="数据整理和总结.html#cb7-2" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer)</span></code></pre></div>
+<pre><code>## # A tibble: 234 × 1
+##    manufacturer
+##    &lt;chr&gt;       
+##  1 audi        
+##  2 audi        
+##  3 audi        
+##  4 audi        
+##  5 audi        
+##  6 audi        
+##  7 audi        
+##  8 audi        
+##  9 audi        
+## 10 audi        
+## # ℹ 224 more rows</code></pre>
+<p>与<code>select()</code>功能相关的是<code>rename()</code>和您想的一样，它重命名一列。</p>
+<p>我们还可以使用该<code>distinct()</code>函数查看数据集中的不同汽车制造商。这为我们提供了不同的制造商名称。如果您想检查数据集是否有（例如）参与者 ID 的重复项，此功能会非常方便。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="数据整理和总结.html#cb9-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="数据整理和总结.html#cb9-2" tabindex="-1"></a>  <span class="fu">distinct</span>(manufacturer)</span></code></pre></div>
+<pre><code>## # A tibble: 15 × 1
+##    manufacturer
+##    &lt;chr&gt;       
+##  1 audi        
+##  2 chevrolet   
+##  3 dodge       
+##  4 ford        
+##  5 honda       
+##  6 hyundai     
+##  7 jeep        
+##  8 land rover  
+##  9 lincoln     
+## 10 mercury     
+## 11 nissan      
+## 12 pontiac     
+## 13 subaru      
+## 14 toyota      
+## 15 volkswagen</code></pre>
+</div>
+<div id="用filter选择行" class="section level3 unnumbered hasAnchor">
+<h3>用<code>filter()</code>选择行<a href="数据整理和总结.html#用filter选择行" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>有时我们可能只想选择数据集中的行子集。我们可以使用该<code>filter()</code>函数来做到这一点。例如，在这里我们过滤数据集以仅包含“honda”制造的汽车。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="数据整理和总结.html#cb11-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="数据整理和总结.html#cb11-2" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">&quot;honda&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 9 × 11
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+## 1 honda        civic   1.6  1999     4 manual(m5) f        28    33
+## 2 honda        civic   1.6  1999     4 auto(l4)   f        24    32
+## 3 honda        civic   1.6  1999     4 manual(m5) f        25    32
+## 4 honda        civic   1.6  1999     4 manual(m5) f        23    29
+## 5 honda        civic   1.6  1999     4 auto(l4)   f        24    32
+## 6 honda        civic   1.8  2008     4 manual(m5) f        26    34
+## 7 honda        civic   1.8  2008     4 auto(l5)   f        25    36
+## 8 honda        civic   1.8  2008     4 auto(l5)   f        24    36
+## 9 honda        civic   2    2008     4 manual(m6) f        21    29
+## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+<p>请注意，我们使用的运算符<code>==</code>表示“等于”。这是一个逻辑运算符,其他逻辑运算符包括小于<code>&lt;</code>、大于<code>&gt;</code>、小于等于<code>&lt;=</code>、大于等于<code>&gt;=</code>和不等于<code>!=</code>。</p>
+<p>下面我们过滤制造商为“honda”且制造年份为“1999”的情况。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="数据整理和总结.html#cb13-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="数据整理和总结.html#cb13-2" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">&quot;honda&quot;</span> <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="st">&quot;1999&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 11
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+## 1 honda        civic   1.6  1999     4 manual(m5) f        28    33
+## 2 honda        civic   1.6  1999     4 auto(l4)   f        24    32
+## 3 honda        civic   1.6  1999     4 manual(m5) f        25    32
+## 4 honda        civic   1.6  1999     4 manual(m5) f        23    29
+## 5 honda        civic   1.6  1999     4 auto(l4)   f        24    32
+## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+</div>
+<div id="组合功能" class="section level3 unnumbered hasAnchor">
+<h3>组合功能<a href="数据整理和总结.html#组合功能" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们可以结合使用<code>filter()</code>和<code>select()</code>来过滤制造商为“honda”、制造年份为“1999”的情况，并且我们只想显示这两列以及告诉我们燃油经济性的列(<code>cty</code>和<code>hwy</code>)。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="数据整理和总结.html#cb15-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="数据整理和总结.html#cb15-2" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">&quot;honda&quot;</span> <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="st">&quot;1999&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="数据整理和总结.html#cb15-3" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, year, cty, hwy)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 4
+##   manufacturer  year   cty   hwy
+##   &lt;chr&gt;        &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1 honda         1999    28    33
+## 2 honda         1999    24    32
+## 3 honda         1999    25    32
+## 4 honda         1999    23    29
+## 5 honda         1999    24    32</code></pre>
+<p>通过组合几个函数，您可以想象我们可以非常简单地构建一些相当复杂的数据整理规则。</p>
+</div>
+<div id="管道操作符" class="section level3 unnumbered hasAnchor">
+<h3>管道操作符<code>%&gt;%</code><a href="数据整理和总结.html#管道操作符" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>请注意，在上面的这些示例中，我们使用了<code>%&gt;%</code>运算符 - 这称为管道，允许我们将信息从管道的一侧传递到另一侧。您可以将其读作“然后”。Tidyverse 中的所有函数（例如<code>select()</code>和<code>filter()</code>）都称为动词（verbs），它们本身描述了自己的作用。管道是 Tidyverse 中最常用的运算符之一，它允许我们将不同的代码行链接在一起 - 每行的输出作为输入传递到下一行。在此示例中，数据集<code>mpg</code>被传递到<code>distinct()</code>函数，我们在其中请求不同（即唯一）制造商的列表。这个输出本身就是一个向量。向量是一种基本数据结构，包含相同类型的元素 - 例如，一堆数字。我们可以在管道链中添加另一行来告诉我们这个向量中有多少个元素。我们可以将其大声朗读为“获取数据集 <code>mpg</code>，然后计算出不同的制造商名称，然后对它们进行计数”。</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="数据整理和总结.html#cb17-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="数据整理和总结.html#cb17-2" tabindex="-1"></a>  <span class="fu">distinct</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="数据整理和总结.html#cb17-3" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##       n
+##   &lt;int&gt;
+## 1    15</code></pre>
+</div>
+<div id="整理数据集" class="section level3 unnumbered hasAnchor">
+<h3>整理数据集<a href="数据整理和总结.html#整理数据集" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="整理变量名称" class="section level4 unnumbered hasAnchor">
+<h4>整理变量名称<a href="数据整理和总结.html#整理变量名称" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>目前，汽车制造商名称均为小写。如果它们采用标题大小写（即每个单词的第一个字母大写），看起来会好得多。我们可以使用该<code>mutate()</code>函数创建一个新列 - 这次，新列的名称,即是我们要使用该str_to_title()函数修改旧列的名称。这将覆盖该列并将<code>manufacturer</code>其替换为首字母大写的新版本。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="数据整理和总结.html#cb19-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="数据整理和总结.html#cb19-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer))</span></code></pre></div>
+<pre><code>## # A tibble: 234 × 11
+##    manufacturer model     displ  year   cyl trans drv     cty   hwy
+##    &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+##  1 Audi         a4          1.8  1999     4 auto… f        18    29
+##  2 Audi         a4          1.8  1999     4 manu… f        21    29
+##  3 Audi         a4          2    2008     4 manu… f        20    31
+##  4 Audi         a4          2    2008     4 auto… f        21    30
+##  5 Audi         a4          2.8  1999     6 auto… f        16    26
+##  6 Audi         a4          2.8  1999     6 manu… f        18    26
+##  7 Audi         a4          3.1  2008     6 auto… f        18    27
+##  8 Audi         a4 quatt…   1.8  1999     4 manu… 4        18    26
+##  9 Audi         a4 quatt…   1.8  1999     4 auto… 4        16    25
+## 10 Audi         a4 quatt…   2    2008     4 manu… 4        20    28
+## # ℹ 224 more rows
+## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+<p>列<code>model</code>也是小写的。我们也来让他首字母大写。我们可以使用该<code>mutate()</code>函数同时处理多个列，如下所示：</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="数据整理和总结.html#cb21-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="数据整理和总结.html#cb21-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer), <span class="at">model =</span> <span class="fu">str_to_title</span>(model))</span></code></pre></div>
+<pre><code>## # A tibble: 234 × 11
+##    manufacturer model     displ  year   cyl trans drv     cty   hwy
+##    &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+##  1 Audi         A4          1.8  1999     4 auto… f        18    29
+##  2 Audi         A4          1.8  1999     4 manu… f        21    29
+##  3 Audi         A4          2    2008     4 manu… f        20    31
+##  4 Audi         A4          2    2008     4 auto… f        21    30
+##  5 Audi         A4          2.8  1999     6 auto… f        16    26
+##  6 Audi         A4          2.8  1999     6 manu… f        18    26
+##  7 Audi         A4          3.1  2008     6 auto… f        18    27
+##  8 Audi         A4 Quatt…   1.8  1999     4 manu… 4        18    26
+##  9 Audi         A4 Quatt…   1.8  1999     4 auto… 4        16    25
+## 10 Audi         A4 Quatt…   2    2008     4 manu… 4        20    28
+## # ℹ 224 more rows
+## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+<p>数据集里有很多列，所以我们只选择manufacturer, model, year, transmission 和 hwy列：</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="数据整理和总结.html#cb23-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="数据整理和总结.html#cb23-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer), <span class="at">model =</span> <span class="fu">str_to_title</span>(model)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="数据整理和总结.html#cb23-3" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, year, trans, hwy)</span></code></pre></div>
+<pre><code>## # A tibble: 234 × 5
+##    manufacturer model       year trans        hwy
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;      &lt;int&gt;
+##  1 Audi         A4          1999 auto(l5)      29
+##  2 Audi         A4          1999 manual(m5)    29
+##  3 Audi         A4          2008 manual(m6)    31
+##  4 Audi         A4          2008 auto(av)      30
+##  5 Audi         A4          1999 auto(l5)      26
+##  6 Audi         A4          1999 manual(m5)    26
+##  7 Audi         A4          2008 auto(av)      27
+##  8 Audi         A4 Quattro  1999 manual(m5)    26
+##  9 Audi         A4 Quattro  1999 auto(l5)      25
+## 10 Audi         A4 Quattro  2008 manual(m6)    28
+## # ℹ 224 more rows</code></pre>
+</div>
+<div id="重新编码变量" class="section level4 unnumbered hasAnchor">
+<h4>重新编码变量<a href="数据整理和总结.html#重新编码变量" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>在现实世界中，数据集（Data Frames）并不总是以整齐的格式到达我们的计算机。通常，您需要先进行一些数据整理，然后才能对它们进行任何有用的操作。我们将看一个示例，说明如何从杂乱的数据变为整洁的数据。使用的数据集可以在<a href="插入下载链接">这里下载</a></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="数据整理和总结.html#cb25-1" tabindex="-1"></a>my_messy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/my_data.csv&quot;</span>)</span>
+<span id="cb25-2"><a href="数据整理和总结.html#cb25-2" tabindex="-1"></a>my_messy_data</span></code></pre></div>
+<p>我们对 24 名参与者和 4 个条件进行了反应时间实验，他们在我们的数据文件中编号为 1-4。</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="数据整理和总结.html#cb26-1" tabindex="-1"></a><span class="fu">head</span>(my_messy_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   participant condition    rt
+##         &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1           1         1   879
+## 2           1         2  1027
+## 3           1         3  1108
+## 4           1         4   765
+## 5           2         1  1042
+## 6           2         2  1050</code></pre>
+<p>这是一种重复测量设计，其中一个因素（启动类型,即<code>Prime Type</code>）具有两个水平（A 与 B），第二个因素（目标类型,即<code>Target Type</code>）具有两个水平（A 与 B）。我们想要重新编码我们的数据框，以便它更好地匹配我们的实验设计。首先我们需要像这样重新编码 4 个情况（<code>Condition</code>）：</p>
+<p>重新编码<code>Condition</code>列如下：<br />
+- Condition 1 = Prime A, Target A<br />
+- Condition 2 = Prime A, Target B<br />
+- Condition 3 = Prime B, Target A<br />
+- Condition 4 = Prime B, Target B</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="数据整理和总结.html#cb28-1" tabindex="-1"></a>my_messy_data <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="数据整理和总结.html#cb28-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">recode</span>(condition,</span>
+<span id="cb28-3"><a href="数据整理和总结.html#cb28-3" tabindex="-1"></a>                            <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeA_TargetA&quot;</span>,</span>
+<span id="cb28-4"><a href="数据整理和总结.html#cb28-4" tabindex="-1"></a>                            <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeA_TargetB&quot;</span>, </span>
+<span id="cb28-5"><a href="数据整理和总结.html#cb28-5" tabindex="-1"></a>                            <span class="st">&quot;3&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeB_TargetA&quot;</span>, </span>
+<span id="cb28-6"><a href="数据整理和总结.html#cb28-6" tabindex="-1"></a>                            <span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeB_TargetB&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-7"><a href="数据整理和总结.html#cb28-7" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   participant condition         rt
+##         &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;
+## 1           1 PrimeA_TargetA   879
+## 2           1 PrimeA_TargetB  1027
+## 3           1 PrimeB_TargetA  1108
+## 4           1 PrimeB_TargetB   765
+## 5           2 PrimeA_TargetA  1042
+## 6           2 PrimeA_TargetB  1050</code></pre>
+<p>我们现在需要将我们的条件列分成两个 - 一个用于我们的第一个因素（Prime），另一个用于我们的第二个因素（Target）。<code>separate()</code> 函数正是做这个的 - 当与管道化的tibble一起使用时，它需要知道我们想要分离哪一列，通过分离原始列来创建什么新列，以及我们想要基于什么来进行分离。在下面的示例中，我们告诉 <code>separate()</code> 我们想要将标记为 <code>condition</code> 的列分成两个新列，称为 <code>Prime</code> 和 <code>Target</code>，并且我们想要在要被分离的列中出现 <code>_</code> 的任何地方进行这种分离。</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="数据整理和总结.html#cb30-1" tabindex="-1"></a>my_messy_data <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="数据整理和总结.html#cb30-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">recode</span>(condition,</span>
+<span id="cb30-3"><a href="数据整理和总结.html#cb30-3" tabindex="-1"></a>                            <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeA_TargetA&quot;</span>,</span>
+<span id="cb30-4"><a href="数据整理和总结.html#cb30-4" tabindex="-1"></a>                            <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeA_TargetB&quot;</span>, </span>
+<span id="cb30-5"><a href="数据整理和总结.html#cb30-5" tabindex="-1"></a>                            <span class="st">&quot;3&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeB_TargetA&quot;</span>, </span>
+<span id="cb30-6"><a href="数据整理和总结.html#cb30-6" tabindex="-1"></a>                            <span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeB_TargetB&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="数据整理和总结.html#cb30-7" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">&quot;condition&quot;</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Prime&quot;</span>, <span class="st">&quot;Target&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 96 × 4
+##    participant Prime  Target     rt
+##          &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;
+##  1           1 PrimeA TargetA   879
+##  2           1 PrimeA TargetB  1027
+##  3           1 PrimeB TargetA  1108
+##  4           1 PrimeB TargetB   765
+##  5           2 PrimeA TargetA  1042
+##  6           2 PrimeA TargetB  1050
+##  7           2 PrimeB TargetA   942
+##  8           2 PrimeB TargetB   945
+##  9           3 PrimeA TargetA   943
+## 10           3 PrimeA TargetB   910
+## # ℹ 86 more rows</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="数据整理和总结.html#cb32-1" tabindex="-1"></a>my_messy_data <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="数据整理和总结.html#cb32-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">recode</span>(condition,</span>
+<span id="cb32-3"><a href="数据整理和总结.html#cb32-3" tabindex="-1"></a>                            <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeA_TargetA&quot;</span>,</span>
+<span id="cb32-4"><a href="数据整理和总结.html#cb32-4" tabindex="-1"></a>                            <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeA_TargetB&quot;</span>, </span>
+<span id="cb32-5"><a href="数据整理和总结.html#cb32-5" tabindex="-1"></a>                            <span class="st">&quot;3&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeB_TargetA&quot;</span>, </span>
+<span id="cb32-6"><a href="数据整理和总结.html#cb32-6" tabindex="-1"></a>                            <span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeB_TargetB&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-7"><a href="数据整理和总结.html#cb32-7" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">&quot;condition&quot;</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Prime&quot;</span>, <span class="st">&quot;Target&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-8"><a href="数据整理和总结.html#cb32-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prime =</span> <span class="fu">factor</span>(Prime), <span class="at">Target =</span> <span class="fu">factor</span>(Target))</span></code></pre></div>
+<pre><code>## # A tibble: 96 × 4
+##    participant Prime  Target     rt
+##          &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;   &lt;dbl&gt;
+##  1           1 PrimeA TargetA   879
+##  2           1 PrimeA TargetB  1027
+##  3           1 PrimeB TargetA  1108
+##  4           1 PrimeB TargetB   765
+##  5           2 PrimeA TargetA  1042
+##  6           2 PrimeA TargetB  1050
+##  7           2 PrimeB TargetA   942
+##  8           2 PrimeB TargetB   945
+##  9           3 PrimeA TargetA   943
+## 10           3 PrimeA TargetB   910
+## # ℹ 86 more rows</code></pre>
+</div>
+</div>
+<div id="pivot-函数" class="section level3 unnumbered hasAnchor">
+<h3>pivot 函数<a href="数据整理和总结.html#pivot-函数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们将在 R 中进行的大多数分析都要求数据处于整洁或长格式。在这样的数据集中，一行对应一个观测值。在现实世界中，数据很少处于适合分析的正确格式。在 R 中，<code>pivot_wider()</code> 和 <code>pivot_longer()</code> 函数被设计用来重塑我们的数据文件。首先，让我们加载一个处于宽格式的数据文件（即，每行有多个观测值）。它来自一个我们进行了四种条件（标记为 Condition1、Condition2、Condition3 和 Condition4）的实验。除了有四种条件的每一列之外，我们还有一列对应于参与者 ID。数据集中的每个单元格对应一个反应时间（以毫秒为单位）。</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="数据整理和总结.html#cb34-1" tabindex="-1"></a>my_wide_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/my_wide_data.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 32 Columns: 5
+## ── Column specification ───────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (5): ID, Condition1, Condition2, Condition3, Condition4
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div id="pivot_longer-函数" class="section level4 unnumbered hasAnchor">
+<h4>pivot_longer() 函数<a href="数据整理和总结.html#pivot_longer-函数" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="数据整理和总结.html#cb36-1" tabindex="-1"></a><span class="fu">head</span>(my_wide_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##      ID Condition1 Condition2 Condition3 Condition4
+##   &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1     1        487        492        499        488
+## 2     2        502        494        517        508
+## 3     3        510        483        488        509
+## 4     4        476        488        513        521
+## 5     5        504        478        513        504
+## 6     6        505        486        503        495</code></pre>
+<p>所以，我们可以看到数据文件是宽格式的。我们想要将其重塑为长格式。我们可以使用 <code>pivot_longer()</code> 函数来做到这一点。</p>
+<p>最低限度地，我们需要指定我们想要重塑的数据框架，我们想要转换为长格式的列，我们正在创建的新列的名称，以及将保存我们重塑数据框架（data frame）的值的列的名称。我们将输出映射到一个我称之为 <code>my_longer_data</code> 的变量。</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="数据整理和总结.html#cb38-1" tabindex="-1"></a>my_longer_data <span class="ot">&lt;-</span> my_wide_data <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="数据整理和总结.html#cb38-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Condition1, Condition2, Condition3, Condition4), </span>
+<span id="cb38-3"><a href="数据整理和总结.html#cb38-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Condition&quot;</span>, </span>
+<span id="cb38-4"><a href="数据整理和总结.html#cb38-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;RT&quot;</span>)</span></code></pre></div>
+<p>现在我们来看看重塑后的数据框架的样子</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="数据整理和总结.html#cb39-1" tabindex="-1"></a><span class="fu">head</span>(my_longer_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##      ID Condition     RT
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
+## 1     1 Condition1   487
+## 2     1 Condition2   492
+## 3     1 Condition3   499
+## 4     1 Condition4   488
+## 5     2 Condition1   502
+## 6     2 Condition2   494</code></pre>
+<p>所以你可以看到我们的数据现在是长格式（或tidy格式），每行一个观察。注意我们的<code>Condition</code>列没有被编码为因子。由于我们的数据集需要反映我们实验的结构，因此让我们将该列转换为因子 - 注意在以下代码中我们现在正在“保存”更改，因为我们没有将输出映射到变量名上。</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="数据整理和总结.html#cb41-1" tabindex="-1"></a>my_longer_data <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="数据整理和总结.html#cb41-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Condition =</span> <span class="fu">factor</span>(Condition)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="数据整理和总结.html#cb41-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##      ID Condition     RT
+##   &lt;dbl&gt; &lt;fct&gt;      &lt;dbl&gt;
+## 1     1 Condition1   487
+## 2     1 Condition2   492
+## 3     1 Condition3   499
+## 4     1 Condition4   488
+## 5     2 Condition1   502
+## 6     2 Condition2   494</code></pre>
+</div>
+<div id="pivot_wider函数" class="section level4 unnumbered hasAnchor">
+<h4>pivot_wider()函数<a href="数据整理和总结.html#pivot_wider函数" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>我们可以使用 <code>pivot_wider()</code> 函数来重塑长数据框，使其从长格式转换为宽格式。它的工作方式类似于 <code>pivot_longer()</code>。让我们拿我们新的、长的、数据框并将其转回宽格式。使用 <code>pivot_wider()</code> 时，我们最低需要指定我们想要重塑的数据框，并指定一对参数（<code>names_from</code> 和 <code>values_from</code>），这些参数描述了从哪个列获取输出列的名称，以及从哪个列获取单元格值。</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="数据整理和总结.html#cb43-1" tabindex="-1"></a>my_wider_data <span class="ot">&lt;-</span> my_longer_data <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="数据整理和总结.html#cb43-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Condition&quot;</span>, </span>
+<span id="cb43-3"><a href="数据整理和总结.html#cb43-3" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="st">&quot;RT&quot;</span>)</span></code></pre></div>
+<p>我们可以检查我们的数据集是否已经回到宽格式。</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="数据整理和总结.html#cb44-1" tabindex="-1"></a><span class="fu">head</span>(my_wider_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##      ID Condition1 Condition2 Condition3 Condition4
+##   &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1     1        487        492        499        488
+## 2     2        502        494        517        508
+## 3     3        510        483        488        509
+## 4     4        476        488        513        521
+## 5     5        504        478        513        504
+## 6     6        505        486        503        495</code></pre>
+</div>
+</div>
+<div id="合并两个数据集" class="section level3 unnumbered hasAnchor">
+<h3>合并两个数据集<a href="数据整理和总结.html#合并两个数据集" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>有时你可能需要合并两个数据集。例如，你可能有一个包含阅读时间数据的数据集（就像上面那个）和另一个包含第一个数据集中参与者的个体差异测量的数据集。我们如何才能合并这两个数据集，以便最终得到一个既包括阅读时间数据又包括个体差异测量（我们可能稍后想要协变掉）的数据集？幸运的是，<code>dplyr</code> 包包含了许多连接函数，允许你将不同的tibbles连接在一起。首先，让我们加载包含个体差异测量的数据。该数据集可以在这里<a href="插入链接">下载</a></p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="数据整理和总结.html#cb46-1" tabindex="-1"></a>individual_diffs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/individual_diffs.csv&quot;</span>)</span></code></pre></div>
+<p>让我们看看个体差异数据的前几行。这个数据集包含了我们参与者的ID号以及智商（<code>iq</code>列）和工作记忆（<code>wm</code>列）的测量值。</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="数据整理和总结.html#cb47-1" tabindex="-1"></a><span class="fu">head</span>(individual_diffs)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##      ID    iq    wm
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1   100     9
+## 2     2   108     8
+## 3     3   116     9
+## 4     4    95     9
+## 5     5    83    11
+## 6     6    73    10</code></pre>
+<div id="完全合并" class="section level4 unnumbered hasAnchor">
+<h4>完全合并<a href="数据整理和总结.html#完全合并" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>我们可以使用其中一个连接函数来组合。有多种选择，包括 <code>full_join()</code>，它包括了我们想要连接的第一个或第二个 tibble 中的所有行。其他选项包括 <code>inner_join()</code>，它包括了第一个和第二个 tibble 中的所有行，以及 <code>left_join()</code> 和 <code>right_join()</code>。</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="数据整理和总结.html#cb49-1" tabindex="-1"></a>combined_data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(my_longer_data, individual_diffs, <span class="at">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<p>我们现在看到我们的数据集按照我们的预期组合在一起了。</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="数据整理和总结.html#cb50-1" tabindex="-1"></a>combined_data</span></code></pre></div>
+<pre><code>## # A tibble: 128 × 5
+##       ID Condition     RT    iq    wm
+##    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1     1 Condition1   487   100     9
+##  2     1 Condition2   492   100     9
+##  3     1 Condition3   499   100     9
+##  4     1 Condition4   488   100     9
+##  5     2 Condition1   502   108     8
+##  6     2 Condition2   494   108     8
+##  7     2 Condition3   517   108     8
+##  8     2 Condition4   508   108     8
+##  9     3 Condition1   510   116     9
+## 10     3 Condition2   483   116     9
+## # ℹ 118 more rows</code></pre>
+</div>
+<div id="左合并" class="section level4 unnumbered hasAnchor">
+<h4>左合并<a href="数据整理和总结.html#左合并" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>当然，你可能会想，我们可以简单地使用Excel对我们想要的列进行剪切和粘贴，从一个数据集转移到另一个数据集。但是，如果我们的个体差异文件包含了10,000个参与者的ID（以随机顺序排列），而我们只对在两个数据集匹配的情况下进行合并感兴趣呢？</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="数据整理和总结.html#cb52-1" tabindex="-1"></a>large_ind_diffs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/large_ind_diffs.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="数据整理和总结.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(large_ind_diffs)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##      ID    iq    wm
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  6057    93     7
+## 2  2723    86     7
+## 3  1088    97     9
+## 4  8687    87     8
+## 5  4223    77    11
+## 6   369    95     9</code></pre>
+<p>我们实际上可以使用另一个连接函数（<code>left_join()</code>）来组合这两个数据集，但只在第一个数据集（函数调用中的<code>my_longer_data</code>）的ID与另一个数据集匹配的情况下进行组合。</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="数据整理和总结.html#cb55-1" tabindex="-1"></a><span class="fu">left_join</span>(my_longer_data, large_ind_diffs, <span class="at">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 128 × 5
+##       ID Condition     RT    iq    wm
+##    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1     1 Condition1   487   100     9
+##  2     1 Condition2   492   100     9
+##  3     1 Condition3   499   100     9
+##  4     1 Condition4   488   100     9
+##  5     2 Condition1   502   108     8
+##  6     2 Condition2   494   108     8
+##  7     2 Condition3   517   108     8
+##  8     2 Condition4   508   108     8
+##  9     3 Condition1   510   116     9
+## 10     3 Condition2   483   116     9
+## # ℹ 118 more rows</code></pre>
+</div>
+</div>
+</div>
+<div id="作业" class="section level2 unnumbered hasAnchor">
+<h2>作业<a href="数据整理和总结.html#作业" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>尝试通过使用 RStudio Desktop 编写你的第一个脚本来重现上面的内容。</p>
+</div>
+<div id="概括你的数据" class="section level2 unnumbered hasAnchor">
+<h2>概括你的数据<a href="数据整理和总结.html#概括你的数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="概述-2" class="section level3 unnumbered hasAnchor">
+<h3>概述<a href="数据整理和总结.html#概述-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>一旦数据集被整理好，我们通常想要做的第一件事之一就是生成摘要统计数据。在这个研讨会中，我们将使用内置于 <code>tidyverse</code> 中的 <code>mpg</code> 数据集。这个数据集包含了许多不同制造商生产的汽车的信息（如发动机大小、燃油经济性等）。我们如何生成（例如）按汽车制造商分组的某个变量的平均值和标准偏差？请观看以下视频，我将引导你完成这个工作表。然后，我希望你通过在自己的机器上编写（并运行）脚本来完成内容。</p>
+<p>在继续之前，请记得为这节课设置一个 .Rproj 文件。在你的脚本中，你首先需要加载 tidyverse。</p>
+</div>
+<div id="使用-group_by-和-summarise" class="section level3 unnumbered hasAnchor">
+<h3>使用 <code>group_by()</code> 和 <code>summarise()</code><a href="数据整理和总结.html#使用-group_by-和-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="开源软件和r语言.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="footnotes-and-citations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-DataWranglingAndSummary.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

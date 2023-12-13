@@ -177,16 +177,7 @@ knitr::include_graphics("Pictures/codingmeme02.png")
 如果您使用的是 Chromebook，或拥有平板电脑，或者在计算机上安装 R 和 RStudio Desktop 时遇到困难，则可以使用[RStudio Cloud](https://rstudio.cloud/)在浏览器中运行 RStudio 环境。您需要注册，有一个免费计划可供您每月使用 RStudio Cloud 15 小时。**不过我们强烈建议您在本地安装R与RStudio Desktop**。
 
 <center>
-<iframe 
-src="Video/Getting Started with R and RStudio Desktop.mp4" 
-scrolling="no" 
-border="0" 
-frameborder="no" 
-framespacing="0" 
-allowfullscreen="true" 
-height=500 
-width="100%"> 
-</iframe>
+<iframe src="【在此输入视频地址Getting Started with R and RStudio Desktop】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
 
@@ -201,16 +192,7 @@ width="100%">
 在下面的视频中，将讨论良好的编码风格。当您编写分析脚本时，确保您的代码能够被其他人和未来的您理解是很重要的。如果您尽早养成良好的编码风格的习惯，从长远来看，这将使事情变得更加容易 - 并且您会发现协作工作更容易，因为其他人会发现与您合作更容易。
 
 <center>
-<iframe 
-src="Video/Good Coding Style.mp4" 
-scrolling="no" 
-border="0" 
-frameborder="no" 
-framespacing="0" 
-allowfullscreen="true" 
-height=500 
-width="100%"> 
-</iframe>
+<iframe src="【在此输入视频地址Good Coding Style】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
 [您可以在此处查看](https://style.tidyverse.org/)有用的 Tidyverse 风格指南。
@@ -218,6 +200,85 @@ width="100%">
 如果您想让您的代码和数据开放（您确实应该这样做，除非有充分的理由不这样做），那么正确许可它以允许其他人（重新）使用和重新混合它非常重要。对于我自己的工作，我倾向于使用尽可能宽松的许可证。我的“首选”许可证是[MIT许可证](https://opensource.org/licenses/MIT)和[知识共享许可证 CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)。
 
 如果您需要帮助为自己的作品选择正确的许可证，您可以使用这个[方便的指南](https://choosealicense.com/)。
+
+## 开始你的第一个脚本{-}
+
+您现在将运行您的第一个 R 脚本。我们将使用多年来超过 80,000 次 UFO 目击事件的数据库创建美国 UFO 目击事件的三种可视化效果。在运行代码之前，您需要在计算机上安装两个软件包 - 它们是tidyverse和patchwork。
+
+<center>
+<iframe src="【在此输入视频地址Your First R Script】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+</center>
+
+安装软件包后，将以下代码键入新的 R 脚本中。脚本中的数据集可以在[这个链接](【插入链接】)中下载。按照视频中向展示的相同方式运行代码。您的可视化看起来和我的一样嘛？
+
+```{r YourFirstRScript, eval=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse) # 加载 tidyverse 包
+library(patchwork) # 使用这个包将图拼接在一起
+
+# 读取数据，在这里，我将数据存储在了Datasets文件夹下。 
+ufo_sightings <- read_csv("Datasets/ufo_sightings.csv")
+
+# 作图：美国前 10 个州的目击事件数量
+plot1 <- ufo_sightings %>%
+  filter(!is.na(state)) %>%
+  mutate(state = str_to_upper(state)) %>%
+  group_by(state) %>%
+  tally() %>%
+  top_n(10) %>%
+  ggplot(aes(x = reorder(state, n), y = n, fill = state)) +
+  geom_col() + 
+  coord_flip() +
+  guides(fill = "none") + 
+  labs(title = "Top 10 States for UFO Sightings",
+       x = NULL, 
+       y = NULL) +
+  ylim(0, 11000) +
+  theme_minimal() +
+  theme(text = element_text(size = 15))
+
+# 计算出纬度和经度范围内的州（即排除阿拉斯加）
+tidied_ufo <- ufo_sightings %>%
+  filter(country == "us") %>%
+  filter(latitude > 24 & latitude < 50)
+
+# 在美国地图上绘制所有目击事件
+plot2 <- tidied_ufo %>%
+  ggplot(aes(x = longitude, y = latitude)) + 
+  geom_point(size = .5, alpha = .25) +
+  theme_void() +
+  coord_cartesian() +
+  labs(title = "Sites of UFO Sightings in the US") +
+  theme(text = element_text(size = 15))
+
+# 作图：加利福尼亚州发现的十大 UFO 形状图
+plot3 <- tidied_ufo %>%
+  filter(state == "ca") %>%
+  filter(ufo_shape != "other") %>%
+  filter(ufo_shape != "unknown") %>%
+  group_by(ufo_shape) %>%
+  tally() %>%
+  top_n(10) %>%
+  mutate(ufo_shape = str_to_title(ufo_shape)) %>%
+  ggplot(aes(x = reorder(ufo_shape, n), y = n, fill = ufo_shape)) +
+  geom_col() + 
+  coord_flip() +
+  guides(fill = "none") + 
+  labs(title = "Top 10 UFO Shapes spotted in California",
+       x = NULL, 
+       y = NULL) +
+  theme_minimal() +
+  theme(text = element_text(size = 15))
+
+# 将图拼接在一起
+my_plot <- (plot1 + plot3) / (plot2)
+
+ggsave("ufo_plot.jpg", plot = my_plot, width = 12, height = 10)
+```
+
+<center>
+[![UFO visualisation](Pictures/ufo_plot.jpg)]{width=100%}
+</center>
+
 
 ## 帮助我们改进本节课程 {.unnumbered}
 
