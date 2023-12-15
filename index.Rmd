@@ -5,8 +5,8 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
+url: https://github.com/azanghai/R4Starter
+cover-image: Pictures/CoverImage.png
 description: |
   这是一个介绍如何使用R语言的入门教程。
 link-citations: yes
