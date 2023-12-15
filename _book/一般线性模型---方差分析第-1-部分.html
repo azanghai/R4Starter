@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Chapter 8 一般线性模型 - 方差分析第 1 部分 | R语言入门" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
   <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="github-repo" content="azanghai/R4Starter" />
 
@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 8 一般线性模型 - 方差分析第 1 部分 | R语言入门" />
   
   <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
-  
+  <meta name="twitter:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
 
 <meta name="author" content="文庭" />
 
@@ -159,7 +159,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">R for Starter</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
@@ -480,11 +480,9 @@ div.csl-indent {
 <span id="cb182-7"><a href="一般线性模型---方差分析第-1-部分.html#cb182-7" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
 <span id="cb182-8"><a href="一般线性模型---方差分析第-1-部分.html#cb182-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb182-9"><a href="一般线性模型---方差分析第-1-部分.html#cb182-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) </span></code></pre></div>
-<pre><code>## Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use
-## &quot;none&quot; instead as of ggplot2 3.3.4.
+<pre><code>## Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use &quot;none&quot; instead as of ggplot2 3.3.4.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this
-## warning was generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
 <p>我们构建了一个可视化，其中使用<code>geom_jitter()</code>函数绘制了原始数据点，并使用<code>geom_violin()</code>函数绘制了每个条件的分布形状。 我们还使用<code>stat_summary()</code>函数以平均值和平均值附近的置信区间的形式添加了一些汇总数据。</p>
 </div>
@@ -517,14 +515,10 @@ div.csl-indent {
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
-##  contrast                          estimate    SE df t.ratio
-##  Double Espresso - Single Espresso     1.90 0.153 42  12.453
-##  Double Espresso - Water               3.72 0.153 42  24.372
-##  Single Espresso - Water               1.82 0.153 42  11.920
-##  p.value
-##   &lt;.0001
-##   &lt;.0001
-##   &lt;.0001
+##  contrast                          estimate    SE df t.ratio p.value
+##  Double Espresso - Single Espresso     1.90 0.153 42  12.453  &lt;.0001
+##  Double Espresso - Water               3.72 0.153 42  24.372  &lt;.0001
+##  Single Espresso - Water               1.82 0.153 42  11.920  &lt;.0001
 ## 
 ## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
 <p>请注意，多重比较的默认调整是 Tukey 的调整。 我们可以通过向模型添加额外参数来改变这一点，例如adjust = “bonferonni”) 。 在这种情况下，它对我们的比较没有任何影响。</p>
@@ -538,14 +532,10 @@ div.csl-indent {
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
-##  contrast                          estimate    SE df t.ratio
-##  Double Espresso - Single Espresso     1.90 0.153 42  12.453
-##  Double Espresso - Water               3.72 0.153 42  24.372
-##  Single Espresso - Water               1.82 0.153 42  11.920
-##  p.value
-##   &lt;.0001
-##   &lt;.0001
-##   &lt;.0001
+##  contrast                          estimate    SE df t.ratio p.value
+##  Double Espresso - Single Espresso     1.90 0.153 42  12.453  &lt;.0001
+##  Double Espresso - Water               3.72 0.153 42  24.372  &lt;.0001
+##  Single Espresso - Water               1.82 0.153 42  11.920  &lt;.0001
 ## 
 ## P value adjustment: bonferroni method for 3 tests</code></pre>
 <p>我们发现饮料类型有显着影响（F (2,42) = 297.05， p &lt; .001，广义 η2 = .93）。 Tukey 比较显示，水组的表现显着差于单份浓缩咖啡组 ( p &lt; .001)，水组的表现显着差于双份浓缩咖啡组 ( p &lt; .001)，单份浓缩咖啡组的表现显着较差高于 Double Espresso 组 ( p &lt; .001)。</p>
@@ -724,8 +714,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="一般线性模型---方差分析第-1-部分.html#cb210-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
 <span id="cb210-2"><a href="一般线性模型---方差分析第-1-部分.html#cb210-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Context, Sentence) <span class="sc">%&gt;%</span></span>
 <span id="cb210-3"><a href="一般线性模型---方差分析第-1-部分.html#cb210-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(RT), <span class="at">sd_rt =</span> <span class="fu">sd</span>(RT))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override
-## using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override using the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 4 × 4
 ## # Groups:   Context [2]
 ##   Context  Sentence mean_rt sd_rt
@@ -742,8 +731,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="一般线性模型---方差分析第-1-部分.html#cb215-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
 <span id="cb215-2"><a href="一般线性模型---方差分析第-1-部分.html#cb215-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Context, Sentence) <span class="sc">%&gt;%</span></span>
 <span id="cb215-3"><a href="一般线性模型---方差分析第-1-部分.html#cb215-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(RT, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">sd_rt =</span> <span class="fu">sd</span>(RT, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override
-## using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override using the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 4 × 4
 ## # Groups:   Context [2]
 ##   Context  Sentence mean_rt sd_rt
@@ -814,20 +802,13 @@ div.csl-indent {
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
-##  contrast                              estimate   SE df t.ratio
-##  Negative Negative - Positive Negative   -153.9 50.0 59  -3.075
-##  Negative Negative - Negative Positive   -120.9 63.4 59  -1.908
-##  Negative Negative - Positive Positive   -105.2 53.5 59  -1.966
-##  Positive Negative - Negative Positive     33.0 65.5 59   0.503
-##  Positive Negative - Positive Positive     48.7 57.1 59   0.852
-##  Negative Positive - Positive Positive     15.7 60.3 59   0.261
-##  p.value
-##   0.0032
-##   0.0612
-##   0.0540
-##   0.6165
-##   0.3976
-##   0.7953</code></pre>
+##  contrast                              estimate   SE df t.ratio p.value
+##  Negative Negative - Positive Negative   -153.9 50.0 59  -3.075  0.0032
+##  Negative Negative - Negative Positive   -120.9 63.4 59  -1.908  0.0612
+##  Negative Negative - Positive Positive   -105.2 53.5 59  -1.966  0.0540
+##  Positive Negative - Negative Positive     33.0 65.5 59   0.503  0.6165
+##  Positive Negative - Positive Positive     48.7 57.1 59   0.852  0.3976
+##  Negative Positive - Positive Positive     15.7 60.3 59   0.261  0.7953</code></pre>
 <p>关键的比较是<code>Negative Negative - Positive Negative</code>和<code>Negative Positive - Positive Positive</code>比较。 在第一种情况下，我们将反应时间与前面有消极与积极语境的消极句子进行比较，而在第二种情况下，我们将反应时间与前面有消极与积极语境的积极句子进行比较。 我们可以通过将相应的p值乘以 2（并对可能的最大p值限制为 1）来手动纠正多重比较（在本例中为 2）。 在这种情况下，第一个关键比较很重要 ( p = .0064)，而第二个则不重要。 我们可能会写出这样的结果：</p>
 <p>我们进行了 2（上下文：正与负）x 2（句子：正与负）重复测量方差分析，以研究上下文效价对正价或负价句子的反应时间的影响。 方差分析显示句子没有影响 (F &lt; 1)，上下文没有影响 (F(1, 59) = 3.18, p = .080, ηG2 = .006)，但句子和上下文之间存在交互作用 (F(1, 59) = 4.60， p = .036，ηG2 = .009)。</p>
 <p>通过进行 Bonferroni 校正的成对同伴来解释相互作用。 这些比较表明，交互是由否定句子在否定上下文中处理速度更快（1,474 毫秒 vs. 1,628 毫秒，t(118) = 3.08， p = .0064）驱动的，而正面句子的阅读速度相似在消极与积极情境中（1,595 毫秒与 1,579 毫秒，t(118) = .261， p = 1）。</p>
@@ -843,17 +824,17 @@ div.csl-indent {
 </div>
 <div id="问题2" class="section level3 unnumbered hasAnchor">
 <h3>问题2<a href="一般线性模型---方差分析第-1-部分.html#问题2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们的第二个数据文件名为 ANOVA_data2.csv，可以在此处找到：</p>
+<p>我们的第二个数据文件名为 ANOVA_data2.csv，可以在<a href="">此处</a>找到：</p>
 <p>这些数据也来自反应时间实验，但设计稍微复杂一些。48 名参与者对一个词的反应频率有所不同。 这个因素是参与者之间的因素(between participants)，我们有四个级别，编码为“very low”、“low”、“high”和“very high”。 我们的 DV 是反应时间，编码为“RT”。 被试编号编码为“Subject”。 我们想知道我们的条件(condition)是否存在差异（如果有，差异在哪里）。</p>
 </div>
 <div id="问题3" class="section level3 unnumbered hasAnchor">
 <h3>问题3<a href="一般线性模型---方差分析第-1-部分.html#问题3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们的第三个数据文件称为 ANOVA_data3.csv，可以在此处找到：</p>
+<p>我们的第三个数据文件称为 ANOVA_data3.csv，可以在<a href="">此处</a>找到：</p>
 <p>这些数据来自 2 x 2 重复测量反应时间实验。 我们感兴趣的是参与者对大图像与小图像、彩色图像与黑白图像的反应速度。 我们预计大彩色图像的响应速度将比小黑白图像的响应速度更快。 我们不确定小彩色图像和大黑白图像。 我们测量了 24 名参与者在这四种情况下对图像的反应时间。 我们想要确定我们的条件是否存在差异（如果有，差异在哪里）。</p>
 </div>
 <div id="问题4" class="section level3 unnumbered hasAnchor">
 <h3>问题4<a href="一般线性模型---方差分析第-1-部分.html#问题4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们的第四个数据文件称为 ANOVA_data4.csv，可以在此处找到：</p>
+<p>我们的第四个数据文件称为 ANOVA_data4.csv，可以在<a href="">此处</a>找到：</p>
 <p>这些数据来自 2 x 2 x 3 混合设计实验，我们测量了人们对简单或困难的数学问题的反应时间，以及他们必须在时间压力或无时间压力下做出反应的时间。 这是我们的前两个因素，并且是重复测量（即，每个人都看到了所有 4 个条件）。 我们的第三个因素是受试者之间的因素，对应于我们的参与者是否属于三组之一。 这些小组是心理学学生、数学学生和艺术学生。 我们想知道参与者在时间压力下和没有时间压力下在数学问题上的表现受到他们属于这三个组中哪一组的影响。 进行适当的方差分析来回答这个问题。 请记住从一些数据可视化开始。</p>
 </div>
 </div>

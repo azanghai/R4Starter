@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Chapter 3 数据整理和总结 | R语言入门" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
   <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="github-repo" content="azanghai/R4Starter" />
 
@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 3 数据整理和总结 | R语言入门" />
   
   <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
-  
+  <meta name="twitter:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
 
 <meta name="author" content="文庭" />
 
@@ -159,7 +159,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">R for Starter</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
@@ -451,15 +451,14 @@ class - “type” of car</p>
 <p>我们可以通过多种方式探索 <code>Tidyverse</code> 加载的数据集<code>mpg</code>。如果我们想查看数据集的前 6 行，我们可以使用该<code>head()</code>函数。</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="数据整理和总结.html#cb4-1" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 11
-##   manufacturer model displ  year   cyl trans    drv     cty   hwy
-##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-## 1 audi         a4      1.8  1999     4 auto(l5) f        18    29
-## 2 audi         a4      1.8  1999     4 manual(… f        21    29
-## 3 audi         a4      2    2008     4 manual(… f        20    31
-## 4 audi         a4      2    2008     4 auto(av) f        21    30
-## 5 audi         a4      2.8  1999     6 auto(l5) f        16    26
-## 6 audi         a4      2.8  1999     6 manual(… f        18    26
-## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class  
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compact
+## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compact
+## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compact
+## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compact
+## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compact
+## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact</code></pre>
 <p>我们看到它是一个<code>tibble</code>或者说一个矩形数据框，由行和列组成。这是每个观察对应一行的格式<code>tidy</code>。我们将在 R 中运行的大多数分析都涉及<code>tidy</code>数据。在 <code>Tidyverse</code> 中，<code>tibble</code>是表示数据的标准方式。您将花费大量时间整理和整理数据以将其转换为这种格式！通过使用您编写的脚本在 R 中执行此操作，您可以使这个关键阶段可重现。您可以在更新的或不同的数据集上再次运行脚本,因此可能会节省您大量时间！</p>
 <p>我们还可以使用 询问有关数据集结构的信息<code>str()</code>。这将告诉我们有关列的信息、每个变量的类型、行数等。</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="数据整理和总结.html#cb6-1" tabindex="-1"></a><span class="fu">str</span>(mpg)</span></code></pre></div>
@@ -524,31 +523,29 @@ class - “type” of car</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="数据整理和总结.html#cb12-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="数据整理和总结.html#cb12-2" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">&quot;honda&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 11
-##   manufacturer model displ  year   cyl trans    drv     cty   hwy
-##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-## 1 honda        civic   1.6  1999     4 manual(… f        28    33
-## 2 honda        civic   1.6  1999     4 auto(l4) f        24    32
-## 3 honda        civic   1.6  1999     4 manual(… f        25    32
-## 4 honda        civic   1.6  1999     4 manual(… f        23    29
-## 5 honda        civic   1.6  1999     4 auto(l4) f        24    32
-## 6 honda        civic   1.8  2008     4 manual(… f        26    34
-## 7 honda        civic   1.8  2008     4 auto(l5) f        25    36
-## 8 honda        civic   1.8  2008     4 auto(l5) f        24    36
-## 9 honda        civic   2    2008     4 manual(… f        21    29
-## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class     
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     
+## 1 honda        civic   1.6  1999     4 manual(m5) f        28    33 r     subcompact
+## 2 honda        civic   1.6  1999     4 auto(l4)   f        24    32 r     subcompact
+## 3 honda        civic   1.6  1999     4 manual(m5) f        25    32 r     subcompact
+## 4 honda        civic   1.6  1999     4 manual(m5) f        23    29 p     subcompact
+## 5 honda        civic   1.6  1999     4 auto(l4)   f        24    32 r     subcompact
+## 6 honda        civic   1.8  2008     4 manual(m5) f        26    34 r     subcompact
+## 7 honda        civic   1.8  2008     4 auto(l5)   f        25    36 r     subcompact
+## 8 honda        civic   1.8  2008     4 auto(l5)   f        24    36 c     subcompact
+## 9 honda        civic   2    2008     4 manual(m6) f        21    29 p     subcompact</code></pre>
 <p>请注意，我们使用的运算符<code>==</code>表示“等于”。这是一个逻辑运算符,其他逻辑运算符包括小于<code>&lt;</code>、大于<code>&gt;</code>、小于等于<code>&lt;=</code>、大于等于<code>&gt;=</code>和不等于<code>!=</code>。</p>
 <p>下面我们过滤制造商为“honda”且制造年份为“1999”的情况。</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="数据整理和总结.html#cb14-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="数据整理和总结.html#cb14-2" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">&quot;honda&quot;</span> <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="st">&quot;1999&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 11
-##   manufacturer model displ  year   cyl trans    drv     cty   hwy
-##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-## 1 honda        civic   1.6  1999     4 manual(… f        28    33
-## 2 honda        civic   1.6  1999     4 auto(l4) f        24    32
-## 3 honda        civic   1.6  1999     4 manual(… f        25    32
-## 4 honda        civic   1.6  1999     4 manual(… f        23    29
-## 5 honda        civic   1.6  1999     4 auto(l4) f        24    32
-## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class     
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     
+## 1 honda        civic   1.6  1999     4 manual(m5) f        28    33 r     subcompact
+## 2 honda        civic   1.6  1999     4 auto(l4)   f        24    32 r     subcompact
+## 3 honda        civic   1.6  1999     4 manual(m5) f        25    32 r     subcompact
+## 4 honda        civic   1.6  1999     4 manual(m5) f        23    29 p     subcompact
+## 5 honda        civic   1.6  1999     4 auto(l4)   f        24    32 r     subcompact</code></pre>
 </div>
 <div id="组合功能" class="section level3 unnumbered hasAnchor">
 <h3>组合功能<a href="数据整理和总结.html#组合功能" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -585,38 +582,36 @@ class - “type” of car</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="数据整理和总结.html#cb20-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="数据整理和总结.html#cb20-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer))</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 11
-##    manufacturer model   displ  year   cyl trans drv     cty   hwy
-##    &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-##  1 Audi         a4        1.8  1999     4 auto… f        18    29
-##  2 Audi         a4        1.8  1999     4 manu… f        21    29
-##  3 Audi         a4        2    2008     4 manu… f        20    31
-##  4 Audi         a4        2    2008     4 auto… f        21    30
-##  5 Audi         a4        2.8  1999     6 auto… f        16    26
-##  6 Audi         a4        2.8  1999     6 manu… f        18    26
-##  7 Audi         a4        3.1  2008     6 auto… f        18    27
-##  8 Audi         a4 qua…   1.8  1999     4 manu… 4        18    26
-##  9 Audi         a4 qua…   1.8  1999     4 auto… 4        16    25
-## 10 Audi         a4 qua…   2    2008     4 manu… 4        20    28
-## # ℹ 224 more rows
-## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+##  1 Audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compact
+##  2 Audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compact
+##  3 Audi         a4           2    2008     4 manual(m6) f        20    31 p     compact
+##  4 Audi         a4           2    2008     4 auto(av)   f        21    30 p     compact
+##  5 Audi         a4           2.8  1999     6 auto(l5)   f        16    26 p     compact
+##  6 Audi         a4           2.8  1999     6 manual(m5) f        18    26 p     compact
+##  7 Audi         a4           3.1  2008     6 auto(av)   f        18    27 p     compact
+##  8 Audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact
+##  9 Audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact
+## 10 Audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compact
+## # ℹ 224 more rows</code></pre>
 <p>列<code>model</code>也是小写的。我们也来让他首字母大写。我们可以使用该<code>mutate()</code>函数同时处理多个列，如下所示：</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="数据整理和总结.html#cb22-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="数据整理和总结.html#cb22-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer), <span class="at">model =</span> <span class="fu">str_to_title</span>(model))</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 11
-##    manufacturer model   displ  year   cyl trans drv     cty   hwy
-##    &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-##  1 Audi         A4        1.8  1999     4 auto… f        18    29
-##  2 Audi         A4        1.8  1999     4 manu… f        21    29
-##  3 Audi         A4        2    2008     4 manu… f        20    31
-##  4 Audi         A4        2    2008     4 auto… f        21    30
-##  5 Audi         A4        2.8  1999     6 auto… f        16    26
-##  6 Audi         A4        2.8  1999     6 manu… f        18    26
-##  7 Audi         A4        3.1  2008     6 auto… f        18    27
-##  8 Audi         A4 Qua…   1.8  1999     4 manu… 4        18    26
-##  9 Audi         A4 Qua…   1.8  1999     4 auto… 4        16    25
-## 10 Audi         A4 Qua…   2    2008     4 manu… 4        20    28
-## # ℹ 224 more rows
-## # ℹ 2 more variables: fl &lt;chr&gt;, class &lt;chr&gt;</code></pre>
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+##  1 Audi         A4           1.8  1999     4 auto(l5)   f        18    29 p     compact
+##  2 Audi         A4           1.8  1999     4 manual(m5) f        21    29 p     compact
+##  3 Audi         A4           2    2008     4 manual(m6) f        20    31 p     compact
+##  4 Audi         A4           2    2008     4 auto(av)   f        21    30 p     compact
+##  5 Audi         A4           2.8  1999     6 auto(l5)   f        16    26 p     compact
+##  6 Audi         A4           2.8  1999     6 manual(m5) f        18    26 p     compact
+##  7 Audi         A4           3.1  2008     6 auto(av)   f        18    27 p     compact
+##  8 Audi         A4 Quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact
+##  9 Audi         A4 Quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact
+## 10 Audi         A4 Quattro   2    2008     4 manual(m6) 4        20    28 p     compact
+## # ℹ 224 more rows</code></pre>
 <p>数据集里有很多列，所以我们只选择manufacturer, model, year, transmission 和 hwy列：</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="数据整理和总结.html#cb24-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
 <span id="cb24-2"><a href="数据整理和总结.html#cb24-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer), <span class="at">model =</span> <span class="fu">str_to_title</span>(model)) <span class="sc">%&gt;%</span></span>
@@ -725,7 +720,7 @@ class - “type” of car</p>
 <p>我们将在 R 中进行的大多数分析都要求数据处于整洁或长格式。在这样的数据集中，一行对应一个观测值。在现实世界中，数据很少处于适合分析的正确格式。在 R 中，<code>pivot_wider()</code> 和 <code>pivot_longer()</code> 函数被设计用来重塑我们的数据文件。首先，让我们加载一个处于宽格式的数据文件（即，每行有多个观测值）。它来自一个我们进行了四种条件（标记为 Condition1、Condition2、Condition3 和 Condition4）的实验。除了有四种条件的每一列之外，我们还有一列对应于参与者 ID。数据集中的每个单元格对应一个反应时间（以毫秒为单位）。</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="数据整理和总结.html#cb35-1" tabindex="-1"></a>my_wide_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/my_wide_data.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 32 Columns: 5
-## ── Column specification ─────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (5): ID, Condition1, Condition2, Condition3, Condition4
 ## 
@@ -1009,21 +1004,19 @@ class - “type” of car</p>
 <span id="cb69-3"><a href="数据整理和总结.html#cb69-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">sd_hwy =</span> <span class="fu">sd</span>(hwy))</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 13
 ## # Groups:   manufacturer [15]
-##    manufacturer model   displ  year   cyl trans drv     cty   hwy
-##    &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
-##  1 audi         a4        1.8  1999     4 auto… f        18    29
-##  2 audi         a4        1.8  1999     4 manu… f        21    29
-##  3 audi         a4        2    2008     4 manu… f        20    31
-##  4 audi         a4        2    2008     4 auto… f        21    30
-##  5 audi         a4        2.8  1999     6 auto… f        16    26
-##  6 audi         a4        2.8  1999     6 manu… f        18    26
-##  7 audi         a4        3.1  2008     6 auto… f        18    27
-##  8 audi         a4 qua…   1.8  1999     4 manu… 4        18    26
-##  9 audi         a4 qua…   1.8  1999     4 auto… 4        16    25
-## 10 audi         a4 qua…   2    2008     4 manu… 4        20    28
-## # ℹ 224 more rows
-## # ℹ 4 more variables: fl &lt;chr&gt;, class &lt;chr&gt;, mean_hwy &lt;dbl&gt;,
-## #   sd_hwy &lt;dbl&gt;</code></pre>
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class   mean_hwy sd_hwy
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+##  1 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compact     26.4   2.18
+##  2 audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compact     26.4   2.18
+##  3 audi         a4           2    2008     4 manual(m6) f        20    31 p     compact     26.4   2.18
+##  4 audi         a4           2    2008     4 auto(av)   f        21    30 p     compact     26.4   2.18
+##  5 audi         a4           2.8  1999     6 auto(l5)   f        16    26 p     compact     26.4   2.18
+##  6 audi         a4           2.8  1999     6 manual(m5) f        18    26 p     compact     26.4   2.18
+##  7 audi         a4           3.1  2008     6 auto(av)   f        18    27 p     compact     26.4   2.18
+##  8 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact     26.4   2.18
+##  9 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact     26.4   2.18
+## 10 audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compact     26.4   2.18
+## # ℹ 224 more rows</code></pre>
 <p>我们在这个页面上有太多的列要显示，所以我们可以通过稍微不同地使用<code>select()</code>函数来删除一些列。通过在<code>select()</code>中的列名前面加上-符号，我们最终删除了它。</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="数据整理和总结.html#cb71-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb71-2"><a href="数据整理和总结.html#cb71-2" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
@@ -1031,20 +1024,19 @@ class - “type” of car</p>
 <span id="cb71-4"><a href="数据整理和总结.html#cb71-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>class, <span class="sc">-</span>trans)</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 11
 ## # Groups:   manufacturer [15]
-##    manufacturer model   displ  year   cyl drv     cty   hwy fl   
-##    &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
-##  1 audi         a4        1.8  1999     4 f        18    29 p    
-##  2 audi         a4        1.8  1999     4 f        21    29 p    
-##  3 audi         a4        2    2008     4 f        20    31 p    
-##  4 audi         a4        2    2008     4 f        21    30 p    
-##  5 audi         a4        2.8  1999     6 f        16    26 p    
-##  6 audi         a4        2.8  1999     6 f        18    26 p    
-##  7 audi         a4        3.1  2008     6 f        18    27 p    
-##  8 audi         a4 qua…   1.8  1999     4 4        18    26 p    
-##  9 audi         a4 qua…   1.8  1999     4 4        16    25 p    
-## 10 audi         a4 qua…   2    2008     4 4        20    28 p    
-## # ℹ 224 more rows
-## # ℹ 2 more variables: mean_hwy &lt;dbl&gt;, sd_hwy &lt;dbl&gt;</code></pre>
+##    manufacturer model      displ  year   cyl drv     cty   hwy fl    mean_hwy sd_hwy
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+##  1 audi         a4           1.8  1999     4 f        18    29 p         26.4   2.18
+##  2 audi         a4           1.8  1999     4 f        21    29 p         26.4   2.18
+##  3 audi         a4           2    2008     4 f        20    31 p         26.4   2.18
+##  4 audi         a4           2    2008     4 f        21    30 p         26.4   2.18
+##  5 audi         a4           2.8  1999     6 f        16    26 p         26.4   2.18
+##  6 audi         a4           2.8  1999     6 f        18    26 p         26.4   2.18
+##  7 audi         a4           3.1  2008     6 f        18    27 p         26.4   2.18
+##  8 audi         a4 quattro   1.8  1999     4 4        18    26 p         26.4   2.18
+##  9 audi         a4 quattro   1.8  1999     4 4        16    25 p         26.4   2.18
+## 10 audi         a4 quattro   2    2008     4 4        20    28 p         26.4   2.18
+## # ℹ 224 more rows</code></pre>
 <p>请注意，这不会永久更改<code>mpg</code>数据集 - 除非我们将此代码的输出映射到新变量，否则不会保存更改。 下面我通过使用赋值运算符<code>&lt;-</code>将其映射到我称为<code>mpg_with_mean</code>新变量来执行此操作。 请注意，我们在最后删除了分组，因为我们不希望分组规则保留在新的数据框中。</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="数据整理和总结.html#cb73-1" tabindex="-1"></a>mpg_with_mean <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb73-2"><a href="数据整理和总结.html#cb73-2" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
@@ -1054,15 +1046,14 @@ class - “type” of car</p>
 <p>然后我们可以使用head()和str()检查这个新变量。</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="数据整理和总结.html#cb74-1" tabindex="-1"></a><span class="fu">head</span>(mpg_with_mean)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 11
-##   manufacturer model displ  year   cyl drv     cty   hwy fl   
-##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
-## 1 audi         a4      1.8  1999     4 f        18    29 p    
-## 2 audi         a4      1.8  1999     4 f        21    29 p    
-## 3 audi         a4      2    2008     4 f        20    31 p    
-## 4 audi         a4      2    2008     4 f        21    30 p    
-## 5 audi         a4      2.8  1999     6 f        16    26 p    
-## 6 audi         a4      2.8  1999     6 f        18    26 p    
-## # ℹ 2 more variables: mean_hwy &lt;dbl&gt;, sd_hyw &lt;dbl&gt;</code></pre>
+##   manufacturer model displ  year   cyl drv     cty   hwy fl    mean_hwy sd_hyw
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+## 1 audi         a4      1.8  1999     4 f        18    29 p         26.4   2.18
+## 2 audi         a4      1.8  1999     4 f        21    29 p         26.4   2.18
+## 3 audi         a4      2    2008     4 f        20    31 p         26.4   2.18
+## 4 audi         a4      2    2008     4 f        21    30 p         26.4   2.18
+## 5 audi         a4      2.8  1999     6 f        16    26 p         26.4   2.18
+## 6 audi         a4      2.8  1999     6 f        18    26 p         26.4   2.18</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="数据整理和总结.html#cb76-1" tabindex="-1"></a><span class="fu">str</span>(mpg_with_mean)</span></code></pre></div>
 <pre><code>## tibble [234 × 11] (S3: tbl_df/tbl/data.frame)
 ##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...

@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Chapter 4 数据可视化 | R语言入门" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
   <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="github-repo" content="azanghai/R4Starter" />
 
@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 4 数据可视化 | R语言入门" />
   
   <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
-  
+  <meta name="twitter:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
 
 <meta name="author" content="文庭" />
 
@@ -159,7 +159,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">R for Starter</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
@@ -567,21 +567,21 @@ div.csl-indent {
 <p>我们看到有 76 列和 10,000 行。 如果我们使用函数<code>head()</code>我们可以看到数据帧的前几行。</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="数据可视化.html#cb97-1" tabindex="-1"></a><span class="fu">head</span>(NHANES)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 76
-##      ID SurveyYr Gender   Age AgeDecade AgeMonths Race1 Race3
-##   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;
-## 1 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt; 
-## 2 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt; 
-## 3 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt; 
-## 4 51625 2009_10  male       4 &quot; 0-9&quot;           49 Other &lt;NA&gt; 
-## 5 51630 2009_10  female    49 &quot; 40-49&quot;        596 White &lt;NA&gt; 
-## 6 51638 2009_10  male       9 &quot; 0-9&quot;          115 White &lt;NA&gt; 
-## # ℹ 68 more variables: Education &lt;fct&gt;, MaritalStatus &lt;fct&gt;,
-## #   HHIncome &lt;fct&gt;, HHIncomeMid &lt;int&gt;, Poverty &lt;dbl&gt;,
-## #   HomeRooms &lt;int&gt;, HomeOwn &lt;fct&gt;, Work &lt;fct&gt;, Weight &lt;dbl&gt;,
-## #   Length &lt;dbl&gt;, HeadCirc &lt;dbl&gt;, Height &lt;dbl&gt;, BMI &lt;dbl&gt;,
-## #   BMICatUnder20yrs &lt;fct&gt;, BMI_WHO &lt;fct&gt;, Pulse &lt;int&gt;,
-## #   BPSysAve &lt;int&gt;, BPDiaAve &lt;int&gt;, BPSys1 &lt;int&gt;, BPDia1 &lt;int&gt;,
-## #   BPSys2 &lt;int&gt;, BPDia2 &lt;int&gt;, BPSys3 &lt;int&gt;, BPDia3 &lt;int&gt;, …</code></pre>
+##      ID SurveyYr Gender   Age AgeDecade AgeMonths Race1 Race3 Education    MaritalStatus HHIncome  HHIncomeMid Poverty HomeRooms HomeOwn
+##   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;        &lt;fct&gt;         &lt;fct&gt;           &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt; &lt;fct&gt;  
+## 1 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt;  High School  Married       25000-34…       30000    1.36         6 Own    
+## 2 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt;  High School  Married       25000-34…       30000    1.36         6 Own    
+## 3 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt;  High School  Married       25000-34…       30000    1.36         6 Own    
+## 4 51625 2009_10  male       4 &quot; 0-9&quot;           49 Other &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;          20000-24…       22500    1.07         9 Own    
+## 5 51630 2009_10  female    49 &quot; 40-49&quot;        596 White &lt;NA&gt;  Some College LivePartner   35000-44…       40000    1.91         5 Rent   
+## 6 51638 2009_10  male       9 &quot; 0-9&quot;          115 White &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;          75000-99…       87500    1.84         6 Rent   
+## # ℹ 61 more variables: Work &lt;fct&gt;, Weight &lt;dbl&gt;, Length &lt;dbl&gt;, HeadCirc &lt;dbl&gt;, Height &lt;dbl&gt;, BMI &lt;dbl&gt;, BMICatUnder20yrs &lt;fct&gt;,
+## #   BMI_WHO &lt;fct&gt;, Pulse &lt;int&gt;, BPSysAve &lt;int&gt;, BPDiaAve &lt;int&gt;, BPSys1 &lt;int&gt;, BPDia1 &lt;int&gt;, BPSys2 &lt;int&gt;, BPDia2 &lt;int&gt;, BPSys3 &lt;int&gt;,
+## #   BPDia3 &lt;int&gt;, Testosterone &lt;dbl&gt;, DirectChol &lt;dbl&gt;, TotChol &lt;dbl&gt;, UrineVol1 &lt;int&gt;, UrineFlow1 &lt;dbl&gt;, UrineVol2 &lt;int&gt;,
+## #   UrineFlow2 &lt;dbl&gt;, Diabetes &lt;fct&gt;, DiabetesAge &lt;int&gt;, HealthGen &lt;fct&gt;, DaysPhysHlthBad &lt;int&gt;, DaysMentHlthBad &lt;int&gt;,
+## #   LittleInterest &lt;fct&gt;, Depressed &lt;fct&gt;, nPregnancies &lt;int&gt;, nBabies &lt;int&gt;, Age1stBaby &lt;int&gt;, SleepHrsNight &lt;int&gt;,
+## #   SleepTrouble &lt;fct&gt;, PhysActive &lt;fct&gt;, PhysActiveDays &lt;int&gt;, TVHrsDay &lt;fct&gt;, CompHrsDay &lt;fct&gt;, TVHrsDayChild &lt;int&gt;,
+## #   CompHrsDayChild &lt;int&gt;, Alcohol12PlusYr &lt;fct&gt;, AlcoholDay &lt;int&gt;, AlcoholYear &lt;int&gt;, SmokeNow &lt;fct&gt;, Smoke100 &lt;fct&gt;, …</code></pre>
 <div id="整理数据" class="section level3 unnumbered hasAnchor">
 <h3>整理数据<a href="数据可视化.html#整理数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>看起来有一些参与者在数据集中出现了多次 - 这可能是由于描述中提到的过采样 - 前几行都是参与者ID 51624的数据。我们可以使用select()函数和n_distinct()函数来告诉我们数据集中唯一ID的数量。</p>

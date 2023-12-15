@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="Chapter 9 一般线性模型 - 方差分析第 2 部分 | R语言入门" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
   <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="github-repo" content="azanghai/R4Starter" />
 
@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 9 一般线性模型 - 方差分析第 2 部分 | R语言入门" />
   
   <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
-  
+  <meta name="twitter:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
 
 <meta name="author" content="文庭" />
 
@@ -159,7 +159,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">R for Starter</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
@@ -492,8 +492,7 @@ div.csl-indent {
 <p>在此基础上，我们可能会得出这样的结论：我们受到条件的影响，并且我们的三组中的每一组都与其他组有显着差异。 但这是对的吗？ 不，因为我们没有考虑协变量。</p>
 <p>我们将构建我们的 ANCOVA 模型，在我们的实验条件操作之前添加我们的协变量。 我们将<code>factorize</code>参数设置为<code>FALSE</code> ，以便将其视为连续预测变量，而不是模型中的实验因子。</p>
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="一般线性模型---方差分析第-2-部分.html#cb242-1" tabindex="-1"></a>model_ancova <span class="ot">&lt;-</span> <span class="fu">aov_4</span>(Ability <span class="sc">~</span> Gaming <span class="sc">+</span> Condition <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Participant), <span class="at">data =</span> my_data, <span class="at">factorize =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## Warning: Numerical variables NOT centered on 0 (i.e., likely
-## bogus results): Gaming</code></pre>
+<pre><code>## Warning: Numerical variables NOT centered on 0 (i.e., likely bogus results): Gaming</code></pre>
 <pre><code>## Contrasts set to contr.sum for the following variables: Condition</code></pre>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="一般线性模型---方差分析第-2-部分.html#cb245-1" tabindex="-1"></a><span class="fu">anova</span>(model_ancova)</span></code></pre></div>
 <pre><code>## Anova Table (Type 3 tests)
@@ -516,14 +515,10 @@ div.csl-indent {
 ## Confidence level used: 0.95 
 ## 
 ## $contrasts
-##  contrast                          estimate    SE df t.ratio
-##  Double Espresso - Single Espresso   -0.552 0.478 41  -1.155
-##  Double Espresso - Water             -1.008 0.761 41  -1.324
-##  Single Espresso - Water             -0.456 0.418 41  -1.092
-##  p.value
-##   0.4863
-##   0.3900
-##   0.5244
+##  contrast                          estimate    SE df t.ratio p.value
+##  Double Espresso - Single Espresso   -0.552 0.478 41  -1.155  0.4863
+##  Double Espresso - Water             -1.008 0.761 41  -1.324  0.3900
+##  Single Espresso - Water             -0.456 0.418 41  -1.092  0.5244
 ## 
 ## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
 </div>
@@ -575,10 +570,8 @@ div.csl-indent {
 ## lm(formula = Ability ~ Condition, data = my_data)
 ## 
 ## Coefficients:
-##              (Intercept)  ConditionDouble Espresso  
-##                    4.817                     4.199  
-## ConditionSingle Espresso  
-##                    1.871</code></pre>
+##              (Intercept)  ConditionDouble Espresso  ConditionSingle Espresso  
+##                    4.817                     4.199                     1.871</code></pre>
 <p>我们可以看到截距对应于我们的水状况的平均值。 为了计算出 Double Espresso 组的平均能力，我们使用 Double Espresso 组的编码 (1, 0) 和我们的方程：</p>
 <p>Ability = Intercept + β1(Double Espresso) + β2(Single Espresso)</p>
 <p>Ability = 4.817 + 4.199(1) + 1.871(0)</p>
@@ -599,10 +592,8 @@ div.csl-indent {
 ## lm(formula = Ability ~ Gaming + Condition, data = my_data)
 ## 
 ## Coefficients:
-##              (Intercept)                    Gaming  
-##                  -3.4498                    0.8538  
-## ConditionDouble Espresso  ConditionSingle Espresso  
-##                  -1.0085                   -0.4563</code></pre>
+##              (Intercept)                    Gaming  ConditionDouble Espresso  ConditionSingle Espresso  
+##                  -3.4498                    0.8538                   -1.0085                   -0.4563</code></pre>
 <p>我们可以通过将值代入方程来计算出参考组（Water）的平均值 - 请注意，游戏（Gaming）不是一个因素，我们需要输入该变量的平均值。</p>
 <p>我们可以通过以下方法来解决。</p>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="一般线性模型---方差分析第-2-部分.html#cb258-1" tabindex="-1"></a><span class="fu">mean</span>(my_data<span class="sc">$</span>Gaming)</span></code></pre></div>
@@ -632,10 +623,8 @@ div.csl-indent {
 ## lm(formula = Ability ~ centred_gaming + Condition, data = my_scaled_data)
 ## 
 ## Coefficients:
-##              (Intercept)            centred_gaming  
-##                   7.3280                    2.3046  
-## ConditionDouble Espresso  ConditionSingle Espresso  
-##                  -1.0085                   -0.4563</code></pre>
+##              (Intercept)            centred_gaming  ConditionDouble Espresso  ConditionSingle Espresso  
+##                   7.3280                    2.3046                   -1.0085                   -0.4563</code></pre>
 <p>我们看到截距现在对应于水组的调整后平均值。 我们可以通过从 7.3280 减去 1.0085 来计算 Double Espresso 组的调整平均值，并且可以通过从 7.3280 减去 0.4563 来计算 Single Espresso 组的调整平均值。 希望您看到协变量的缩放和居中使得解释我们的线性模型的系数变得容易得多。</p>
 </div>
 </div>
