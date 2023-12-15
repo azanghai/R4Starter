@@ -1,4 +1,4 @@
-# 在开始之前 {.unnumbered}
+# 在开始之前
 
 ## 开放研究和可重复性 {.unnumbered}
 

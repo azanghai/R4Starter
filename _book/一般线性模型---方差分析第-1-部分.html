@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 一般线性模型 - 方差分析第 1 部分 | R语言入门</title>
+  <meta name="description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 一般线性模型 - 方差分析第 1 部分 | R语言入门" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="github-repo" content="azanghai/R4Starter" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 一般线性模型 - 方差分析第 1 部分 | R语言入门" />
+  
+  <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  
+
+<meta name="author" content="文庭" />
+
+
+<meta name="date" content="2023-12-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="普通线性模型---回归-第二部分.html"/>
+<link rel="next" href="一般线性模型---方差分析第-2-部分.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习形式"><i class="fa fa-check"></i>学习形式</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>1</b> 在开始之前</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究和可重复性"><i class="fa fa-check"></i>开放研究和可重复性</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究"><i class="fa fa-check"></i>开放研究</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如何进行可重复的研究"><i class="fa fa-check"></i>如何进行可重复的研究</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如果你需要一些指南"><i class="fa fa-check"></i>如果你需要一些指南</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#研究功效experimental-power"><i class="fa fa-check"></i>研究功效（Experimental Power）</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#介绍"><i class="fa fa-check"></i>介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#总结"><i class="fa fa-check"></i>总结</a></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#帮助我们改进本节课程"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>2</b> 开源软件和R语言</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件"><i class="fa fa-check"></i>开源软件</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#概述"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#统计与科学计算"><i class="fa fa-check"></i>统计与科学计算</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始使用-r-和-rstudio-desktop"><i class="fa fa-check"></i>开始使用 R 和 RStudio Desktop</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#为什么是r"><i class="fa fa-check"></i>为什么是R？</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件-1"><i class="fa fa-check"></i>开源软件</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#选择合适的软件做合适的工作"><i class="fa fa-check"></i>选择合适的软件做合适的工作</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源与闭源软件"><i class="fa fa-check"></i>开源与闭源软件</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r-vs.-spss"><i class="fa fa-check"></i>R vs. SPSS</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#关于r的书籍"><i class="fa fa-check"></i>关于R的书籍</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#hadley-wickham"><i class="fa fa-check"></i>Hadley Wickham</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r语言被许多机构广泛使用"><i class="fa fa-check"></i>R语言被许多机构广泛使用</a></li>
+<li class="chapter" data-level="2.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>2.0.1</b> 做好准备！上手编写代码！</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#入门"><i class="fa fa-check"></i>入门</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#好的编码风格"><i class="fa fa-check"></i>好的编码风格</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始你的第一个脚本"><i class="fa fa-check"></i>开始你的第一个脚本</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#帮助我们改进本节课程-1"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>3</b> 数据整理和总结</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据整理"><i class="fa fa-check"></i>数据整理</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-1"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#加载tidyverse"><i class="fa fa-check"></i>加载Tidyverse</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据集mpg"><i class="fa fa-check"></i>数据集mpg</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用head和str"><i class="fa fa-check"></i>使用<code>head()</code>和<code>str()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用select选择列"><i class="fa fa-check"></i>用<code>select()</code>选择列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用filter选择行"><i class="fa fa-check"></i>用<code>filter()</code>选择行</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#组合功能"><i class="fa fa-check"></i>组合功能</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#管道操作符"><i class="fa fa-check"></i>管道操作符<code>%&gt;%</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#整理数据集"><i class="fa fa-check"></i>整理数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#pivot-函数"><i class="fa fa-check"></i>pivot 函数</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#合并两个数据集"><i class="fa fa-check"></i>合并两个数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概括你的数据"><i class="fa fa-check"></i>概括你的数据</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-2"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用-group_by-和-summarise"><i class="fa fa-check"></i>使用 <code>group_by()</code> 和 <code>summarise()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用arrange重新排序输出"><i class="fa fa-check"></i>使用<code>arrange()</code>重新排序输出</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#summarise_at-的变体"><i class="fa fa-check"></i><code>summarise_at()</code> 的变体</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#summarise_if-的变体"><i class="fa fa-check"></i><code>summarise_if()</code> 的变体</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用mutate添加列"><i class="fa fa-check"></i>使用mutate()添加列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业-1"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#帮助我们改进本节课程-2"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#概述-3"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggplot2-的基础知识"><i class="fa fa-check"></i>ggplot2 的基础知识</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#你的第一次可视化"><i class="fa fa-check"></i>你的第一次可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#改善图表"><i class="fa fa-check"></i>改善图表</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#添加摘要统计数据"><i class="fa fa-check"></i>添加摘要统计数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#完成的图表"><i class="fa fa-check"></i>完成的（？）图表</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#使用facet_wrap"><i class="fa fa-check"></i>使用<code>facet_wrap()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#散点图"><i class="fa fa-check"></i>散点图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制直方图"><i class="fa fa-check"></i>绘制直方图</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggridges-包"><i class="fa fa-check"></i><code>ggridges</code> 包</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#nhanes-数据集"><i class="fa fa-check"></i>NHANES 数据集</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#整理数据"><i class="fa fa-check"></i>整理数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制直方图-1"><i class="fa fa-check"></i>绘制直方图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#总结统计数据"><i class="fa fa-check"></i>总结统计数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#geom_violin"><i class="fa fa-check"></i><code>geom_violin()</code></a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制交互效应"><i class="fa fa-check"></i>绘制交互效应</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#使用facet_wrap绘制直方图"><i class="fa fa-check"></i>使用<code>facet_wrap()</code>绘制直方图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#作业-2"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#附加资源"><i class="fa fa-check"></i>附加资源</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#帮助我们改进本节课程-3"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>5</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#概述-4"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#作业-3"><i class="fa fa-check"></i>作业</a></li>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#帮助我们改进本节课程-4"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>6</b> 普通线性模型 - 回归 第一部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#概述-5"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#简单线性回归"><i class="fa fa-check"></i>简单线性回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#我们需要的r包"><i class="fa fa-check"></i>我们需要的R包</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#导入数据"><i class="fa fa-check"></i>导入数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#整理数据-1"><i class="fa fa-check"></i>整理数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#绘制数据"><i class="fa fa-check"></i>绘制数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#皮尔逊相关系数pearsons-r"><i class="fa fa-check"></i>皮尔逊相关系数(Pearson’s r)</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#建模数据"><i class="fa fa-check"></i>建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#检查我们的假设"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#解读我们的模型"><i class="fa fa-check"></i>解读我们的模型</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#作业-4"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#帮助我们改进本节课程-5"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第二部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#概述-6"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#多元回归"><i class="fa fa-check"></i>多元回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#我们需要的包"><i class="fa fa-check"></i>我们需要的包</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#导入数据-1"><i class="fa fa-check"></i>导入数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查可能的关系"><i class="fa fa-check"></i>检查可能的关系</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#对数据建模"><i class="fa fa-check"></i>对数据建模</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-1"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#放弃一个有影响力的案例influential-case"><i class="fa fa-check"></i>放弃一个有影响力的案例(Influential Case)</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#重新建模数据"><i class="fa fa-check"></i>重新建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-2"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#重新建模数据-1"><i class="fa fa-check"></i>重新建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-3"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#总结模型"><i class="fa fa-check"></i>总结模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#逐步回归"><i class="fa fa-check"></i>逐步回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#对数据进行建模"><i class="fa fa-check"></i>对数据进行建模</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-4"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#根据p值输入预测变量"><i class="fa fa-check"></i>根据p值输入预测变量</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#帮助我们改进本节课程-6"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>8</b> 一般线性模型 - 方差分析第 1 部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#概述-7"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#参与者之间的方差分析between-participants-anova"><i class="fa fa-check"></i>参与者之间的方差分析（Between Participants ANOVA）</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#加载我们的包"><i class="fa fa-check"></i>加载我们的包</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#解释模型输出"><i class="fa fa-check"></i>解释模型输出</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#重复测量方差分析"><i class="fa fa-check"></i>重复测量方差分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-1"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据-1"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据-1"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型-1"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#解释模型输出-1"><i class="fa fa-check"></i>解释模型输出</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#多因子方差分析factorial-anova"><i class="fa fa-check"></i>多因子方差分析（factorial ANOVA）</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-2"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据-2"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据-2"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型-2"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#作业-5"><i class="fa fa-check"></i>作业</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题1"><i class="fa fa-check"></i>问题1</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题2"><i class="fa fa-check"></i>问题2</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题3"><i class="fa fa-check"></i>问题3</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题4"><i class="fa fa-check"></i>问题4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#答案"><i class="fa fa-check"></i>答案</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题1-1"><i class="fa fa-check"></i>问题1</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题2-1"><i class="fa fa-check"></i>问题2</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题3-1"><i class="fa fa-check"></i>问题3</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题4-1"><i class="fa fa-check"></i>问题4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#帮助我们改进本节课程-7"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 2 部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#概述-8"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的ancova"><i class="fa fa-check"></i>建立我们的ANCOVA</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#加载我们的包-1"><i class="fa fa-check"></i>加载我们的包</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#读取我们的数据-3"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#总结我们的数据-3"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#可视化我们的数据-3"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的方差分析模型-3"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#ancova-作为回归的特例"><i class="fa fa-check"></i>AN(C)OVA 作为回归的特例</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#可视化我们的数据-4"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#设置我们的对比"><i class="fa fa-check"></i>设置我们的对比</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#方差分析作为线性模型"><i class="fa fa-check"></i>方差分析作为线性模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#ancova-作为线性模型"><i class="fa fa-check"></i>ANCOVA 作为线性模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#以协变量为中心centering-our-covariate"><i class="fa fa-check"></i>以协变量为中心(Centering our Covariate)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#帮助我们改进本节课程-8"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言入门</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="一般线性模型---方差分析第-1-部分" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 一般线性模型 - 方差分析第 1 部分<a href="一般线性模型---方差分析第-1-部分.html#一般线性模型---方差分析第-1-部分" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>在本次研讨会中，我们将在 R 模型构建的背景下探索参与者设计、重复测量设计和因子设计之间的方差分析 (ANOVA)。 您将学习如何使用 <code>{afex}</code> 包构建具有 III 型平方和的模型，以及如何使用<code>{emmeans}</code> 包进行后续测试以探索主效应和相互作用。</p>
+<div id="概述-7" class="section level2 unnumbered hasAnchor">
+<h2>概述<a href="一般线性模型---方差分析第-1-部分.html#概述-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在本次研讨会中，我们将研究如何在 R 中进行方差分析 (ANOVA)。我们将首先探讨为什么我们倾向于使用 ANOVA（而不是多个t检验），然后继续讨论参与者之间的 ANOVA 的一些示例重复测量设计。</p>
+</div>
+<div id="参与者之间的方差分析between-participants-anova" class="section level2 unnumbered hasAnchor">
+<h2>参与者之间的方差分析（Between Participants ANOVA）<a href="一般线性模型---方差分析第-1-部分.html#参与者之间的方差分析between-participants-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在第二个视频中，我将向您展示如何使用<code>{afex}</code>包在 R 中构建参与者之间的方差分析模型。</p>
+<center>
+<iframe src="【在此输入视频地址ANOVAPart1】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+</iframe>
+</center>
+<center>
+<iframe src="【在此输入视频地址ANOVAPart1】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+</iframe>
+</center>
+<p>观看完上面的两个视频后，就轮到您在 R 中为参与者之间的设计构建您的第一个方差分析了。 这是我在上面两个视频的第二个中介绍的相同数据（来自同一研究）。 请按照以下说明构建该模型。</p>
+<div id="加载我们的包" class="section level3 unnumbered hasAnchor">
+<h3>加载我们的包<a href="一般线性模型---方差分析第-1-部分.html#加载我们的包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>首先，我们需要加载我们将使用的三个包 - 它们是<code>{tidyverse}</code> 、 <code>{afex}</code>和<code>{emmeans}</code> 。 <code>{afex}</code>包是我们用于进行多因子方差分析（factorial ANOVA）的包。 我们使用<code>{emmeans}</code>包对我们将要构建的 ANOVA 模型运行后续测试。</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="一般线性模型---方差分析第-1-部分.html#cb175-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb175-2"><a href="一般线性模型---方差分析第-1-部分.html#cb175-2" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
+<span id="cb175-3"><a href="一般线性模型---方差分析第-1-部分.html#cb175-3" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span></code></pre></div>
+</div>
+<div id="读取我们的数据" class="section level3 unnumbered hasAnchor">
+<h3>读取我们的数据<a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们有 45 名参与者参与参与者之间的设计，我们感兴趣的是饮用的饮料对运动任务能力的影响。 我们的实验因素（饮料类型）有 3 个级别。 这些是水与单份浓缩咖啡与双份浓缩咖啡，而能力是我们在连续范围内测量的 DV。 让我们读入我们的数据。数据可以在<a href="插入链接">这里</a>下载</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="一般线性模型---方差分析第-1-部分.html#cb176-1" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/cond.csv&quot;</span>)</span>
+<span id="cb176-2"><a href="一般线性模型---方差分析第-1-部分.html#cb176-2" tabindex="-1"></a><span class="fu">head</span>(my_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   Participant Condition Ability
+##         &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+## 1           1 Water        4.82
+## 2           2 Water        5.41
+## 3           3 Water        5.73
+## 4           4 Water        4.36
+## 5           5 Water        5.47
+## 6           6 Water        5.50</code></pre>
+<p>我们看到我们有三个变量，但是我们的实验变量Condition没有被编码为因子。 让我们解决这个问题…</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="一般线性模型---方差分析第-1-部分.html#cb178-1" tabindex="-1"></a>my_data_tidied <span class="ot">&lt;-</span> my_data <span class="sc">%&gt;%</span></span>
+<span id="cb178-2"><a href="一般线性模型---方差分析第-1-部分.html#cb178-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Condition =</span> <span class="fu">factor</span>(Condition))</span>
+<span id="cb178-3"><a href="一般线性模型---方差分析第-1-部分.html#cb178-3" tabindex="-1"></a><span class="fu">head</span>(my_data_tidied)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   Participant Condition Ability
+##         &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;
+## 1           1 Water        4.82
+## 2           2 Water        5.41
+## 3           3 Water        5.73
+## 4           4 Water        4.36
+## 5           5 Water        5.47
+## 6           6 Water        5.50</code></pre>
+</div>
+<div id="总结我们的数据" class="section level3 unnumbered hasAnchor">
+<h3>总结我们的数据<a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>接下来让我们进行一些汇总统计并构建数据可视化。</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="一般线性模型---方差分析第-1-部分.html#cb180-1" tabindex="-1"></a>my_data_tidied <span class="sc">%&gt;%</span></span>
+<span id="cb180-2"><a href="一般线性模型---方差分析第-1-部分.html#cb180-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb180-3"><a href="一般线性模型---方差分析第-1-部分.html#cb180-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Ability), <span class="at">sd =</span> <span class="fu">sd</span>(Ability))</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 3
+##   Condition        mean    sd
+##   &lt;fct&gt;           &lt;dbl&gt; &lt;dbl&gt;
+## 1 Double Espresso  8.89 0.467
+## 2 Single Espresso  6.99 0.419
+## 3 Water            5.17 0.362</code></pre>
+</div>
+<div id="可视化我们的数据" class="section level3 unnumbered hasAnchor">
+<h3>可视化我们的数据<a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="一般线性模型---方差分析第-1-部分.html#cb182-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb182-2"><a href="一般线性模型---方差分析第-1-部分.html#cb182-2" tabindex="-1"></a>my_data_tidied <span class="sc">%&gt;%</span> </span>
+<span id="cb182-3"><a href="一般线性模型---方差分析第-1-部分.html#cb182-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Condition, <span class="at">y =</span> Ability, <span class="at">colour =</span> Condition)) <span class="sc">+</span></span>
+<span id="cb182-4"><a href="一般线性模型---方差分析第-1-部分.html#cb182-4" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb182-5"><a href="一般线性模型---方差分析第-1-部分.html#cb182-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb182-6"><a href="一般线性模型---方差分析第-1-部分.html#cb182-6" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb182-7"><a href="一般线性模型---方差分析第-1-部分.html#cb182-7" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb182-8"><a href="一般线性模型---方差分析第-1-部分.html#cb182-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb182-9"><a href="一般线性模型---方差分析第-1-部分.html#cb182-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) </span></code></pre></div>
+<pre><code>## Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use
+## &quot;none&quot; instead as of ggplot2 3.3.4.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this
+## warning was generated.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
+<p>我们构建了一个可视化，其中使用<code>geom_jitter()</code>函数绘制了原始数据点，并使用<code>geom_violin()</code>函数绘制了每个条件的分布形状。 我们还使用<code>stat_summary()</code>函数以平均值和平均值附近的置信区间的形式添加了一些汇总数据。</p>
+</div>
+<div id="建立我们的方差分析模型" class="section level3 unnumbered hasAnchor">
+<h3>建立我们的方差分析模型<a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>现在让我们使用<code>{afex}</code>包中的<code>aov_4()</code>函数构建模型。 <code>aov_4()</code>中方差分析模型的语法为： <code>aov_4(DV ~ IV + (1 | Participant), data = my_data_tidied)</code>。 <code>~</code>符号表示由<code>(1 | Participant)</code>项预测，对应于我们的随机效应 - 我们显然无法测试世界上的所有参与者，因此仅从该群体中随机抽取样本。 最后，我们需要通过在模型的<code>data = my_data_tidied</code>位中明确说明我们正在使用的数据集。 我们将把<code>aov()</code>函数的输出映射到我称之为<code>model</code>变量上。 这意味着方差分析结果将存储在该变量中，并允许我们稍后访问它们。</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="一般线性模型---方差分析第-1-部分.html#cb184-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">aov_4</span>(Ability <span class="sc">~</span> Condition <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Participant), <span class="at">data =</span> my_data_tidied)</span></code></pre></div>
+<pre><code>## Contrasts set to contr.sum for the following variables: Condition</code></pre>
+<p>为了获得方差分析的输出，我们可以将<code>summary()</code>函数与我们新创建的model结合使用。</p>
+</div>
+<div id="解释模型输出" class="section level3 unnumbered hasAnchor">
+<h3>解释模型输出<a href="一般线性模型---方差分析第-1-部分.html#解释模型输出" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="一般线性模型---方差分析第-1-部分.html#cb186-1" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
+<pre><code>## Anova Table (Type 3 tests)
+## 
+## Response: Ability
+##           num Df den Df     MSE      F     ges    Pr(&gt;F)    
+## Condition      2     42 0.17484 297.05 0.93397 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>效应大小 (ges) 是广义 eta 平方，对于具有多个因子的设计，它可以作为一个有用的指标，表明每个因子（加上因子之间的任何相互作用）可以解释因变量的方差有多少。</p>
+<p>因此，我们的模型存在影响 - F 值相当大， p值相当小），但我们尚不知道是什么导致了差异。 我们需要使用<code>emmeans()</code>函数进行一些成对比较，以告诉我们哪些平均值与其他平均值不同。</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="一般线性模型---方差分析第-1-部分.html#cb188-1" tabindex="-1"></a><span class="fu">emmeans</span>(model, pairwise <span class="sc">~</span> Condition)</span></code></pre></div>
+<pre><code>## $emmeans
+##  Condition       emmean    SE df lower.CL upper.CL
+##  Double Espresso   8.89 0.108 42     8.67     9.10
+##  Single Espresso   6.99 0.108 42     6.77     7.20
+##  Water             5.17 0.108 42     4.95     5.38
+## 
+## Confidence level used: 0.95 
+## 
+## $contrasts
+##  contrast                          estimate    SE df t.ratio
+##  Double Espresso - Single Espresso     1.90 0.153 42  12.453
+##  Double Espresso - Water               3.72 0.153 42  24.372
+##  Single Espresso - Water               1.82 0.153 42  11.920
+##  p.value
+##   &lt;.0001
+##   &lt;.0001
+##   &lt;.0001
+## 
+## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
+<p>请注意，多重比较的默认调整是 Tukey 的调整。 我们可以通过向模型添加额外参数来改变这一点，例如adjust = “bonferonni”) 。 在这种情况下，它对我们的比较没有任何影响。</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="一般线性模型---方差分析第-1-部分.html#cb190-1" tabindex="-1"></a><span class="fu">emmeans</span>(model, pairwise <span class="sc">~</span> Condition, <span class="at">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<pre><code>## $emmeans
+##  Condition       emmean    SE df lower.CL upper.CL
+##  Double Espresso   8.89 0.108 42     8.67     9.10
+##  Single Espresso   6.99 0.108 42     6.77     7.20
+##  Water             5.17 0.108 42     4.95     5.38
+## 
+## Confidence level used: 0.95 
+## 
+## $contrasts
+##  contrast                          estimate    SE df t.ratio
+##  Double Espresso - Single Espresso     1.90 0.153 42  12.453
+##  Double Espresso - Water               3.72 0.153 42  24.372
+##  Single Espresso - Water               1.82 0.153 42  11.920
+##  p.value
+##   &lt;.0001
+##   &lt;.0001
+##   &lt;.0001
+## 
+## P value adjustment: bonferroni method for 3 tests</code></pre>
+<p>我们发现饮料类型有显着影响（F (2,42) = 297.05， p &lt; .001，广义 η2 = .93）。 Tukey 比较显示，水组的表现显着差于单份浓缩咖啡组 ( p &lt; .001)，水组的表现显着差于双份浓缩咖啡组 ( p &lt; .001)，单份浓缩咖啡组的表现显着较差高于 Double Espresso 组 ( p &lt; .001)。</p>
+<p>换句话说，相对于喝水，喝一些咖啡可以提高运动表现，而喝大量咖啡可以更好地提高运动表现。<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+</div>
+</div>
+<div id="重复测量方差分析" class="section level2 unnumbered hasAnchor">
+<h2>重复测量方差分析<a href="一般线性模型---方差分析第-1-部分.html#重复测量方差分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<center>
+<iframe src="【在此输入视频地址ANOVAPart1Repeated Measures ANOVA】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+</iframe>
+</center>
+<p>现在您有机会使用我在上面视频中检查的数据。 假设我们有一个实验，要求 32 名参与者学习如何发音不同复杂程度的单词 - Very Easy、Easy、Hard 和 Very Hard。 他们在最初接触阶段就看到了这些词。 休息 30 分钟后，我们对参与者进行了测试，要求他们在计算机屏幕上出现单词时大声说出这些单词。 我们以秒为单位记录了他们的时间。 我们想知道他们对于每个单词复杂程度的响应时间是否存在差异。</p>
+<div id="读取我们的数据-1" class="section level3 unnumbered hasAnchor">
+<h3>读取我们的数据<a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>首先我们读入数据。数据可以在<a href="">这里</a>下载</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="一般线性模型---方差分析第-1-部分.html#cb192-1" tabindex="-1"></a>rm_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/rm_data.csv&quot;</span>)</span>
+<span id="cb192-2"><a href="一般线性模型---方差分析第-1-部分.html#cb192-2" tabindex="-1"></a><span class="fu">head</span>(rm_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   Participant Condition    RT
+##         &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1           1 Very Easy  1.25
+## 2           2 Very Easy  1.16
+## 3           3 Very Easy  1.12
+## 4           4 Very Easy  1.33
+## 5           5 Very Easy  1.16
+## 6           6 Very Easy  1.15</code></pre>
+<p>我们可以从<code>head()</code>函数中看到 <code>Condition</code> 尚未被编码为因子。 让我们解决这个问题。</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="一般线性模型---方差分析第-1-部分.html#cb194-1" tabindex="-1"></a>rm_data_tidied <span class="ot">&lt;-</span> rm_data <span class="sc">%&gt;%</span></span>
+<span id="cb194-2"><a href="一般线性模型---方差分析第-1-部分.html#cb194-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Condition =</span> <span class="fu">factor</span>(Condition))</span>
+<span id="cb194-3"><a href="一般线性模型---方差分析第-1-部分.html#cb194-3" tabindex="-1"></a><span class="fu">head</span>(rm_data_tidied)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   Participant Condition    RT
+##         &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt;
+## 1           1 Very Easy  1.25
+## 2           2 Very Easy  1.16
+## 3           3 Very Easy  1.12
+## 4           4 Very Easy  1.33
+## 5           5 Very Easy  1.16
+## 6           6 Very Easy  1.15</code></pre>
+</div>
+<div id="总结我们的数据-1" class="section level3 unnumbered hasAnchor">
+<h3>总结我们的数据<a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>让我们为四个条件中的每一个生成平均值和标准差。</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="一般线性模型---方差分析第-1-部分.html#cb196-1" tabindex="-1"></a>rm_data_tidied <span class="sc">%&gt;%</span></span>
+<span id="cb196-2"><a href="一般线性模型---方差分析第-1-部分.html#cb196-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb196-3"><a href="一般线性模型---方差分析第-1-部分.html#cb196-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(RT), <span class="at">sd =</span> <span class="fu">sd</span> (RT))</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 3
+##   Condition  mean     sd
+##   &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Easy       1.23 0.0610
+## 2 Hard       1.39 0.118 
+## 3 Very Easy  1.20 0.0511
+## 4 Very Hard  1.87 0.187</code></pre>
+</div>
+<div id="可视化我们的数据-1" class="section level3 unnumbered hasAnchor">
+<h3>可视化我们的数据<a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>并可视化数据 - 请注意，这里我使用<code>fct_reorder()</code>函数根据 RT 重新排序因子的级别。 这对于使我们的可视化更容易解释很有用。</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="一般线性模型---方差分析第-1-部分.html#cb198-1" tabindex="-1"></a>rm_data_tidied <span class="sc">%&gt;%</span></span>
+<span id="cb198-2"><a href="一般线性模型---方差分析第-1-部分.html#cb198-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Condition, RT), <span class="at">y =</span> RT, <span class="at">colour =</span> Condition)) <span class="sc">+</span></span>
+<span id="cb198-3"><a href="一般线性模型---方差分析第-1-部分.html#cb198-3" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb198-4"><a href="一般线性模型---方差分析第-1-部分.html#cb198-4" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb198-5"><a href="一般线性模型---方差分析第-1-部分.html#cb198-5" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb198-6"><a href="一般线性模型---方差分析第-1-部分.html#cb198-6" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb198-7"><a href="一般线性模型---方差分析第-1-部分.html#cb198-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb198-8"><a href="一般线性模型---方差分析第-1-部分.html#cb198-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb198-9"><a href="一般线性模型---方差分析第-1-部分.html#cb198-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Condition&quot;</span>, <span class="at">y =</span> <span class="st">&quot;RT (s)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
+</div>
+<div id="建立我们的方差分析模型-1" class="section level3 unnumbered hasAnchor">
+<h3>建立我们的方差分析模型<a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们以与之前类似的方式构建方差分析模型。 除了在这种情况下，我们的随机效应定义为<code>(1 + Condition | Participant)</code>。 我为了捕捉我们的<code>Condition</code>是重复测量因素这一事实，我们将其添加到随机效应项中，如下所示。</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="一般线性模型---方差分析第-1-部分.html#cb199-1" tabindex="-1"></a>rm_model <span class="ot">&lt;-</span> <span class="fu">aov_4</span>(RT <span class="sc">~</span> Condition <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Condition <span class="sc">|</span> Participant), <span class="at">data =</span> rm_data_tidied)</span></code></pre></div>
+</div>
+<div id="解释模型输出-1" class="section level3 unnumbered hasAnchor">
+<h3>解释模型输出<a href="一般线性模型---方差分析第-1-部分.html#解释模型输出-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们以与参与者之间方差分析相同的方式提取模型的摘要。</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="一般线性模型---方差分析第-1-部分.html#cb200-1" tabindex="-1"></a><span class="fu">summary</span>(rm_model)</span></code></pre></div>
+<pre><code>## 
+## Univariate Type III Repeated-Measures ANOVA Assuming Sphericity
+## 
+##             Sum Sq num Df Error SS den Df  F value    Pr(&gt;F)    
+## (Intercept) 259.07      1  0.50313     31 15962.33 &lt; 2.2e-16 ***
+## Condition     9.27      3  1.20624     93   238.23 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## 
+## Mauchly Tests for Sphericity
+## 
+##           Test statistic    p-value
+## Condition        0.38404 3.0211e-05
+## 
+## 
+## Greenhouse-Geisser and Huynh-Feldt Corrections
+##  for Departure from Sphericity
+## 
+##            GG eps Pr(&gt;F[GG])    
+## Condition 0.65596  &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+##              HF eps   Pr(&gt;F[HF])
+## Condition 0.7000534 3.359493e-31</code></pre>
+<p>使用此方式，我们没有在我们的测量中获得效应大小测量值。 不过，我们可以通过使用anova()函数要求我们的模型以 anova 格式呈现来生成它。</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="一般线性模型---方差分析第-1-部分.html#cb202-1" tabindex="-1"></a><span class="fu">anova</span>(rm_model)</span></code></pre></div>
+<pre><code>## Anova Table (Type 3 tests)
+## 
+## Response: RT
+##           num Df den Df      MSE      F     ges    Pr(&gt;F)    
+## Condition 1.9679 61.004 0.019773 238.23 0.84431 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>效应大小通过 ges 来测量，是重复测量设计的推荐效应大小测量（Bakeman，2005）。 请注意，此输出中的 dfs 始终会被纠正，就好像违反了球形度（当所有可能的受试者内条件对（即自变量的水平）之间的差异的方差不相等时，就会违反球形度） - 为保守的（为了避免 I 类错误）我们最好总是选择这些修正后的 dfs。</p>
+<p>从这里我们可以看出我们有Condition的效果。 但我们不知道我们的因素的不同水平之间的差异在哪里。 所以我们使用<code>emmeans()</code>函数来找出答案。 在这里，我们将使用 Bonferroni 校正进行多重比较。</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="一般线性模型---方差分析第-1-部分.html#cb204-1" tabindex="-1"></a><span class="fu">emmeans</span>(rm_model, pairwise <span class="sc">~</span> Condition, <span class="at">adjust =</span> <span class="st">&quot;Bonferroni&quot;</span>)</span></code></pre></div>
+<pre><code>## $emmeans
+##  Condition emmean      SE df lower.CL upper.CL
+##  Easy        1.23 0.01079 31     1.21     1.25
+##  Hard        1.39 0.02085 31     1.35     1.43
+##  Very.Easy   1.20 0.00904 31     1.18     1.22
+##  Very.Hard   1.87 0.03302 31     1.80     1.94
+## 
+## Confidence level used: 0.95 
+## 
+## $contrasts
+##  contrast              estimate     SE df t.ratio p.value
+##  Easy - Hard            -0.1633 0.0226 31  -7.225  &lt;.0001
+##  Easy - Very.Easy        0.0285 0.0143 31   1.986  0.3353
+##  Easy - Very.Hard       -0.6430 0.0338 31 -19.014  &lt;.0001
+##  Hard - Very.Easy        0.1917 0.0230 31   8.354  &lt;.0001
+##  Hard - Very.Hard       -0.4797 0.0363 31 -13.220  &lt;.0001
+##  Very.Easy - Very.Hard  -0.6715 0.0341 31 -19.710  &lt;.0001
+## 
+## P value adjustment: bonferroni method for 6 tests</code></pre>
+<p>从上面我们可以看到，除了“Easy ”与“ Very Easy”的比较不重要之外，所有条件都不同于所有其他条件。</p>
+</div>
+</div>
+<div id="多因子方差分析factorial-anova" class="section level2 unnumbered hasAnchor">
+<h2>多因子方差分析（factorial ANOVA）<a href="一般线性模型---方差分析第-1-部分.html#多因子方差分析factorial-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<center>
+<iframe src="【在此输入视频地址ANOVAPart1Factorial ANOVA】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+</iframe>
+</center>
+<div id="读取我们的数据-2" class="section level3 unnumbered hasAnchor">
+<h3>读取我们的数据<a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>数据可以在<a href="插入链接">这里</a>下载</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="一般线性模型---方差分析第-1-部分.html#cb206-1" tabindex="-1"></a>factorial_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/factorial_data.csv&quot;</span>)</span>
+<span id="cb206-2"><a href="一般线性模型---方差分析第-1-部分.html#cb206-2" tabindex="-1"></a><span class="fu">head</span>(factorial_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   Subject  Item    RT Sentence Context 
+##     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   
+## 1       1     3  1270 Positive Negative
+## 2       1     7   739 Positive Negative
+## 3       1    11   982 Positive Negative
+## 4       1    15  1291 Positive Negative
+## 5       1    19  1734 Positive Negative
+## 6       1    23  1757 Positive Negative</code></pre>
+<p>我们再次看到我们的两个实验因素没有被编码为因素，所以让我们解决这个问题。</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="一般线性模型---方差分析第-1-部分.html#cb208-1" tabindex="-1"></a>factorial_data_tidied <span class="ot">&lt;-</span> factorial_data <span class="sc">%&gt;%</span></span>
+<span id="cb208-2"><a href="一般线性模型---方差分析第-1-部分.html#cb208-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Sentence =</span> <span class="fu">factor</span>(Sentence), <span class="at">Context =</span> <span class="fu">factor</span>(Context))</span>
+<span id="cb208-3"><a href="一般线性模型---方差分析第-1-部分.html#cb208-3" tabindex="-1"></a><span class="fu">head</span>(factorial_data_tidied)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   Subject  Item    RT Sentence Context 
+##     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;   
+## 1       1     3  1270 Positive Negative
+## 2       1     7   739 Positive Negative
+## 3       1    11   982 Positive Negative
+## 4       1    15  1291 Positive Negative
+## 5       1    19  1734 Positive Negative
+## 6       1    23  1757 Positive Negative</code></pre>
+</div>
+<div id="总结我们的数据-2" class="section level3 unnumbered hasAnchor">
+<h3>总结我们的数据<a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>让我们生成一些汇总统计数据 - 请注意，我们在<code>group_by()</code>函数调用中指定了两个分组变量。</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="一般线性模型---方差分析第-1-部分.html#cb210-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
+<span id="cb210-2"><a href="一般线性模型---方差分析第-1-部分.html#cb210-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Context, Sentence) <span class="sc">%&gt;%</span></span>
+<span id="cb210-3"><a href="一般线性模型---方差分析第-1-部分.html#cb210-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(RT), <span class="at">sd_rt =</span> <span class="fu">sd</span>(RT))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override
+## using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 4 × 4
+## # Groups:   Context [2]
+##   Context  Sentence mean_rt sd_rt
+##   &lt;fct&gt;    &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1 Negative Negative   1474.  729.
+## 2 Negative Positive     NA    NA 
+## 3 Positive Negative     NA    NA 
+## 4 Positive Positive   1579.  841.</code></pre>
+<p>我们有两个数据为<code>NA</code> ，表明我们的数据集中某处缺少数据。 我们现在将使用一个名为<code>{visdat}</code>的新包。 它允许我们使用<code>vis_dat()</code>函数可视化我们的数据集，并使用<code>vis_miss()</code>函数可视化丢失的数据。</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="一般线性模型---方差分析第-1-部分.html#cb213-1" tabindex="-1"></a><span class="fu">library</span>(visdat)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="一般线性模型---方差分析第-1-部分.html#cb214-1" tabindex="-1"></a><span class="fu">vis_miss</span>(factorial_data_tidied)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<p>我们可以在上面的可视化中看到我们确实有一些丢失的数据。 我们需要告诉 R 我们希望它做什么。 我们可以使用<code>na.rm = TRUE</code>参数告诉它我们希望忽略丢失的数据。</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="一般线性模型---方差分析第-1-部分.html#cb215-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
+<span id="cb215-2"><a href="一般线性模型---方差分析第-1-部分.html#cb215-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Context, Sentence) <span class="sc">%&gt;%</span></span>
+<span id="cb215-3"><a href="一般线性模型---方差分析第-1-部分.html#cb215-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(RT, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">sd_rt =</span> <span class="fu">sd</span>(RT, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override
+## using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 4 × 4
+## # Groups:   Context [2]
+##   Context  Sentence mean_rt sd_rt
+##   &lt;fct&gt;    &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1 Negative Negative   1474.  729.
+## 2 Negative Positive   1595.  887.
+## 3 Positive Negative   1633.  877.
+## 4 Positive Positive   1579.  841.</code></pre>
+<p>现在我们有了我们期望的汇总统计数据。</p>
+</div>
+<div id="可视化我们的数据-2" class="section level3 unnumbered hasAnchor">
+<h3>可视化我们的数据<a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们可以使用上面使用的ggplot()代码的修改来生成可视化。 请注意，在开始绘图之前，我正在使用filter()函数过滤丢失的数据。 我还指定我们希望使用Context:Sentence在aes()定义中绘制两个因素的组合。 我们还可以修改更多内容来改善该图的外观。 您能找出使这两个因素的标签更清晰的方法吗？</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="一般线性模型---方差分析第-1-部分.html#cb218-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
+<span id="cb218-2"><a href="一般线性模型---方差分析第-1-部分.html#cb218-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(RT)) <span class="sc">%&gt;%</span></span>
+<span id="cb218-3"><a href="一般线性模型---方差分析第-1-部分.html#cb218-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Context<span class="sc">:</span>Sentence, <span class="at">y =</span> RT, <span class="at">colour =</span> Context<span class="sc">:</span>Sentence)) <span class="sc">+</span></span>
+<span id="cb218-4"><a href="一般线性模型---方差分析第-1-部分.html#cb218-4" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb218-5"><a href="一般线性模型---方差分析第-1-部分.html#cb218-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb218-6"><a href="一般线性模型---方差分析第-1-部分.html#cb218-6" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb218-7"><a href="一般线性模型---方差分析第-1-部分.html#cb218-7" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb218-8"><a href="一般线性模型---方差分析第-1-部分.html#cb218-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb218-9"><a href="一般线性模型---方差分析第-1-部分.html#cb218-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb218-10"><a href="一般线性模型---方差分析第-1-部分.html#cb218-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Context X Sentence&quot;</span>, <span class="at">y =</span> <span class="st">&quot;RT (ms)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+</div>
+<div id="建立我们的方差分析模型-2" class="section level3 unnumbered hasAnchor">
+<h3>建立我们的方差分析模型<a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们的数据采用长格式，其中每一行都是一个观察结果。 我们还没有进行任何数据聚合。 <code>aov_4()</code>函数将为我们执行此操作，因为方差分析模型需要基于均值（而不是原始数据）构建。 由于数据尚未聚合，我们实际上可以使用当前格式的数据构建两个方差分析模型。 我们可以构建一个方差分析，将受试者视为随机效应（也称为 F1 方差分析），并构建另一个方差分析，将项目视为随机因素（也称为 F2 方差分析）。 在语言研究中，进行这两种类型的分析是很常见的。 逐项目 (F2) 分析使我们能够确保我们可能发现的任何影响不仅限于实验项目的子集。</p>
+<p>首先，我们将了解如何使用<code>aov_4()</code>为我们的因子设计运行按主题方差分析。 语法与我们之前运行的非常相似，尽管这次您会看到我们有一个新术语<code>Context * Sentence</code> 。 该术语对应于两个主要效应，以及它们之间的相互作用。 它是<code>Context + Sentence + Context:Sentence</code>的简写。 我们还在随机效应中指定了这一点通过将<code>na.rm</code>设置为 <code>TRUE</code>，我们告诉分析忽略可能丢失数据的个别试验 - 这有效地计算了存在数据的条件均值（并忽略了其中的试验）它丢失了）。</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="一般线性模型---方差分析第-1-部分.html#cb219-1" tabindex="-1"></a>model_subjects <span class="ot">&lt;-</span> <span class="fu">aov_4</span>(RT <span class="sc">~</span> Context <span class="sc">*</span> Sentence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Context <span class="sc">*</span> Sentence <span class="sc">|</span> Subject), <span class="at">data =</span> factorial_data_tidied, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning: More than one observation per design cell, aggregating data using `fun_aggregate = mean`.
+## To turn off this warning, pass `fun_aggregate = mean` explicitly.</code></pre>
+<p>我们可以像之前一样使用<code>anova()</code>函数生成输出。</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="一般线性模型---方差分析第-1-部分.html#cb221-1" tabindex="-1"></a><span class="fu">anova</span>(model_subjects)</span></code></pre></div>
+<pre><code>## Anova Table (Type 3 tests)
+## 
+## Response: RT
+##                  num Df den Df    MSE      F       ges  Pr(&gt;F)  
+## Context               1     59  90195 3.1767 0.0060231 0.07984 .
+## Sentence              1     59 124547 0.6283 0.0016524 0.43114  
+## Context:Sentence      1     59  93889 4.5967 0.0090449 0.03616 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>如果我们想生成 F2 方差分析（按项目），我们只需更改随机效应，使其按项目而不是按受试者计算。</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="一般线性模型---方差分析第-1-部分.html#cb223-1" tabindex="-1"></a>model_items <span class="ot">&lt;-</span> <span class="fu">aov_4</span>(RT <span class="sc">~</span> Context <span class="sc">*</span> Sentence <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> Context <span class="sc">*</span> Sentence <span class="sc">|</span> Item), <span class="at">data =</span> factorial_data_tidied, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning: More than one observation per design cell, aggregating data using `fun_aggregate = mean`.
+## To turn off this warning, pass `fun_aggregate = mean` explicitly.</code></pre>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="一般线性模型---方差分析第-1-部分.html#cb225-1" tabindex="-1"></a><span class="fu">anova</span>(model_items)</span></code></pre></div>
+<pre><code>## Anova Table (Type 3 tests)
+## 
+## Response: RT
+##                  num Df den Df    MSE      F       ges  Pr(&gt;F)  
+## Context               1     27  39844 4.0013 0.0080150 0.05561 .
+## Sentence              1     27 203164 0.1221 0.0012553 0.72951  
+## Context:Sentence      1     27  40168 5.7687 0.0116070 0.02346 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>您可以看到 F1 和 F2 分析都产生相似的结果。</p>
+<p>现在让我们将我们的方差分析解释为我们的随机效应。 我们将误差修正调整为none ，因为只有一些比较实际上具有理论上的意义 - 这些是我们进行同类比较的地方 - 相同类型的句子（正面或负面）前面有一个版本的上下文因素与其他因素的比较。</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="一般线性模型---方差分析第-1-部分.html#cb227-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_subjects, pairwise <span class="sc">~</span> Context <span class="sc">*</span> Sentence, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<pre><code>## $emmeans
+##  Context  Sentence emmean   SE df lower.CL upper.CL
+##  Negative Negative   1474 51.1 59     1372     1576
+##  Positive Negative   1628 58.9 59     1510     1746
+##  Negative Positive   1595 56.5 59     1482     1708
+##  Positive Positive   1579 63.9 59     1451     1707
+## 
+## Confidence level used: 0.95 
+## 
+## $contrasts
+##  contrast                              estimate   SE df t.ratio
+##  Negative Negative - Positive Negative   -153.9 50.0 59  -3.075
+##  Negative Negative - Negative Positive   -120.9 63.4 59  -1.908
+##  Negative Negative - Positive Positive   -105.2 53.5 59  -1.966
+##  Positive Negative - Negative Positive     33.0 65.5 59   0.503
+##  Positive Negative - Positive Positive     48.7 57.1 59   0.852
+##  Negative Positive - Positive Positive     15.7 60.3 59   0.261
+##  p.value
+##   0.0032
+##   0.0612
+##   0.0540
+##   0.6165
+##   0.3976
+##   0.7953</code></pre>
+<p>关键的比较是<code>Negative Negative - Positive Negative</code>和<code>Negative Positive - Positive Positive</code>比较。 在第一种情况下，我们将反应时间与前面有消极与积极语境的消极句子进行比较，而在第二种情况下，我们将反应时间与前面有消极与积极语境的积极句子进行比较。 我们可以通过将相应的p值乘以 2（并对可能的最大p值限制为 1）来手动纠正多重比较（在本例中为 2）。 在这种情况下，第一个关键比较很重要 ( p = .0064)，而第二个则不重要。 我们可能会写出这样的结果：</p>
+<p>我们进行了 2（上下文：正与负）x 2（句子：正与负）重复测量方差分析，以研究上下文效价对正价或负价句子的反应时间的影响。 方差分析显示句子没有影响 (F &lt; 1)，上下文没有影响 (F(1, 59) = 3.18, p = .080, ηG2 = .006)，但句子和上下文之间存在交互作用 (F(1, 59) = 4.60， p = .036，ηG2 = .009)。</p>
+<p>通过进行 Bonferroni 校正的成对同伴来解释相互作用。 这些比较表明，交互是由否定句子在否定上下文中处理速度更快（1,474 毫秒 vs. 1,628 毫秒，t(118) = 3.08， p = .0064）驱动的，而正面句子的阅读速度相似在消极与积极情境中（1,595 毫秒与 1,579 毫秒，t(118) = .261， p = 1）。</p>
+</div>
+</div>
+<div id="作业-5" class="section level2 unnumbered hasAnchor">
+<h2>作业<a href="一般线性模型---方差分析第-1-部分.html#作业-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>现在希望你自己解决以下问题。</p>
+<div id="问题1" class="section level3 unnumbered hasAnchor">
+<h3>问题1<a href="一般线性模型---方差分析第-1-部分.html#问题1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们的第一个数据文件名为 ANOVA_data1.csv，可以在<a href="">此处</a>找到：</p>
+<p>24 名参与者对常见（即高词汇频率，high lexical frequency）或罕见（即低词汇频率，low lexical frequency）的单词进行了回答。 这是我们的 IV，编码为“high”与“ low”。 我们的 DV 是反应时间（reaction time），编码为“RT”。 被试编号（Subject number）编码为“Subject”。 我们想知道条件之间是否存在差异（如果有，差异在哪里）。 可视化数据、生成描述性并运行适当的方差分析以确定我们的自变量（Condition）是否对因变量 (RT) 有影响。</p>
+</div>
+<div id="问题2" class="section level3 unnumbered hasAnchor">
+<h3>问题2<a href="一般线性模型---方差分析第-1-部分.html#问题2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们的第二个数据文件名为 ANOVA_data2.csv，可以在此处找到：</p>
+<p>这些数据也来自反应时间实验，但设计稍微复杂一些。48 名参与者对一个词的反应频率有所不同。 这个因素是参与者之间的因素(between participants)，我们有四个级别，编码为“very low”、“low”、“high”和“very high”。 我们的 DV 是反应时间，编码为“RT”。 被试编号编码为“Subject”。 我们想知道我们的条件(condition)是否存在差异（如果有，差异在哪里）。</p>
+</div>
+<div id="问题3" class="section level3 unnumbered hasAnchor">
+<h3>问题3<a href="一般线性模型---方差分析第-1-部分.html#问题3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们的第三个数据文件称为 ANOVA_data3.csv，可以在此处找到：</p>
+<p>这些数据来自 2 x 2 重复测量反应时间实验。 我们感兴趣的是参与者对大图像与小图像、彩色图像与黑白图像的反应速度。 我们预计大彩色图像的响应速度将比小黑白图像的响应速度更快。 我们不确定小彩色图像和大黑白图像。 我们测量了 24 名参与者在这四种情况下对图像的反应时间。 我们想要确定我们的条件是否存在差异（如果有，差异在哪里）。</p>
+</div>
+<div id="问题4" class="section level3 unnumbered hasAnchor">
+<h3>问题4<a href="一般线性模型---方差分析第-1-部分.html#问题4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们的第四个数据文件称为 ANOVA_data4.csv，可以在此处找到：</p>
+<p>这些数据来自 2 x 2 x 3 混合设计实验，我们测量了人们对简单或困难的数学问题的反应时间，以及他们必须在时间压力或无时间压力下做出反应的时间。 这是我们的前两个因素，并且是重复测量（即，每个人都看到了所有 4 个条件）。 我们的第三个因素是受试者之间的因素，对应于我们的参与者是否属于三组之一。 这些小组是心理学学生、数学学生和艺术学生。 我们想知道参与者在时间压力下和没有时间压力下在数学问题上的表现受到他们属于这三个组中哪一组的影响。 进行适当的方差分析来回答这个问题。 请记住从一些数据可视化开始。</p>
+</div>
+</div>
+<div id="答案" class="section level2 unnumbered hasAnchor">
+<h2>答案<a href="一般线性模型---方差分析第-1-部分.html#答案" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="问题1-1" class="section level3 unnumbered hasAnchor">
+<h3>问题1<a href="一般线性模型---方差分析第-1-部分.html#问题1-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>方差分析应揭示为 F(1, 22) = 91.217 。 由于我们的因素只有两个水平，因此我们不需要运行任何后续测试来了解是什么推动了这种效果。 通过查看描述性统计数据，我们发现high条件下的 RT 为 865， low条件下的 RT 为 1178。</p>
+</div>
+<div id="问题2-1" class="section level3 unnumbered hasAnchor">
+<h3>问题2<a href="一般线性模型---方差分析第-1-部分.html#问题2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>方差分析应揭示条件的影响 F(3, 44) = 203.21 。 为了进一步解释这一点，我们需要进行后续比较。 使用 Bonferroni 校正，这些应该表明每个条件级别都不同于其他级别。</p>
+</div>
+<div id="问题3-1" class="section level3 unnumbered hasAnchor">
+<h3>问题3<a href="一般线性模型---方差分析第-1-部分.html#问题3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>方差分析应揭示Size的主效应 (F(1, 23) = 198.97)、Colour的主效应 (F(1, 23) = 524.27) 以及这两个因素之间的交互作用 (F(1, 23) = 11.08）。 为了进一步解释这种相互作用，我们需要进行后续比较。 使用 Bonferroni 校正，这些应该表明每个条件级别都不同于其他级别。</p>
+</div>
+<div id="问题4-1" class="section level3 unnumbered hasAnchor">
+<h3>问题4<a href="一般线性模型---方差分析第-1-部分.html#问题4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>这个问题比我们迄今为止看到的问题稍微棘手一些。 构建方差分析后（请记住仅将重复测量因子添加到随机效应项中），您将发现显着的三向交互作用 (F(2, 69) = 4.63）。 您需要进一步细分 - 一种可能的方法是针对组间因素的每个级别分别查看难度和时间压力之间的相互作用。 换句话说，您将为每个学生组构建一个 2 x 2 方差分析模型。 如果这样做，您会发现 2 x 2 交互对于艺术组和数学组都不显着，但对于心理学组显着 (F(1, 23) = 11.08)） - 如下所示难度和时间压力也是两个主要影响。 但当这两个因素相互作用时，我们数据中的含义在于相互作用项（而不仅仅是这两个主效应）。</p>
+<p>因此，三向交互告诉我们，至少有一个组的双向交互是不同的（相对于其他组）。 我们需要通过进行成对比较来为我们的心理学小组进一步检查这种双向互动，正如您在上面所做的那样。 这将揭示，对于我们的心理学小组来说，每种情况都与其他情况显着不同。 这意味着对于心理学学生来说，困难问题在时间压力下比在无时间压力下需要更长的时间，而简单问题在时间压力下比在无时间压力下需要更长的时间（但这些都没有困难问题那么长） 。</p>
+</div>
+</div>
+<div id="帮助我们改进本节课程-7" class="section level2 unnumbered hasAnchor">
+<h2>帮助我们改进本节课程<a href="一般线性模型---方差分析第-1-部分.html#帮助我们改进本节课程-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>此处应插入文本和反馈二维码或问卷链接</em></p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>编者注：不构成医学建议<a href="一般线性模型---方差分析第-1-部分.html#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="普通线性模型---回归-第二部分.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="一般线性模型---方差分析第-2-部分.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-ANOVAPart1.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+# 普通线性模型 - 回归 第一部分
+
+在本次研讨会中，我们将在一般线性模型 (GLM) 的背景下探索简单回归。 您还将有机会构建一些回归模型，在其中根据一个预测变量预测结果变量。 您还将学习如何运行模型诊断，以确保您不会违反回归的任何关键假设。
+
+## 概述 {-}
+
+首先，我想让您观看以下视频，这些视频从复习相关性的基础知识开始，然后再介绍我们如何构建回归模型。
+
+<center>
+<iframe src="【在此输入视频地址RegressionPart1】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+</center>
+
+## 简单线性回归 {-}
+
+在观看了上面的视频之后，我希望你能够通过下面的一个简单线性回归的例子在R中进行实践。记得创建一个新的`.Rproj`文件来保持事物的有序。
+
+<center>
+<iframe src="【在此输入视频地址线性回归第二部分】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+</center>
+
+### 我们需要的R包 {-}
+
+首先，我们需要安装所需的软件包。我们将安装`tidyverse`软件包以及其他几个软件包。软件包`Hmisc`允许我们使用`rcorr()`函数来计算Pearson's r，而`performance`软件包则允许我们测试我们的模型假设。请记住，如果您之前没有在笔记本电脑上安装这些软件包，您首先需要在控制台中输入`install.packages("packagename")`才能调用该软件包的`library()`函数。您可能还需要安装`see`软件包才能使`performance`软件包正常工作。如果需要，请在控制台中输入`install.packages("see")`进行安装。
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(Hmisc)
+library(performance)
+```
+
+### 导入数据 {-}
+
+导入名为crime_dataset.csv的数据集 - 这个数据集包含美国城市的人口数据、房价指数数据和犯罪数据。数据包可以点击[这里]()下载
+
+我们可以使用函数`head()`来显示我们名为“crime”的数据集的前几行。
+
+```{r message=FALSE, warning=FALSE}
+crime <- read_csv("Dataset/crime_dataset.csv")
+head(crime)
+```
+
+### 整理数据 {-}
+
+首先让我们进行一些整理。有一列将城市和州的信息合并在一起。让我们使用函数`separate()`将该信息分离成两个新列，分别称为“City”和“State”。我们还将重命名列，将“index_nsa”列的名称更改为“House_price”，并去掉“Violent Crimes”标题中的空格。
+
+```{r message=FALSE, warning=FALSE}
+crime_tidied <- crime %>%
+  separate(col = "City, State", into = c("City", "State")) %>%
+  rename(House_price = index_nsa) %>%
+  rename(Violent_Crimes = "Violent Crimes")
+head(crime_tidied)
+```
+
+### 绘制数据 {-}
+
+我们可能首先认为随着人口规模的增加，犯罪率也会增加。让我们先建立一个散点图。
+
+```{r message=FALSE, warning=FALSE}
+crime_tidied %>%
+  ggplot(aes(x = Population, y = Violent_Crimes)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  theme(text = element_text(size = 13)) +
+  labs(x = "Population", 
+       y = "Violent Crimes")
+```
+
+### 皮尔逊相关系数(Pearson’s r)  {-}
+
+这个图看起来相当有趣。怎么样计算皮尔逊相关系数？
+
+```{r message=FALSE, warning=FALSE}
+rcorr(crime_tidied$Population, crime_tidied$Violent_Crimes)
+```
+
+看看r值和p值 - r = .81，p < .001。因此，我们的暴力犯罪变量中约64%的变异（ variance）可以通过我们的人口大小变量来解释。很明显，人口规模和暴力犯罪率之间存在正相关关系。从图中可以看出，我们可能会得出结论，这种关系受到一小部分非常大城市犯罪的过度影响（图上方的右上角）。让我们排除人口超过2,000,000的城市。
+
+```{r message=FALSE, warning=FALSE}
+crime_filtered <- filter(crime_tidied, Population < 2000000)
+```
+
+现在让我们重新绘制图表。由于可能仍然有很多点（因此会出现很多点大致出现在同一位置），我们可以在代码的`geom_point()`行中将alpha参数设置为<1。该参数对应每个点的透明度。将其更改为其他值以查看发生了什么。
+
+```{r message=FALSE, warning=FALSE}
+crime_filtered %>%
+  ggplot(aes(x = Population, y = Violent_Crimes)) + 
+  geom_point(alpha = .25) + 
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  theme(text = element_text(size = 13)) +
+  labs(x = "Population", 
+       y = "Violent Crimes")
+```
+
+并计算皮尔逊相关系数。
+
+```{r message=FALSE, warning=FALSE}
+rcorr(crime_filtered$Population, crime_filtered$Violent_Crimes)
+```
+
+仍然存在明显的正相关关系（r = 0.69）。让我们建立一个线性模型。数据集包含大量数据，每个城市每年都会出现多次。对于我们的线性模型，我们的观察结果需要相互独立，所以让我们只关注2015年。这样每个城市只会出现一次。
+
+首先我们应用我们的过滤器。
+
+```{r message=FALSE, warning=FALSE}
+crime_filtered <- filter(crime_filtered, Year == 2015)
+```
+
+然后我们构建一个图。我使用`geom_text()`图层来绘制城市名称，并将check_overlap参数设置为`TRUE`以确保标签不重叠。
+
+```{r message=FALSE, warning=FALSE}
+crime_filtered %>%
+  ggplot(aes(x = Population, y = Violent_Crimes, label = City)) + 
+  geom_point() + 
+  geom_text(nudge_y = 500, check_overlap = TRUE) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  xlim(0, 1800000) +
+  theme_minimal() +
+  theme(text = element_text(size = 13)) +
+  labs(x = "Population", 
+       y = "Violent Crimes")
+```
+
+这显示了一个明显的正线性关系，所以让我们计算一下皮尔逊相关系数。
+
+```{r}
+rcorr(crime_filtered$Population, crime_filtered$Violent_Crimes)
+```
+
+### 建模数据 {-}
+
+想象我们是城市规划师，我们想知道暴力犯罪可能随人口规模增加而增加的程度。换句话说，我们想弄清楚暴力犯罪率是如何由人口规模预测出来的。
+
+我们将构建两个线性模型 - 第一个`model1` ，我们使用结果变量的平均值作为预测变量，第二个`model2` ，我们使用人口规模来预测暴力犯罪结果。
+
+```{r}
+model1 <- lm(Violent_Crimes ~ 1, data = crime_filtered)
+model2 <- lm(Violent_Crimes ~ Population, data = crime_filtered)
+```
+
+### 检查我们的假设 {-}
+
+让我们使用performance包中的`check_model()`函数来检查我们模型的假设。
+
+```{r message=FALSE, warning=FALSE}
+check_model(model2)
+```
+
+我们的数据集很小，所以我们的一些诊断图看起来不太好。稍后我们会回到有影响力的异常值（第29个案例），但现在让我们使用`anova()`函数来查看以人口作为预测变量的模型是否比仅使用均值的模型更好。
+
+```{r}
+anova(model1, model2)
+```
+
+这是 - 模型不同，你会看到残差平方和（或误差）在第二个模型中较小（该模型以人口为预测变量）。这意味着我们观测数据与回归线模型`model2`之间的偏差明显小于我们观测数据与平均值作为我们数据模型`model1`之间的偏差。所以让我们得到`model2`的参数估计。
+
+### 解读我们的模型 {-}
+
+```{r}
+summary(model2)
+```
+
+截距对应于我们的回归线与y轴相交的地方，人口参数对应于我们线的斜率。我们可以看到，每增加1个人口，暴力犯罪率就会额外增加0.006963。
+
+对于一个人口约一百万的城市，将会有大约7907起暴力犯罪。我们通过将我们的预测值（0.006963）乘以1,000,000，然后加上截距（944.3）来计算得出这个结果。这给我们7907.3起犯罪案件 - 这与我们在上面的回归线上看到的情况相符。我们可能有一些异常值 - 你如何找出这些异常值？尝试排除你发现的任何异常值并重新构建你的模型。
+
+### 作业 {-}
+
+您现在有三个任务：
+1. 检查2015年人口规模和抢劫案件之间是否存在相同的关系。
+2. 2015年暴力犯罪数量是否预测了房价？
+3. 2015年人口规模是否预测了房价？
+
+## 帮助我们改进本节课程 {.unnumbered}
+
+*此处应插入文本和反馈二维码或问卷链接*
+

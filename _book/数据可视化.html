@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 数据可视化 | R语言入门</title>
+  <meta name="description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 数据可视化 | R语言入门" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="github-repo" content="azanghai/R4Starter" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 数据可视化 | R语言入门" />
+  
+  <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  
+
+<meta name="author" content="文庭" />
+
+
+<meta name="date" content="2023-12-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="数据整理和总结.html"/>
+<link rel="next" href="r-markdown.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习形式"><i class="fa fa-check"></i>学习形式</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>1</b> 在开始之前</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究和可重复性"><i class="fa fa-check"></i>开放研究和可重复性</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究"><i class="fa fa-check"></i>开放研究</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如何进行可重复的研究"><i class="fa fa-check"></i>如何进行可重复的研究</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如果你需要一些指南"><i class="fa fa-check"></i>如果你需要一些指南</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#研究功效experimental-power"><i class="fa fa-check"></i>研究功效（Experimental Power）</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#介绍"><i class="fa fa-check"></i>介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#总结"><i class="fa fa-check"></i>总结</a></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#帮助我们改进本节课程"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>2</b> 开源软件和R语言</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件"><i class="fa fa-check"></i>开源软件</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#概述"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#统计与科学计算"><i class="fa fa-check"></i>统计与科学计算</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始使用-r-和-rstudio-desktop"><i class="fa fa-check"></i>开始使用 R 和 RStudio Desktop</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#为什么是r"><i class="fa fa-check"></i>为什么是R？</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件-1"><i class="fa fa-check"></i>开源软件</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#选择合适的软件做合适的工作"><i class="fa fa-check"></i>选择合适的软件做合适的工作</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源与闭源软件"><i class="fa fa-check"></i>开源与闭源软件</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r-vs.-spss"><i class="fa fa-check"></i>R vs. SPSS</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#关于r的书籍"><i class="fa fa-check"></i>关于R的书籍</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#hadley-wickham"><i class="fa fa-check"></i>Hadley Wickham</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r语言被许多机构广泛使用"><i class="fa fa-check"></i>R语言被许多机构广泛使用</a></li>
+<li class="chapter" data-level="2.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>2.0.1</b> 做好准备！上手编写代码！</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#入门"><i class="fa fa-check"></i>入门</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#好的编码风格"><i class="fa fa-check"></i>好的编码风格</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始你的第一个脚本"><i class="fa fa-check"></i>开始你的第一个脚本</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#帮助我们改进本节课程-1"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>3</b> 数据整理和总结</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据整理"><i class="fa fa-check"></i>数据整理</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-1"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#加载tidyverse"><i class="fa fa-check"></i>加载Tidyverse</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据集mpg"><i class="fa fa-check"></i>数据集mpg</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用head和str"><i class="fa fa-check"></i>使用<code>head()</code>和<code>str()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用select选择列"><i class="fa fa-check"></i>用<code>select()</code>选择列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用filter选择行"><i class="fa fa-check"></i>用<code>filter()</code>选择行</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#组合功能"><i class="fa fa-check"></i>组合功能</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#管道操作符"><i class="fa fa-check"></i>管道操作符<code>%&gt;%</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#整理数据集"><i class="fa fa-check"></i>整理数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#pivot-函数"><i class="fa fa-check"></i>pivot 函数</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#合并两个数据集"><i class="fa fa-check"></i>合并两个数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概括你的数据"><i class="fa fa-check"></i>概括你的数据</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-2"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用-group_by-和-summarise"><i class="fa fa-check"></i>使用 <code>group_by()</code> 和 <code>summarise()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用arrange重新排序输出"><i class="fa fa-check"></i>使用<code>arrange()</code>重新排序输出</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#summarise_at-的变体"><i class="fa fa-check"></i><code>summarise_at()</code> 的变体</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#summarise_if-的变体"><i class="fa fa-check"></i><code>summarise_if()</code> 的变体</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用mutate添加列"><i class="fa fa-check"></i>使用mutate()添加列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业-1"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#帮助我们改进本节课程-2"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#概述-3"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggplot2-的基础知识"><i class="fa fa-check"></i>ggplot2 的基础知识</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#你的第一次可视化"><i class="fa fa-check"></i>你的第一次可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#改善图表"><i class="fa fa-check"></i>改善图表</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#添加摘要统计数据"><i class="fa fa-check"></i>添加摘要统计数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#完成的图表"><i class="fa fa-check"></i>完成的（？）图表</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#使用facet_wrap"><i class="fa fa-check"></i>使用<code>facet_wrap()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#散点图"><i class="fa fa-check"></i>散点图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制直方图"><i class="fa fa-check"></i>绘制直方图</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggridges-包"><i class="fa fa-check"></i><code>ggridges</code> 包</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#nhanes-数据集"><i class="fa fa-check"></i>NHANES 数据集</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#整理数据"><i class="fa fa-check"></i>整理数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制直方图-1"><i class="fa fa-check"></i>绘制直方图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#总结统计数据"><i class="fa fa-check"></i>总结统计数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#geom_violin"><i class="fa fa-check"></i><code>geom_violin()</code></a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制交互效应"><i class="fa fa-check"></i>绘制交互效应</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#使用facet_wrap绘制直方图"><i class="fa fa-check"></i>使用<code>facet_wrap()</code>绘制直方图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#作业-2"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#附加资源"><i class="fa fa-check"></i>附加资源</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#帮助我们改进本节课程-3"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>5</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#概述-4"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#作业-3"><i class="fa fa-check"></i>作业</a></li>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#帮助我们改进本节课程-4"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>6</b> 普通线性模型 - 回归 第一部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#概述-5"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#简单线性回归"><i class="fa fa-check"></i>简单线性回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#我们需要的r包"><i class="fa fa-check"></i>我们需要的R包</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#导入数据"><i class="fa fa-check"></i>导入数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#整理数据-1"><i class="fa fa-check"></i>整理数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#绘制数据"><i class="fa fa-check"></i>绘制数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#皮尔逊相关系数pearsons-r"><i class="fa fa-check"></i>皮尔逊相关系数(Pearson’s r)</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#建模数据"><i class="fa fa-check"></i>建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#检查我们的假设"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#解读我们的模型"><i class="fa fa-check"></i>解读我们的模型</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#作业-4"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#帮助我们改进本节课程-5"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第二部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#概述-6"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#多元回归"><i class="fa fa-check"></i>多元回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#我们需要的包"><i class="fa fa-check"></i>我们需要的包</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#导入数据-1"><i class="fa fa-check"></i>导入数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查可能的关系"><i class="fa fa-check"></i>检查可能的关系</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#对数据建模"><i class="fa fa-check"></i>对数据建模</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-1"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#放弃一个有影响力的案例influential-case"><i class="fa fa-check"></i>放弃一个有影响力的案例(Influential Case)</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#重新建模数据"><i class="fa fa-check"></i>重新建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-2"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#重新建模数据-1"><i class="fa fa-check"></i>重新建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-3"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#总结模型"><i class="fa fa-check"></i>总结模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#逐步回归"><i class="fa fa-check"></i>逐步回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#对数据进行建模"><i class="fa fa-check"></i>对数据进行建模</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-4"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#根据p值输入预测变量"><i class="fa fa-check"></i>根据p值输入预测变量</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#帮助我们改进本节课程-6"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>8</b> 一般线性模型 - 方差分析第 1 部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#概述-7"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#参与者之间的方差分析between-participants-anova"><i class="fa fa-check"></i>参与者之间的方差分析（Between Participants ANOVA）</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#加载我们的包"><i class="fa fa-check"></i>加载我们的包</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#解释模型输出"><i class="fa fa-check"></i>解释模型输出</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#重复测量方差分析"><i class="fa fa-check"></i>重复测量方差分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-1"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据-1"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据-1"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型-1"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#解释模型输出-1"><i class="fa fa-check"></i>解释模型输出</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#多因子方差分析factorial-anova"><i class="fa fa-check"></i>多因子方差分析（factorial ANOVA）</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-2"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据-2"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据-2"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型-2"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#作业-5"><i class="fa fa-check"></i>作业</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题1"><i class="fa fa-check"></i>问题1</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题2"><i class="fa fa-check"></i>问题2</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题3"><i class="fa fa-check"></i>问题3</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题4"><i class="fa fa-check"></i>问题4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#答案"><i class="fa fa-check"></i>答案</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题1-1"><i class="fa fa-check"></i>问题1</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题2-1"><i class="fa fa-check"></i>问题2</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题3-1"><i class="fa fa-check"></i>问题3</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题4-1"><i class="fa fa-check"></i>问题4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#帮助我们改进本节课程-7"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 2 部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#概述-8"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的ancova"><i class="fa fa-check"></i>建立我们的ANCOVA</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#加载我们的包-1"><i class="fa fa-check"></i>加载我们的包</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#读取我们的数据-3"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#总结我们的数据-3"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#可视化我们的数据-3"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的方差分析模型-3"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#ancova-作为回归的特例"><i class="fa fa-check"></i>AN(C)OVA 作为回归的特例</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#可视化我们的数据-4"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#设置我们的对比"><i class="fa fa-check"></i>设置我们的对比</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#方差分析作为线性模型"><i class="fa fa-check"></i>方差分析作为线性模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#ancova-作为线性模型"><i class="fa fa-check"></i>ANCOVA 作为线性模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#以协变量为中心centering-our-covariate"><i class="fa fa-check"></i>以协变量为中心(Centering our Covariate)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#帮助我们改进本节课程-8"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言入门</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="数据可视化" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> 数据可视化<a href="数据可视化.html#数据可视化" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="概述-3" class="section level2 unnumbered hasAnchor">
+<h2>概述<a href="数据可视化.html#概述-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>能够构建清晰的可视化是将数据成功传达给目标受众的关键。</p>
+<p>最近有几本专注于数据可视化的优秀书籍，我建议您看一下。 它们都提供了关于数据可视化的精彩视角，并且充满了不同类型的数据可视化的精彩示例，您将在本次研讨会中学习如何构建其中一些示例。</p>
+<p>如果您单击 Claus Wilke 书的图像，您将看到该书的在线版本（显然是用 R 编写的！）</p>
+<center>
+<a href="https://socviz.co"><img src="Pictures/healey.jpg" style="width:30.0%" alt="Link to Healey book" /></a> <a href="https://serialmentor.com/dataviz/"><img src="Pictures/wilke.png" style="width:30.0%" alt="Link to Healey book" /></a>
+</center>
+<p>首先，我希望您观看这个简短的视频，其中我给出了一些可以在 R 中构建的数据可视化类型的示例，以及为什么您可能希望避免构建条形图。</p>
+<center>
+<iframe src="【在此输入视频地址Data Visualisation】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+</iframe>
+</center>
+</div>
+<div id="ggplot2-的基础知识" class="section level2 unnumbered hasAnchor">
+<h2>ggplot2 的基础知识<a href="数据可视化.html#ggplot2-的基础知识" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>首先我们需要加载 <code>ggplot2</code> 包。 由于它是 <code>Tidyverse</code> 的一部分（并且我们可能会与 <code>ggplot2</code> 一起使用其他 <code>Tidyverse</code> 包），因此我们使用<code>library(tidyverse)</code>代码行将其加载到我们的库中。</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="数据可视化.html#cb80-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>在视频中，我提到使用 <code>ggplot2</code> 需要我们指定一些核心信息才能构建可视化。 其中包括要绘制的原始数据、表示数据的几何形状的几何图形（或几何图形）以及几何图形和对象的美观性，例如颜色、大小、形状和位置。</p>
+</div>
+<div id="你的第一次可视化" class="section level2 unnumbered hasAnchor">
+<h2>你的第一次可视化<a href="数据可视化.html#你的第一次可视化" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>下面是一个示例，我们使用<code>mpg</code>数据集（这是一个包含汽车信息的数据集）来构建可视化，在 y 轴上绘制与城市燃油经济性 ( <code>cty</code> ) 相对应的点，在 x 轴上绘制与<code>manufacturer</code>相对应的点轴。</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="数据可视化.html#cb81-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb81-2"><a href="数据可视化.html#cb81-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> manufacturer, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb81-3"><a href="数据可视化.html#cb81-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>所以，这不太好。 x 轴标签很难阅读，而且各个点看起来也不那么令人愉悦。 我们可以使用<code>str_to_title()</code>函数将制造商标签更改为标题大小写，并使用<code>theme()</code>函数轻松调整轴标签。 请注意， <code>ggplot()</code>代码行之间的<code>+</code>符号相当于<code>%&gt;%</code>运算符。 由于历史原因（基本上，因为<code>ggplot()</code>出现在 <code>Tidyverse</code> 中的其他包之前），在向<code>ggplot()</code>可视化添加图层时需要使用<code>+</code> 。</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="数据可视化.html#cb82-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb82-2"><a href="数据可视化.html#cb82-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer)) <span class="sc">%&gt;%</span></span>
+<span id="cb82-3"><a href="数据可视化.html#cb82-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> manufacturer, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb82-4"><a href="数据可视化.html#cb82-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb82-5"><a href="数据可视化.html#cb82-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> .<span class="dv">5</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div id="改善图表" class="section level3 unnumbered hasAnchor">
+<h3>改善图表<a href="数据可视化.html#改善图表" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>因此，让我们做一些更多的整理工作 - 我们将使用<code>geom_jitter()</code>函数稍微抖动点（这样它们就不会垂直堆叠），并使用<code>labs()</code>函数整理轴标题以显式添加轴标签（而不仅仅是使用我们数据集中的标签）。 我们还添加了一些其他调整 - 你能发现它们吗？</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="数据可视化.html#cb83-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb83-2"><a href="数据可视化.html#cb83-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer)) <span class="sc">%&gt;%</span></span>
+<span id="cb83-3"><a href="数据可视化.html#cb83-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> manufacturer, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb83-4"><a href="数据可视化.html#cb83-4" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">75</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb83-5"><a href="数据可视化.html#cb83-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb83-6"><a href="数据可视化.html#cb83-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> .<span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb83-7"><a href="数据可视化.html#cb83-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb83-8"><a href="数据可视化.html#cb83-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;City Fuel Economy by Car Manufacturer&quot;</span>,</span>
+<span id="cb83-9"><a href="数据可视化.html#cb83-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Manufacturer&quot;</span>, </span>
+<span id="cb83-10"><a href="数据可视化.html#cb83-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;City Fuel Economy (mpg)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p>添加汇总统计信息可能会对我们有所帮助，例如每个汽车制造商的平均燃油经济性和平均值的置信区间。</p>
+</div>
+<div id="添加摘要统计数据" class="section level3 unnumbered hasAnchor">
+<h3>添加摘要统计数据<a href="数据可视化.html#添加摘要统计数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们需要添加<code>Hmisc</code>包以允许我们使用<code>stat_summary()</code>函数。</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="数据可视化.html#cb84-1" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="数据可视化.html#cb85-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb85-2"><a href="数据可视化.html#cb85-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-3"><a href="数据可视化.html#cb85-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> manufacturer, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb85-4"><a href="数据可视化.html#cb85-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_boot, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb85-5"><a href="数据可视化.html#cb85-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb85-6"><a href="数据可视化.html#cb85-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> .<span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb85-7"><a href="数据可视化.html#cb85-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb85-8"><a href="数据可视化.html#cb85-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;City Fuel Economy by Car Manufacturer&quot;</span>,</span>
+<span id="cb85-9"><a href="数据可视化.html#cb85-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Manufacturer&quot;</span>, </span>
+<span id="cb85-10"><a href="数据可视化.html#cb85-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;City Fuel Economy (mpg)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+</div>
+<div id="完成的图表" class="section level3 unnumbered hasAnchor">
+<h3>完成的（？）图表<a href="数据可视化.html#完成的图表" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>目前，x 轴按字母顺序排序。 我们重新排序它怎么样，以便它从平均燃油经济性最高的制造商到最低的制造商。 另外，我们翻转可视化以便交换轴并添加一些其他调整怎么样？</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="数据可视化.html#cb86-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb86-2"><a href="数据可视化.html#cb86-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">str_to_title</span>(manufacturer)) <span class="sc">%&gt;%</span></span>
+<span id="cb86-3"><a href="数据可视化.html#cb86-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(manufacturer, <span class="at">.fun =</span> mean, cty), <span class="at">y =</span> cty, <span class="at">colour =</span> manufacturer)) <span class="sc">+</span></span>
+<span id="cb86-4"><a href="数据可视化.html#cb86-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_boot, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb86-5"><a href="数据可视化.html#cb86-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb86-6"><a href="数据可视化.html#cb86-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb86-7"><a href="数据可视化.html#cb86-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb86-8"><a href="数据可视化.html#cb86-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Manufacturer by City Fuel Economy&quot;</span>,</span>
+<span id="cb86-9"><a href="数据可视化.html#cb86-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Manufacturer&quot;</span>, </span>
+<span id="cb86-10"><a href="数据可视化.html#cb86-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;City Fuel Economy (mpg)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb86-11"><a href="数据可视化.html#cb86-11" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="st">&#39;none&#39;</span>) <span class="sc">+</span></span>
+<span id="cb86-12"><a href="数据可视化.html#cb86-12" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>这看起来很不错。 你能说出我添加的其他代码的作用吗？ 尝试更改一些数字，看看会发生什么。 您可以通过在某行代码前面添加#来阻止该行代码运行。 因此，如果您需要暂时不运行某行，只需添加<code>#</code>而不是删除该行。</p>
+<p>作图很少会完全“完成”，因为您经常会想到可能会做出一些改进的细微美学调整。</p>
+</div>
+<div id="使用facet_wrap" class="section level3 unnumbered hasAnchor">
+<h3>使用<code>facet_wrap()</code><a href="数据可视化.html#使用facet_wrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们可能认为燃油经济性随着车辆类型（例如，跑车可能比中型汽车更耗油）和发动机数量大小（例如，具有更大发动机的汽车可能更耗油）而变化。 在下面的可视化中，我们将使用<code>facet_wrap()</code>函数为我们要分面的因素的每个级别构建单独的可视化（忽略 SUV）。</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="数据可视化.html#cb87-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb87-2"><a href="数据可视化.html#cb87-2" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">!=</span> <span class="st">&quot;suv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb87-3"><a href="数据可视化.html#cb87-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">str_to_title</span>(class)) <span class="sc">%&gt;%</span></span>
+<span id="cb87-4"><a href="数据可视化.html#cb87-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty, <span class="at">colour =</span> class)) <span class="sc">+</span> </span>
+<span id="cb87-5"><a href="数据可视化.html#cb87-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb87-6"><a href="数据可视化.html#cb87-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb87-7"><a href="数据可视化.html#cb87-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb87-8"><a href="数据可视化.html#cb87-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;City Fuel Economy by Engine Displacement&quot;</span>,</span>
+<span id="cb87-9"><a href="数据可视化.html#cb87-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Engine Displacement (litres)&quot;</span>, </span>
+<span id="cb87-10"><a href="数据可视化.html#cb87-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;City Fuel Economy (mpg)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb87-11"><a href="数据可视化.html#cb87-11" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="st">&#39;none&#39;</span>) <span class="sc">+</span></span>
+<span id="cb87-12"><a href="数据可视化.html#cb87-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> class)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p>你能说出每段代码在做什么吗？ 再次编辑数字并在要暂时忽略的行前添加# ，看看会发生什么。</p>
+</div>
+</div>
+<div id="散点图" class="section level2 unnumbered hasAnchor">
+<h2>散点图<a href="数据可视化.html#散点图" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>上面我们重点在一个轴上绘制数值变量，在另一轴上绘制分类变量。 在某些情况下，我们想要创建散点图，使我们能够绘制两个数值变量的相互关系 - 可能是为了确定两者之间是否存在关系。 下面我们在 y 轴上绘制发动机排量，在 x 轴上绘制城市燃油经济性。</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="数据可视化.html#cb88-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb88-2"><a href="数据可视化.html#cb88-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">str_to_upper</span>(class)) <span class="sc">%&gt;%</span></span>
+<span id="cb88-3"><a href="数据可视化.html#cb88-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> displ)) <span class="sc">+</span></span>
+<span id="cb88-4"><a href="数据可视化.html#cb88-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
+<span id="cb88-5"><a href="数据可视化.html#cb88-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb88-6"><a href="数据可视化.html#cb88-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb88-7"><a href="数据可视化.html#cb88-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb88-8"><a href="数据可视化.html#cb88-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;City Fuel Economy (mpg)&quot;</span>,</span>
+<span id="cb88-9"><a href="数据可视化.html#cb88-9" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Engine Displacement (litres)&quot;</span>, </span>
+<span id="cb88-10"><a href="数据可视化.html#cb88-10" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">&quot;Vehicle Class&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p>在上面的示例中，我们使用<code>geom_smooth()</code>函数添加一个对应于将曲线拟合到数据的图层。 我们可以看到，对于小于 25 英里/加仑的燃油经济性值，发动机排量和燃油经济性之间存在相当明显的负相关性，但对于大于 25 英里/加仑的值，两者之间几乎没有关系。 这些似乎表明，有些发动机相对较小的汽车具有很好的燃油经济性，而其他具有类似发动机尺寸的汽车的燃油经济性要差得多。</p>
+</div>
+<div id="绘制直方图" class="section level2 unnumbered hasAnchor">
+<h2>绘制直方图<a href="数据可视化.html#绘制直方图" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>我们可能想要绘制发动机尺寸的直方图（以升为单位测量并在mpg数据集中的变量displ中捕获）以了解该变量的分布情况。</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="数据可视化.html#cb89-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb89-2"><a href="数据可视化.html#cb89-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ)) <span class="sc">+</span></span>
+<span id="cb89-3"><a href="数据可视化.html#cb89-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> .<span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="sc">+</span></span>
+<span id="cb89-4"><a href="数据可视化.html#cb89-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Histogram of Engine Displacement&quot;</span>,</span>
+<span id="cb89-5"><a href="数据可视化.html#cb89-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Engine Displacement (litres)&quot;</span>,</span>
+<span id="cb89-6"><a href="数据可视化.html#cb89-6" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<div id="ggridges-包" class="section level3 unnumbered hasAnchor">
+<h3><code>ggridges</code> 包<a href="数据可视化.html#ggridges-包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>鉴于在之前的可视化中，我们看到车辆类别之间似乎存在差异，如果我们能够比较按车辆类别划分的发动机尺寸的分布，不是很好吗？ 我们现在将使用ggridges()包来做到这一点……</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="数据可视化.html#cb90-1" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="数据可视化.html#cb91-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb91-2"><a href="数据可视化.html#cb91-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">str_to_title</span>(class)) <span class="sc">%&gt;%</span></span>
+<span id="cb91-3"><a href="数据可视化.html#cb91-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> <span class="fu">fct_reorder</span>(class, <span class="at">.fun =</span> mean, displ))) <span class="sc">+</span></span>
+<span id="cb91-4"><a href="数据可视化.html#cb91-4" tabindex="-1"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">height =</span> .<span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb91-5"><a href="数据可视化.html#cb91-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb91-6"><a href="数据可视化.html#cb91-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
+<span id="cb91-7"><a href="数据可视化.html#cb91-7" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">&#39;none&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb91-8"><a href="数据可视化.html#cb91-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Engine Displacement (litres)&quot;</span>,</span>
+<span id="cb91-9"><a href="数据可视化.html#cb91-9" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+</div>
+</div>
+<div id="nhanes-数据集" class="section level2 unnumbered hasAnchor">
+<h2>NHANES 数据集<a href="数据可视化.html#nhanes-数据集" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>我们现在将可视化 NHANES 数据集的各个方面。</p>
+<blockquote>
+<p>这是美国国家健康统计中心（NCHS）收集的调查数据，该中心自 1960 年代初以来进行了一系列健康和营养调查。 自 1999 年以来，每年约有 5,000 名各个年龄段的人在家中接受采访，并完成调查的健康检查部分。 健康检查在移动检查中心（MEC）进行。 NHANES 的目标人群是“美国的非制度化平民居民人口”。 NHANES（美国国家健康和营养检查调查）使用复杂的调查设计（参见 <a href="http://www.cdc.gov/nchs/data/series/sr_02/sr02_162.pdf" class="uri">http://www.cdc.gov/nchs/data/series/sr_02/sr02_162.pdf</a>），对某些亚群体（如少数族裔）进行过度抽样。 对原始 NHANES 数据的简单分析可能会导致错误的结论。 例如，数据中每个种族群体的人口百分比与他们在人口中的百分比有很大不同。</p>
+</blockquote>
+<p>我们需要加载<code>NHANES</code>包，因为这是包含数据集的地方。</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="数据可视化.html#cb92-1" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span></code></pre></div>
+<p>如果运行上述命令时出现错误，是因为您还没有使用<code>install.packages("NHANES")</code>在您的计算机上安装该软件包吗？</p>
+<p>首先，我们将探索 NHANES 数据集。</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="数据可视化.html#cb93-1" tabindex="-1"></a><span class="fu">ncol</span>(NHANES)</span></code></pre></div>
+<pre><code>## [1] 76</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="数据可视化.html#cb95-1" tabindex="-1"></a><span class="fu">nrow</span>(NHANES)</span></code></pre></div>
+<pre><code>## [1] 10000</code></pre>
+<p>我们看到有 76 列和 10,000 行。 如果我们使用函数<code>head()</code>我们可以看到数据帧的前几行。</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="数据可视化.html#cb97-1" tabindex="-1"></a><span class="fu">head</span>(NHANES)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 76
+##      ID SurveyYr Gender   Age AgeDecade AgeMonths Race1 Race3
+##   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;
+## 1 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt; 
+## 2 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt; 
+## 3 51624 2009_10  male      34 &quot; 30-39&quot;        409 White &lt;NA&gt; 
+## 4 51625 2009_10  male       4 &quot; 0-9&quot;           49 Other &lt;NA&gt; 
+## 5 51630 2009_10  female    49 &quot; 40-49&quot;        596 White &lt;NA&gt; 
+## 6 51638 2009_10  male       9 &quot; 0-9&quot;          115 White &lt;NA&gt; 
+## # ℹ 68 more variables: Education &lt;fct&gt;, MaritalStatus &lt;fct&gt;,
+## #   HHIncome &lt;fct&gt;, HHIncomeMid &lt;int&gt;, Poverty &lt;dbl&gt;,
+## #   HomeRooms &lt;int&gt;, HomeOwn &lt;fct&gt;, Work &lt;fct&gt;, Weight &lt;dbl&gt;,
+## #   Length &lt;dbl&gt;, HeadCirc &lt;dbl&gt;, Height &lt;dbl&gt;, BMI &lt;dbl&gt;,
+## #   BMICatUnder20yrs &lt;fct&gt;, BMI_WHO &lt;fct&gt;, Pulse &lt;int&gt;,
+## #   BPSysAve &lt;int&gt;, BPDiaAve &lt;int&gt;, BPSys1 &lt;int&gt;, BPDia1 &lt;int&gt;,
+## #   BPSys2 &lt;int&gt;, BPDia2 &lt;int&gt;, BPSys3 &lt;int&gt;, BPDia3 &lt;int&gt;, …</code></pre>
+<div id="整理数据" class="section level3 unnumbered hasAnchor">
+<h3>整理数据<a href="数据可视化.html#整理数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>看起来有一些参与者在数据集中出现了多次 - 这可能是由于描述中提到的过采样 - 前几行都是参与者ID 51624的数据。我们可以使用select()函数和n_distinct()函数来告诉我们数据集中唯一ID的数量。</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="数据可视化.html#cb99-1" tabindex="-1"></a>NHANES <span class="sc">%&gt;%</span> </span>
+<span id="cb99-2"><a href="数据可视化.html#cb99-2" tabindex="-1"></a>  <span class="fu">select</span>(ID) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-3"><a href="数据可视化.html#cb99-3" tabindex="-1"></a>  <span class="fu">n_distinct</span>()</span></code></pre></div>
+<pre><code>## [1] 6779</code></pre>
+<p>我们看到我们有6,779个独特的个体。让我们整理我们的数据，以删除重复的ID。请注意，下面我们使用了管道运算符<code>%&gt;%</code>，你可以将其理解为’然后’，所以它意味着我们正在使用NHANES数据集，然后筛选出具有不同ID号码的行。管道运算符确实有助于提高数据整理代码的可读性，并且是整洁宇宙哲学的重要组成部分-整洁数据和整洁代码。</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="数据可视化.html#cb101-1" tabindex="-1"></a>NHANES_tidied <span class="ot">&lt;-</span> NHANES <span class="sc">%&gt;%</span> </span>
+<span id="cb101-2"><a href="数据可视化.html#cb101-2" tabindex="-1"></a>  <span class="fu">distinct</span>(ID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="数据可视化.html#cb102-1" tabindex="-1"></a><span class="fu">ncol</span>(NHANES_tidied)</span></code></pre></div>
+<pre><code>## [1] 76</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="数据可视化.html#cb104-1" tabindex="-1"></a><span class="fu">nrow</span>(NHANES_tidied)</span></code></pre></div>
+<pre><code>## [1] 6779</code></pre>
+<p>好的，所以我们整理好的数据集被赋给了变量<code>NHANES_tidied</code>，并且有6,779行（但仍然有76列）- 这是我们预期的，因为我们有6,779个独特的个体。</p>
+</div>
+<div id="绘制直方图-1" class="section level3 unnumbered hasAnchor">
+<h3>绘制直方图<a href="数据可视化.html#绘制直方图-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>让我们开始探索数据吧。我们有很多潜在的变量和关系可以探索。我看到我们有一个标记为教育的因子。我们还有与健康相关的信息，比如BMI - 首先让我们绘制一个BMI的直方图。</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="数据可视化.html#cb106-1" tabindex="-1"></a>NHANES_tidied <span class="sc">%&gt;%</span></span>
+<span id="cb106-2"><a href="数据可视化.html#cb106-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BMI)) <span class="sc">+</span> </span>
+<span id="cb106-3"><a href="数据可视化.html#cb106-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<p>我们在这里看到一个相当向右倾斜的分布。请注意我们对na.rm参数的使用-这个参数在许多tidyverse函数中都出现，并且通过将其设置为TRUE，我们告诉R忽略数据框中任何存在缺失数据的部分（由NA表示）。</p>
+</div>
+<div id="总结统计数据" class="section level3 unnumbered hasAnchor">
+<h3>总结统计数据<a href="数据可视化.html#总结统计数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>BMI是否随教育水平的不同而变化？ 在下面的代码中，我们使用存储在变量<code>NHANES_tidied</code>中的数据，按教育水平进行分组，然后进行汇总，以生成每个组的中位数BMI。同样，这次我们使用<code>na.rm = TRUE</code>参数和<code>summarise()</code>函数来从计算中删除任何缺失值（NA）。</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="数据可视化.html#cb107-1" tabindex="-1"></a>NHANES_tidied <span class="sc">%&gt;%</span> </span>
+<span id="cb107-2"><a href="数据可视化.html#cb107-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Education) <span class="sc">%&gt;%</span> </span>
+<span id="cb107-3"><a href="数据可视化.html#cb107-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">median =</span> <span class="fu">median</span>(BMI, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   Education      median
+##   &lt;fct&gt;           &lt;dbl&gt;
+## 1 8th Grade        28.6
+## 2 9 - 11th Grade   28.2
+## 3 High School      28.2
+## 4 Some College     28.4
+## 5 College Grad     26.5
+## 6 &lt;NA&gt;             18.9</code></pre>
+<p>看起来受过大学教育的人具有最低的中位数BMI（忽略了<code>NA</code>类别，该类别对应于我们没有记录教育水平的情况）。</p>
+</div>
+<div id="geom_violin" class="section level3 unnumbered hasAnchor">
+<h3><code>geom_violin()</code><a href="数据可视化.html#geom_violin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>让我们来画图吧！请注意，在这里我们会过滤掉没有记录BMI值的情况。函数<code>is.na()</code>在应用于缺失数据(<code>NA</code>)的情况下返回<code>TRUE</code> - 我们使用!运算符来否定这一点，并使用逻辑与运算符<code>&amp;</code>将这些表达式组合在一起。</p>
+<p>下面一行以<code>filter()</code>开头的代码意味着筛选出教育和BMI都不缺失的情况。这意味着传递给<code>ggplot()</code>函数的<code>NHANES_tidied</code>数据在我们感兴趣的关键变量上没有缺失数据。</p>
+<p>然后我添加一个<code>geom_violin()</code>图层来捕捉每个教育水平的分布形状，并添加一个<code>geom_boxplot()</code>图层来为我们的教育因素创建一个箱线图。</p>
+<p>调用<code>guides(colour = 'none')</code>会抑制显示颜色图例 - 在其前面加上<code>#</code>并重新运行代码以查看变化。</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="数据可视化.html#cb109-1" tabindex="-1"></a>NHANES_tidied <span class="sc">%&gt;%</span> </span>
+<span id="cb109-2"><a href="数据可视化.html#cb109-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Education) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(BMI)) <span class="sc">%&gt;%</span></span>
+<span id="cb109-3"><a href="数据可视化.html#cb109-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Education, <span class="at">y =</span> BMI, <span class="at">colour =</span> Education)) <span class="sc">+</span> </span>
+<span id="cb109-4"><a href="数据可视化.html#cb109-4" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb109-5"><a href="数据可视化.html#cb109-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">width =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb109-6"><a href="数据可视化.html#cb109-6" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb109-7"><a href="数据可视化.html#cb109-7" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="st">&#39;none&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb109-8"><a href="数据可视化.html#cb109-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Examining the effect of education level on BMI&quot;</span>, </span>
+<span id="cb109-9"><a href="数据可视化.html#cb109-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Education Level&quot;</span>, </span>
+<span id="cb109-10"><a href="数据可视化.html#cb109-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;BMI&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+</div>
+<div id="绘制交互效应" class="section level3 unnumbered hasAnchor">
+<h3>绘制交互效应<a href="数据可视化.html#绘制交互效应" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们还可以绘制两个因素之间的相互作用。对于上面的图，我们将添加一个因素<code>Diabetes</code>（有两个水平 - <code>Yes</code> vs. <code>No</code>）来看看它如何与教育水平相互作用。为了捕捉这种相互作用的性质，我们在指定x轴美学时使用表达式<code>Education:Diabetes</code>。请注意，我已将x轴标签旋转45度以便更容易阅读。</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="数据可视化.html#cb110-1" tabindex="-1"></a>NHANES_tidied <span class="sc">%&gt;%</span> </span>
+<span id="cb110-2"><a href="数据可视化.html#cb110-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Education) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(BMI) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Diabetes)) <span class="sc">%&gt;%</span></span>
+<span id="cb110-3"><a href="数据可视化.html#cb110-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Education<span class="sc">:</span>Diabetes, <span class="at">y =</span> BMI, <span class="at">colour =</span> Education)) <span class="sc">+</span> </span>
+<span id="cb110-4"><a href="数据可视化.html#cb110-4" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb110-5"><a href="数据可视化.html#cb110-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">width =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb110-6"><a href="数据可视化.html#cb110-6" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb110-7"><a href="数据可视化.html#cb110-7" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="st">&#39;none&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb110-8"><a href="数据可视化.html#cb110-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb110-9"><a href="数据可视化.html#cb110-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Examining the effect of education level and diabetes on BMI&quot;</span>, </span>
+<span id="cb110-10"><a href="数据可视化.html#cb110-10" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Education Level x Diabetes&quot;</span>, </span>
+<span id="cb110-11"><a href="数据可视化.html#cb110-11" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;BMI&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p>我们可以从上面的图表看到，无论教育水平如何，患有糖尿病的人似乎也有更高的BMI得分。</p>
+</div>
+<div id="使用facet_wrap绘制直方图" class="section level3 unnumbered hasAnchor">
+<h3>使用<code>facet_wrap()</code>绘制直方图<a href="数据可视化.html#使用facet_wrap绘制直方图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们还可以根据每个教育水平单独绘制BMI的直方图 - 我们使用<code>facet_wrap()</code>函数来实现这一点。</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="数据可视化.html#cb111-1" tabindex="-1"></a>NHANES_tidied <span class="sc">%&gt;%</span> </span>
+<span id="cb111-2"><a href="数据可视化.html#cb111-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Education) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(BMI)) <span class="sc">%&gt;%</span></span>
+<span id="cb111-3"><a href="数据可视化.html#cb111-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Education) <span class="sc">%&gt;%</span> </span>
+<span id="cb111-4"><a href="数据可视化.html#cb111-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BMI, <span class="at">fill =</span> Education)) <span class="sc">+</span></span>
+<span id="cb111-5"><a href="数据可视化.html#cb111-5" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb111-6"><a href="数据可视化.html#cb111-6" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">&#39;none&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb111-7"><a href="数据可视化.html#cb111-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Examining the effect of education level on BMI&quot;</span>,</span>
+<span id="cb111-8"><a href="数据可视化.html#cb111-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;BMI&quot;</span>, </span>
+<span id="cb111-9"><a href="数据可视化.html#cb111-9" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Number of cases&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb111-10"><a href="数据可视化.html#cb111-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Education)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p>在上面的图中，注意每个图使用相同的y轴刻度 - 这使得比较有点棘手，因为每个教育水平的案例数量不同。在<code>facet_wrap()</code>行的<code>Education</code>之后添加以下<code>scales = "free"</code>。有什么变化？</p>
+<p>我们可以使用密度函数生成直方图，而不是使用计数。让我们还加上一个密度曲线。</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="数据可视化.html#cb112-1" tabindex="-1"></a>NHANES_tidied <span class="sc">%&gt;%</span> </span>
+<span id="cb112-2"><a href="数据可视化.html#cb112-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Education) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(BMI)) <span class="sc">%&gt;%</span></span>
+<span id="cb112-3"><a href="数据可视化.html#cb112-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Education) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-4"><a href="数据可视化.html#cb112-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BMI, <span class="at">fill =</span> Education)) <span class="sc">+</span></span>
+<span id="cb112-5"><a href="数据可视化.html#cb112-5" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..)) <span class="sc">+</span></span>
+<span id="cb112-6"><a href="数据可视化.html#cb112-6" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..)) <span class="sc">+</span></span>
+<span id="cb112-7"><a href="数据可视化.html#cb112-7" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">&#39;none&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb112-8"><a href="数据可视化.html#cb112-8" tabindex="-1"></a>  <span class="fu">labs</span>( <span class="at">title =</span> <span class="st">&quot;Examining the effect of education level on BMI&quot;</span>, </span>
+<span id="cb112-9"><a href="数据可视化.html#cb112-9" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">&quot;BMI&quot;</span>, </span>
+<span id="cb112-10"><a href="数据可视化.html#cb112-10" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb112-11"><a href="数据可视化.html#cb112-11" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Education)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+</div>
+<div id="作业-2" class="section level3 unnumbered hasAnchor">
+<h3>作业<a href="数据可视化.html#作业-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>使用<code>mpg</code>或<code>NHANES</code>数据集创建一些新的可视化。您可以使用任何数据集构建许多不同的可视化。欢迎在我们的微信群中发布您的作品。</p>
+</div>
+</div>
+<div id="附加资源" class="section level2 unnumbered hasAnchor">
+<h2>附加资源<a href="数据可视化.html#附加资源" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>如果您对了解更多关于ggplot2的内容感兴趣，您可能会对观看Thomas Lin Pedersen的这两个（非常）详细的网络研讨会感兴趣（Youtube视频）。Thomas Lin Pedersen是ggplot2及其相关软件包的开发人员之一。</p>
+<p>视频一可以点击<a href="https://youtu.be/h29g21z0a68">这里</a>，视频二可以点击<a href="https://youtu.be/0m4yywqNPVY">这里</a></p>
+</div>
+<div id="帮助我们改进本节课程-3" class="section level2 unnumbered hasAnchor">
+<h2>帮助我们改进本节课程<a href="数据可视化.html#帮助我们改进本节课程-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>此处应插入文本和反馈二维码或问卷链接</em></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="数据整理和总结.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-DataVisualisation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

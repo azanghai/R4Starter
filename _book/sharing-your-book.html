@@ -23,14 +23,14 @@
 <meta name="author" content="文庭" />
 
 
-<meta name="date" content="2023-12-13" />
+<meta name="date" content="2023-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="blocks.html"/>
+<link rel="prev" href="r-markdown.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -123,28 +123,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -162,7 +140,7 @@ div.csl-indent {
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
@@ -202,7 +180,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#关于r的书籍"><i class="fa fa-check"></i>关于R的书籍</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#hadley-wickham"><i class="fa fa-check"></i>Hadley Wickham</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r语言被许多机构广泛使用"><i class="fa fa-check"></i>R语言被许多机构广泛使用</a></li>
-<li class="chapter" data-level="0.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>0.0.1</b> 做好准备！上手编写代码！</a></li>
+<li class="chapter" data-level="1.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>1.0.1</b> 做好准备！上手编写代码！</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#入门"><i class="fa fa-check"></i>入门</a>
 <ul>
@@ -217,19 +195,63 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-1"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#加载tidyverse"><i class="fa fa-check"></i>加载Tidyverse</a></li>
-<li class="chapter" data-level="0.0.2" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据集mpg"><i class="fa fa-check"></i><b>0.0.2</b> 数据集mpg</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据集mpg"><i class="fa fa-check"></i>数据集mpg</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用head和str"><i class="fa fa-check"></i>使用<code>head()</code>和<code>str()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用select选择列"><i class="fa fa-check"></i>用<code>select()</code>选择列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用filter选择行"><i class="fa fa-check"></i>用<code>filter()</code>选择行</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#组合功能"><i class="fa fa-check"></i>组合功能</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#管道操作符"><i class="fa fa-check"></i>管道操作符<code>%&gt;%</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#整理数据集"><i class="fa fa-check"></i>整理数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#pivot-函数"><i class="fa fa-check"></i>pivot 函数</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#合并两个数据集"><i class="fa fa-check"></i>合并两个数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业"><i class="fa fa-check"></i>作业</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>1</b> Footnotes and citations</a>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概括你的数据"><i class="fa fa-check"></i>概括你的数据</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>1.1</b> Footnotes</a></li>
-<li class="chapter" data-level="1.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>1.2</b> Citations</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-2"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用-group_by-和-summarise"><i class="fa fa-check"></i>使用 <code>group_by()</code> 和 <code>summarise()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用arrange重新排序输出"><i class="fa fa-check"></i>使用<code>arrange()</code>重新排序输出</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#summarise_at-的变体"><i class="fa fa-check"></i><code>summarise_at()</code> 的变体</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#summarise_if-的变体"><i class="fa fa-check"></i><code>summarise_if()</code> 的变体</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用mutate添加列"><i class="fa fa-check"></i>使用mutate()添加列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业-1"><i class="fa fa-check"></i>作业</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>2</b> Blocks</a>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#帮助我们改进本节课程-2"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i>数据可视化</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>2.1</b> Equations</a></li>
-<li class="chapter" data-level="2.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>2.2</b> Theorems and proofs</a></li>
-<li class="chapter" data-level="2.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>2.3</b> Callout blocks</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#概述-3"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggplot2-的基础知识"><i class="fa fa-check"></i>ggplot2 的基础知识</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#你的第一次可视化"><i class="fa fa-check"></i>你的第一次可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#改善图表"><i class="fa fa-check"></i>改善图表</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#添加摘要统计数据"><i class="fa fa-check"></i>添加摘要统计数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#完成的图表"><i class="fa fa-check"></i>完成的（？）图表</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#使用facet_wrap"><i class="fa fa-check"></i>使用<code>facet_wrap()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#散点图"><i class="fa fa-check"></i>散点图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制直方图"><i class="fa fa-check"></i>绘制直方图</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggridges-包"><i class="fa fa-check"></i><code>ggridges</code> 包</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#nhanes-数据集"><i class="fa fa-check"></i>NHANES 数据集</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#整理数据"><i class="fa fa-check"></i>整理数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制直方图-1"><i class="fa fa-check"></i>绘制直方图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#总结统计数据"><i class="fa fa-check"></i>总结统计数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#geom_violin"><i class="fa fa-check"></i><code>geom_violin()</code></a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制交互效应"><i class="fa fa-check"></i>绘制交互效应</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#使用facet_wrap绘制直方图"><i class="fa fa-check"></i>使用<code>facet_wrap()</code>绘制直方图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#作业-2"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#附加资源"><i class="fa fa-check"></i>附加资源</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#帮助我们改进本节课程-3"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-markdown.html"><a href="r-markdown.html#概述-4"><i class="fa fa-check"></i><b>2.1</b> 概述</a></li>
+<li class="chapter" data-level="2.2" data-path="r-markdown.html"><a href="r-markdown.html#作业-3"><i class="fa fa-check"></i><b>2.2</b> 作业</a></li>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#帮助我们改进本节课程-4"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>3</b> Sharing your book</a>
 <ul>
@@ -276,7 +298,7 @@ div.csl-indent {
 <p>Read more about the features of this output format here:</p>
 <p><a href="https://pkgs.rstudio.com/bookdown/reference/gitbook.html" class="uri">https://pkgs.rstudio.com/bookdown/reference/gitbook.html</a></p>
 <p>Or use:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sharing-your-book.html#cb4-1" tabindex="-1"></a>?bookdown<span class="sc">::</span>gitbook</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="sharing-your-book.html#cb1-1" tabindex="-1"></a>?bookdown<span class="sc">::</span>gitbook</span></code></pre></div>
 
 </div>
 </div>
@@ -285,7 +307,7 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="blocks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -317,7 +339,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-share.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-RegressionPart1.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -340,20 +362,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

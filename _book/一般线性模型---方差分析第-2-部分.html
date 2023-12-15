@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 一般线性模型 - 方差分析第 2 部分 | R语言入门</title>
+  <meta name="description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 一般线性模型 - 方差分析第 2 部分 | R语言入门" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  <meta name="github-repo" content="azanghai/R4Starter" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 一般线性模型 - 方差分析第 2 部分 | R语言入门" />
+  
+  <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
+  
+
+<meta name="author" content="文庭" />
+
+
+<meta name="date" content="2023-12-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="一般线性模型---方差分析第-1-部分.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习形式"><i class="fa fa-check"></i>学习形式</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>1</b> 在开始之前</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究和可重复性"><i class="fa fa-check"></i>开放研究和可重复性</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究"><i class="fa fa-check"></i>开放研究</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如何进行可重复的研究"><i class="fa fa-check"></i>如何进行可重复的研究</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#如果你需要一些指南"><i class="fa fa-check"></i>如果你需要一些指南</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#研究功效experimental-power"><i class="fa fa-check"></i>研究功效（Experimental Power）</a>
+<ul>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#介绍"><i class="fa fa-check"></i>介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#总结"><i class="fa fa-check"></i>总结</a></li>
+<li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#帮助我们改进本节课程"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>2</b> 开源软件和R语言</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件"><i class="fa fa-check"></i>开源软件</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#概述"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#统计与科学计算"><i class="fa fa-check"></i>统计与科学计算</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始使用-r-和-rstudio-desktop"><i class="fa fa-check"></i>开始使用 R 和 RStudio Desktop</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#为什么是r"><i class="fa fa-check"></i>为什么是R？</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件-1"><i class="fa fa-check"></i>开源软件</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#选择合适的软件做合适的工作"><i class="fa fa-check"></i>选择合适的软件做合适的工作</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源与闭源软件"><i class="fa fa-check"></i>开源与闭源软件</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r-vs.-spss"><i class="fa fa-check"></i>R vs. SPSS</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#关于r的书籍"><i class="fa fa-check"></i>关于R的书籍</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#hadley-wickham"><i class="fa fa-check"></i>Hadley Wickham</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r语言被许多机构广泛使用"><i class="fa fa-check"></i>R语言被许多机构广泛使用</a></li>
+<li class="chapter" data-level="2.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>2.0.1</b> 做好准备！上手编写代码！</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#入门"><i class="fa fa-check"></i>入门</a>
+<ul>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#好的编码风格"><i class="fa fa-check"></i>好的编码风格</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始你的第一个脚本"><i class="fa fa-check"></i>开始你的第一个脚本</a></li>
+<li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#帮助我们改进本节课程-1"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>3</b> 数据整理和总结</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据整理"><i class="fa fa-check"></i>数据整理</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-1"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#加载tidyverse"><i class="fa fa-check"></i>加载Tidyverse</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据集mpg"><i class="fa fa-check"></i>数据集mpg</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用head和str"><i class="fa fa-check"></i>使用<code>head()</code>和<code>str()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用select选择列"><i class="fa fa-check"></i>用<code>select()</code>选择列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#用filter选择行"><i class="fa fa-check"></i>用<code>filter()</code>选择行</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#组合功能"><i class="fa fa-check"></i>组合功能</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#管道操作符"><i class="fa fa-check"></i>管道操作符<code>%&gt;%</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#整理数据集"><i class="fa fa-check"></i>整理数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#pivot-函数"><i class="fa fa-check"></i>pivot 函数</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#合并两个数据集"><i class="fa fa-check"></i>合并两个数据集</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概括你的数据"><i class="fa fa-check"></i>概括你的数据</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#概述-2"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用-group_by-和-summarise"><i class="fa fa-check"></i>使用 <code>group_by()</code> 和 <code>summarise()</code></a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用arrange重新排序输出"><i class="fa fa-check"></i>使用<code>arrange()</code>重新排序输出</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#summarise_at-的变体"><i class="fa fa-check"></i><code>summarise_at()</code> 的变体</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#summarise_if-的变体"><i class="fa fa-check"></i><code>summarise_if()</code> 的变体</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#使用mutate添加列"><i class="fa fa-check"></i>使用mutate()添加列</a></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#作业-1"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#帮助我们改进本节课程-2"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#概述-3"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggplot2-的基础知识"><i class="fa fa-check"></i>ggplot2 的基础知识</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#你的第一次可视化"><i class="fa fa-check"></i>你的第一次可视化</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#改善图表"><i class="fa fa-check"></i>改善图表</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#添加摘要统计数据"><i class="fa fa-check"></i>添加摘要统计数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#完成的图表"><i class="fa fa-check"></i>完成的（？）图表</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#使用facet_wrap"><i class="fa fa-check"></i>使用<code>facet_wrap()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#散点图"><i class="fa fa-check"></i>散点图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制直方图"><i class="fa fa-check"></i>绘制直方图</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggridges-包"><i class="fa fa-check"></i><code>ggridges</code> 包</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#nhanes-数据集"><i class="fa fa-check"></i>NHANES 数据集</a>
+<ul>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#整理数据"><i class="fa fa-check"></i>整理数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制直方图-1"><i class="fa fa-check"></i>绘制直方图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#总结统计数据"><i class="fa fa-check"></i>总结统计数据</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#geom_violin"><i class="fa fa-check"></i><code>geom_violin()</code></a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#绘制交互效应"><i class="fa fa-check"></i>绘制交互效应</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#使用facet_wrap绘制直方图"><i class="fa fa-check"></i>使用<code>facet_wrap()</code>绘制直方图</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#作业-2"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#附加资源"><i class="fa fa-check"></i>附加资源</a></li>
+<li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#帮助我们改进本节课程-3"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>5</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#概述-4"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#作业-3"><i class="fa fa-check"></i>作业</a></li>
+<li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#帮助我们改进本节课程-4"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>6</b> 普通线性模型 - 回归 第一部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#概述-5"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#简单线性回归"><i class="fa fa-check"></i>简单线性回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#我们需要的r包"><i class="fa fa-check"></i>我们需要的R包</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#导入数据"><i class="fa fa-check"></i>导入数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#整理数据-1"><i class="fa fa-check"></i>整理数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#绘制数据"><i class="fa fa-check"></i>绘制数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#皮尔逊相关系数pearsons-r"><i class="fa fa-check"></i>皮尔逊相关系数(Pearson’s r)</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#建模数据"><i class="fa fa-check"></i>建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#检查我们的假设"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#解读我们的模型"><i class="fa fa-check"></i>解读我们的模型</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#作业-4"><i class="fa fa-check"></i>作业</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#帮助我们改进本节课程-5"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第二部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#概述-6"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#多元回归"><i class="fa fa-check"></i>多元回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#我们需要的包"><i class="fa fa-check"></i>我们需要的包</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#导入数据-1"><i class="fa fa-check"></i>导入数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查可能的关系"><i class="fa fa-check"></i>检查可能的关系</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#对数据建模"><i class="fa fa-check"></i>对数据建模</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-1"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#放弃一个有影响力的案例influential-case"><i class="fa fa-check"></i>放弃一个有影响力的案例(Influential Case)</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#重新建模数据"><i class="fa fa-check"></i>重新建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-2"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#重新建模数据-1"><i class="fa fa-check"></i>重新建模数据</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-3"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#总结模型"><i class="fa fa-check"></i>总结模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#逐步回归"><i class="fa fa-check"></i>逐步回归</a>
+<ul>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#对数据进行建模"><i class="fa fa-check"></i>对数据进行建模</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#检查我们的假设-4"><i class="fa fa-check"></i>检查我们的假设</a></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#根据p值输入预测变量"><i class="fa fa-check"></i>根据p值输入预测变量</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#帮助我们改进本节课程-6"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>8</b> 一般线性模型 - 方差分析第 1 部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#概述-7"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#参与者之间的方差分析between-participants-anova"><i class="fa fa-check"></i>参与者之间的方差分析（Between Participants ANOVA）</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#加载我们的包"><i class="fa fa-check"></i>加载我们的包</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#解释模型输出"><i class="fa fa-check"></i>解释模型输出</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#重复测量方差分析"><i class="fa fa-check"></i>重复测量方差分析</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-1"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据-1"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据-1"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型-1"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#解释模型输出-1"><i class="fa fa-check"></i>解释模型输出</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#多因子方差分析factorial-anova"><i class="fa fa-check"></i>多因子方差分析（factorial ANOVA）</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-2"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#总结我们的数据-2"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#可视化我们的数据-2"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#建立我们的方差分析模型-2"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#作业-5"><i class="fa fa-check"></i>作业</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题1"><i class="fa fa-check"></i>问题1</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题2"><i class="fa fa-check"></i>问题2</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题3"><i class="fa fa-check"></i>问题3</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题4"><i class="fa fa-check"></i>问题4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#答案"><i class="fa fa-check"></i>答案</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题1-1"><i class="fa fa-check"></i>问题1</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题2-1"><i class="fa fa-check"></i>问题2</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题3-1"><i class="fa fa-check"></i>问题3</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#问题4-1"><i class="fa fa-check"></i>问题4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#帮助我们改进本节课程-7"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 2 部分</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#概述-8"><i class="fa fa-check"></i>概述</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的ancova"><i class="fa fa-check"></i>建立我们的ANCOVA</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#加载我们的包-1"><i class="fa fa-check"></i>加载我们的包</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#读取我们的数据-3"><i class="fa fa-check"></i>读取我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#总结我们的数据-3"><i class="fa fa-check"></i>总结我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#可视化我们的数据-3"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的方差分析模型-3"><i class="fa fa-check"></i>建立我们的方差分析模型</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#ancova-作为回归的特例"><i class="fa fa-check"></i>AN(C)OVA 作为回归的特例</a>
+<ul>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#可视化我们的数据-4"><i class="fa fa-check"></i>可视化我们的数据</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#设置我们的对比"><i class="fa fa-check"></i>设置我们的对比</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#方差分析作为线性模型"><i class="fa fa-check"></i>方差分析作为线性模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#ancova-作为线性模型"><i class="fa fa-check"></i>ANCOVA 作为线性模型</a></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#以协变量为中心centering-our-covariate"><i class="fa fa-check"></i>以协变量为中心(Centering our Covariate)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#帮助我们改进本节课程-8"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言入门</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="一般线性模型---方差分析第-2-部分" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> 一般线性模型 - 方差分析第 2 部分<a href="一般线性模型---方差分析第-2-部分.html#一般线性模型---方差分析第-2-部分" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>在本次研讨会中，我们将在上一节的基础上探索协方差分析 (ANCOVA)。 在本次研讨会中，我们还将研究方差分析和方差分析作为回归的特殊情况，并了解如何通过线性模型构建这两者。 当你自己这样做时，你将有望确信方差分析和回归实际上是同一件事。</p>
+<div id="概述-8" class="section level2 unnumbered hasAnchor">
+<h2>概述<a href="一般线性模型---方差分析第-2-部分.html#概述-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在本次研讨会中，我们将继续检验方差分析。 具体来说，我们将重点关注 ANCOVA（协方差分析），然后再探讨 AN(C)OVA 为何是回归的特殊情况以及如何在一般线性模型的背景下理解两者。</p>
+<center>
+<iframe src="【在此输入视频地址ANOVAPart2】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+</iframe>
+</center>
+</div>
+<div id="建立我们的ancova" class="section level2 unnumbered hasAnchor">
+<h2>建立我们的ANCOVA<a href="一般线性模型---方差分析第-2-部分.html#建立我们的ancova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="加载我们的包-1" class="section level3 unnumbered hasAnchor">
+<h3>加载我们的包<a href="一般线性模型---方差分析第-2-部分.html#加载我们的包-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>让我们看一下我在上面视频中介绍的 ANCOVA 示例。 首先我们需要加载我们需要的包。 我们将使用<code>tidyverse</code>进行一般数据整理和数据可视化，然后使用<code>afex</code>包来构建我们的 ANCOVA 模型，并使用<code>emmeans</code>包来运行成对比较并显示我们的调整后的平均值。</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="一般线性模型---方差分析第-2-部分.html#cb229-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Load the tidyverse packages</span></span>
+<span id="cb229-2"><a href="一般线性模型---方差分析第-2-部分.html#cb229-2" tabindex="-1"></a><span class="fu">library</span>(afex) <span class="co"># ANOVA functions</span></span>
+<span id="cb229-3"><a href="一般线性模型---方差分析第-2-部分.html#cb229-3" tabindex="-1"></a><span class="fu">library</span>(emmeans) <span class="co"># Needed for pairwise comparisons</span></span></code></pre></div>
+</div>
+<div id="读取我们的数据-3" class="section level3 unnumbered hasAnchor">
+<h3>读取我们的数据<a href="一般线性模型---方差分析第-2-部分.html#读取我们的数据-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>现在我们要读入我们的数据。数据可以在<a href="插入链接">这里</a>下载</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="一般线性模型---方差分析第-2-部分.html#cb230-1" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/ancova_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="一般线性模型---方差分析第-2-部分.html#cb231-1" tabindex="-1"></a><span class="fu">head</span>(my_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   Participant Condition Ability Gaming
+##         &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+## 1           1 Water        3.49   9.37
+## 2           2 Water        5.61  10.7 
+## 3           3 Water        5.29   9.35
+## 4           4 Water        4.75  10.2 
+## 5           5 Water        4.44   9.57
+## 6           6 Water        2.53   7.37</code></pre>
+<p>我们发现条件（Condition）没有正确编码为一个因素，所以让我们解决这个问题。</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="一般线性模型---方差分析第-2-部分.html#cb233-1" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> my_data <span class="sc">%&gt;%</span> </span>
+<span id="cb233-2"><a href="一般线性模型---方差分析第-2-部分.html#cb233-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Condition =</span> <span class="fu">factor</span>(Condition))</span>
+<span id="cb233-3"><a href="一般线性模型---方差分析第-2-部分.html#cb233-3" tabindex="-1"></a><span class="fu">head</span>(my_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   Participant Condition Ability Gaming
+##         &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+## 1           1 Water        3.49   9.37
+## 2           2 Water        5.61  10.7 
+## 3           3 Water        5.29   9.35
+## 4           4 Water        4.75  10.2 
+## 5           5 Water        4.44   9.57
+## 6           6 Water        2.53   7.37</code></pre>
+</div>
+<div id="总结我们的数据-3" class="section level3 unnumbered hasAnchor">
+<h3>总结我们的数据<a href="一般线性模型---方差分析第-2-部分.html#总结我们的数据-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>接下来让我们进行一些汇总统计并构建数据可视化。</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="一般线性模型---方差分析第-2-部分.html#cb235-1" tabindex="-1"></a>my_data <span class="sc">%&gt;%</span></span>
+<span id="cb235-2"><a href="一般线性模型---方差分析第-2-部分.html#cb235-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb235-3"><a href="一般线性模型---方差分析第-2-部分.html#cb235-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_ability =</span> <span class="fu">mean</span>(Ability))</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   Condition       mean_ability
+##   &lt;fct&gt;                  &lt;dbl&gt;
+## 1 Double Espresso         9.02
+## 2 Single Espresso         6.69
+## 3 Water                   4.82</code></pre>
+</div>
+<div id="可视化我们的数据-3" class="section level3 unnumbered hasAnchor">
+<h3>可视化我们的数据<a href="一般线性模型---方差分析第-2-部分.html#可视化我们的数据-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="一般线性模型---方差分析第-2-部分.html#cb237-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb237-2"><a href="一般线性模型---方差分析第-2-部分.html#cb237-2" tabindex="-1"></a><span class="fu">ggplot</span>(my_data, <span class="fu">aes</span>(<span class="at">x =</span> Gaming, <span class="at">y =</span> Ability,  <span class="at">colour =</span> Condition)) <span class="sc">+</span> </span>
+<span id="cb237-3"><a href="一般线性模型---方差分析第-2-部分.html#cb237-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> .<span class="dv">9</span>) <span class="sc">+</span></span>
+<span id="cb237-4"><a href="一般线性模型---方差分析第-2-部分.html#cb237-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Gaming Frequency (hours per week)&quot;</span>, </span>
+<span id="cb237-5"><a href="一般线性模型---方差分析第-2-部分.html#cb237-5" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Motor Ability&quot;</span>) <span class="sc">+</span></span>
+<span id="cb237-6"><a href="一般线性模型---方差分析第-2-部分.html#cb237-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb237-7"><a href="一般线性模型---方差分析第-2-部分.html#cb237-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<p>我们构建了一个可视化，使用<code>geom_point()</code>函数绘制了原始数据点。</p>
+</div>
+<div id="建立我们的方差分析模型-3" class="section level3 unnumbered hasAnchor">
+<h3>建立我们的方差分析模型<a href="一般线性模型---方差分析第-2-部分.html#建立我们的方差分析模型-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>让我们首先构建一个方差分析模型，并忽略数据集中协变量的存在。</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="一般线性模型---方差分析第-2-部分.html#cb238-1" tabindex="-1"></a>anova_model <span class="ot">&lt;-</span><span class="fu">aov_4</span>(Ability <span class="sc">~</span> Condition <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Participant), <span class="at">data =</span> my_data)</span></code></pre></div>
+<pre><code>## Contrasts set to contr.sum for the following variables: Condition</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="一般线性模型---方差分析第-2-部分.html#cb240-1" tabindex="-1"></a><span class="fu">anova</span>(anova_model)</span></code></pre></div>
+<pre><code>## Anova Table (Type 3 tests)
+## 
+## Response: Ability
+##           num Df den Df    MSE      F     ges    Pr(&gt;F)    
+## Condition      2     42 1.2422 53.432 0.71786 2.882e-12 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>根据此输出，我们似乎具有条件效果。 为了进一步探讨这一点，我们将使用<code>emmeans()</code>函数来运行成对比较。</p>
+<p>在此基础上，我们可能会得出这样的结论：我们受到条件的影响，并且我们的三组中的每一组都与其他组有显着差异。 但这是对的吗？ 不，因为我们没有考虑协变量。</p>
+<p>我们将构建我们的 ANCOVA 模型，在我们的实验条件操作之前添加我们的协变量。 我们将<code>factorize</code>参数设置为<code>FALSE</code> ，以便将其视为连续预测变量，而不是模型中的实验因子。</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="一般线性模型---方差分析第-2-部分.html#cb242-1" tabindex="-1"></a>model_ancova <span class="ot">&lt;-</span> <span class="fu">aov_4</span>(Ability <span class="sc">~</span> Gaming <span class="sc">+</span> Condition <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Participant), <span class="at">data =</span> my_data, <span class="at">factorize =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Warning: Numerical variables NOT centered on 0 (i.e., likely
+## bogus results): Gaming</code></pre>
+<pre><code>## Contrasts set to contr.sum for the following variables: Condition</code></pre>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="一般线性模型---方差分析第-2-部分.html#cb245-1" tabindex="-1"></a><span class="fu">anova</span>(model_ancova)</span></code></pre></div>
+<pre><code>## Anova Table (Type 3 tests)
+## 
+## Response: Ability
+##           num Df den Df     MSE       F     ges   Pr(&gt;F)    
+## Gaming         1     41 0.55171 53.5636 0.56643 5.87e-09 ***
+## Condition      2     41 0.55171  0.8771 0.04103   0.4236    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>在此输出的基础上，我们看到我们不再具有条件的影响，但确实具有协变量的影响。</p>
+<p>我们可以使用<code>emmeans()</code>函数来生成调整后的均值（即，考虑到协变量的影响，三组中每组的均值）。</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="一般线性模型---方差分析第-2-部分.html#cb247-1" tabindex="-1"></a><span class="fu">emmeans</span>(model_ancova, pairwise <span class="sc">~</span> Condition)</span></code></pre></div>
+<pre><code>## $emmeans
+##  Condition       emmean    SE df lower.CL upper.CL
+##  Double Espresso   6.32 0.415 41     5.48     7.16
+##  Single Espresso   6.87 0.193 41     6.48     7.26
+##  Water             7.33 0.393 41     6.53     8.12
+## 
+## Confidence level used: 0.95 
+## 
+## $contrasts
+##  contrast                          estimate    SE df t.ratio
+##  Double Espresso - Single Espresso   -0.552 0.478 41  -1.155
+##  Double Espresso - Water             -1.008 0.761 41  -1.324
+##  Single Espresso - Water             -0.456 0.418 41  -1.092
+##  p.value
+##   0.4863
+##   0.3900
+##   0.5244
+## 
+## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
+</div>
+</div>
+<div id="ancova-作为回归的特例" class="section level2 unnumbered hasAnchor">
+<h2>AN(C)OVA 作为回归的特例<a href="一般线性模型---方差分析第-2-部分.html#ancova-作为回归的特例" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>我们现在将ANOVA（然后是AN(C)OVA）视为回归的一个特例。</p>
+<div id="可视化我们的数据-4" class="section level3 unnumbered hasAnchor">
+<h3>可视化我们的数据<a href="一般线性模型---方差分析第-2-部分.html#可视化我们的数据-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>让我们用 x 轴上的条件(condition)来可视化数据。</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="一般线性模型---方差分析第-2-部分.html#cb249-1" tabindex="-1"></a>my_data <span class="sc">%&gt;%</span></span>
+<span id="cb249-2"><a href="一般线性模型---方差分析第-2-部分.html#cb249-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Condition, <span class="at">y =</span> Ability, <span class="at">colour =</span> Condition)) <span class="sc">+</span></span>
+<span id="cb249-3"><a href="一般线性模型---方差分析第-2-部分.html#cb249-3" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb249-4"><a href="一般线性模型---方差分析第-2-部分.html#cb249-4" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">05</span>, <span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb249-5"><a href="一般线性模型---方差分析第-2-部分.html#cb249-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Condition&quot;</span>, </span>
+<span id="cb249-6"><a href="一般线性模型---方差分析第-2-部分.html#cb249-6" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Motor Ability&quot;</span>) <span class="sc">+</span></span>
+<span id="cb249-7"><a href="一般线性模型---方差分析第-2-部分.html#cb249-7" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_cl_boot, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb249-8"><a href="一般线性模型---方差分析第-2-部分.html#cb249-8" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">colour =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb249-9"><a href="一般线性模型---方差分析第-2-部分.html#cb249-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb249-10"><a href="一般线性模型---方差分析第-2-部分.html#cb249-10" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<p>让我们检查一下我们的条件因子当前是如何根据其对比进行编码的。 请注意，表达式<code>my_data$Condition</code>是引用数据集<code>my_data</code>中名为<code>Condition</code>的变量的 Base R 方式。</p>
+</div>
+<div id="设置我们的对比" class="section level3 unnumbered hasAnchor">
+<h3>设置我们的对比<a href="一般线性模型---方差分析第-2-部分.html#设置我们的对比" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="一般线性模型---方差分析第-2-部分.html#cb250-1" tabindex="-1"></a><span class="fu">contrasts</span>(my_data<span class="sc">$</span>Condition)</span></code></pre></div>
+<pre><code>##                 Single Espresso Water
+## Double Espresso               0     0
+## Single Espresso               1     0
+## Water                         0     1</code></pre>
+<p>我们希望我们的水组成为参考水平（因此对应于我们的线性模型的截距），并且虚拟编码为（0, 0），但目前还没有这样编码。 让我们解决这个问题。</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="一般线性模型---方差分析第-2-部分.html#cb252-1" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> my_data <span class="sc">%&gt;%</span></span>
+<span id="cb252-2"><a href="一般线性模型---方差分析第-2-部分.html#cb252-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Condition =</span> <span class="fu">fct_relevel</span>(Condition,</span>
+<span id="cb252-3"><a href="一般线性模型---方差分析第-2-部分.html#cb252-3" tabindex="-1"></a>                                 <span class="fu">c</span>(<span class="st">&quot;Water&quot;</span>, <span class="st">&quot;Double Espresso&quot;</span>, <span class="st">&quot;Single Espresso&quot;</span>)))</span>
+<span id="cb252-4"><a href="一般线性模型---方差分析第-2-部分.html#cb252-4" tabindex="-1"></a></span>
+<span id="cb252-5"><a href="一般线性模型---方差分析第-2-部分.html#cb252-5" tabindex="-1"></a><span class="fu">contrasts</span>(my_data<span class="sc">$</span>Condition)</span></code></pre></div>
+<pre><code>##                 Double Espresso Single Espresso
+## Water                         0               0
+## Double Espresso               1               0
+## Single Espresso               0               1</code></pre>
+</div>
+<div id="方差分析作为线性模型" class="section level3 unnumbered hasAnchor">
+<h3>方差分析作为线性模型<a href="一般线性模型---方差分析第-2-部分.html#方差分析作为线性模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>好的，这就是我们现在想要的。 让我们使用<code>lm()</code>函数对线性模型进行建模并检查结果。</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="一般线性模型---方差分析第-2-部分.html#cb254-1" tabindex="-1"></a>model_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ability <span class="sc">~</span> Condition, <span class="at">data =</span> my_data)</span>
+<span id="cb254-2"><a href="一般线性模型---方差分析第-2-部分.html#cb254-2" tabindex="-1"></a>model_lm</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Ability ~ Condition, data = my_data)
+## 
+## Coefficients:
+##              (Intercept)  ConditionDouble Espresso  
+##                    4.817                     4.199  
+## ConditionSingle Espresso  
+##                    1.871</code></pre>
+<p>我们可以看到截距对应于我们的水状况的平均值。 为了计算出 Double Espresso 组的平均能力，我们使用 Double Espresso 组的编码 (1, 0) 和我们的方程：</p>
+<p>Ability = Intercept + β1(Double Espresso) + β2(Single Espresso)</p>
+<p>Ability = 4.817 + 4.199(1) + 1.871(0)</p>
+<p>Ability = 4.817 + 4.199</p>
+<p>Ability = 9.016</p>
+<p>为了计算单份浓缩咖啡组的平均能力，我们使用单份浓缩咖啡组的编码 (0, 1) 和我们的方程：</p>
+<p>Ability = 4.817 + 4.199(0) + 1.871(1)</p>
+<p>Ability = 4.817 + 1.871</p>
+<p>Ability = 6.688</p>
+</div>
+<div id="ancova-作为线性模型" class="section level3 unnumbered hasAnchor">
+<h3>ANCOVA 作为线性模型<a href="一般线性模型---方差分析第-2-部分.html#ancova-作为线性模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>好的，现在要使用<code>lm()</code>函数构建我们的 ANCOVA，我们只需将协变量 ( <code>Gaming</code> ) 添加到我们的模型规范中。</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="一般线性模型---方差分析第-2-部分.html#cb256-1" tabindex="-1"></a>model_ancova <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ability <span class="sc">~</span> Gaming <span class="sc">+</span> Condition, <span class="at">data =</span> my_data)</span>
+<span id="cb256-2"><a href="一般线性模型---方差分析第-2-部分.html#cb256-2" tabindex="-1"></a>model_ancova</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Ability ~ Gaming + Condition, data = my_data)
+## 
+## Coefficients:
+##              (Intercept)                    Gaming  
+##                  -3.4498                    0.8538  
+## ConditionDouble Espresso  ConditionSingle Espresso  
+##                  -1.0085                   -0.4563</code></pre>
+<p>我们可以通过将值代入方程来计算出参考组（Water）的平均值 - 请注意，游戏（Gaming）不是一个因素，我们需要输入该变量的平均值。</p>
+<p>我们可以通过以下方法来解决。</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="一般线性模型---方差分析第-2-部分.html#cb258-1" tabindex="-1"></a><span class="fu">mean</span>(my_data<span class="sc">$</span>Gaming)</span></code></pre></div>
+<pre><code>## [1] 12.62296</code></pre>
+<p>我们将此平均值 (12.62296) 与每个预测变量的系数一起添加到我们的方程中。 通过我们的虚拟编码方案，我们可以计算出水组的调整后平均值。</p>
+<p>Ability = Intercept + β1(Gaming) + β2(Double Espresso) + β3(Single Espresso)</p>
+<p>Ability = -3.4498 + 0.8538(12.62296) + (- 1.0085)(0) + (-0.4563)(0)</p>
+<p>Ability = -3.4498 + 10.777</p>
+<p>Ability = 7.33</p>
+<p>7.33 是水组的调整平均值，这是我们通过调用 ANCOVA 后的<code>emmeans()</code>函数得到的值。 尝试使用我们的虚拟编码来计算其他两个条件的调整方法。</p>
+</div>
+<div id="以协变量为中心centering-our-covariate" class="section level3 unnumbered hasAnchor">
+<h3>以协变量为中心(Centering our Covariate)<a href="一般线性模型---方差分析第-2-部分.html#以协变量为中心centering-our-covariate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在视频中，我提到我们还可以缩放协变量并将其居中。 这使变量标准化（均值以零为中心），并且无需将协变量的线性模型系数乘以协变量的均值。 一般来说，它使我们的线性模型中的系数的解释变得更容易。</p>
+<p>我们可以使用<code>scale()</code>函数在数据框中创建协变量的新（缩放和居中）版本。</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="一般线性模型---方差分析第-2-部分.html#cb260-1" tabindex="-1"></a>my_scaled_data <span class="ot">&lt;-</span> my_data <span class="sc">%&gt;%</span></span>
+<span id="cb260-2"><a href="一般线性模型---方差分析第-2-部分.html#cb260-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">centred_gaming =</span> <span class="fu">scale</span>(Gaming))</span></code></pre></div>
+<p>我们可以查看非中心协变量和中心协变量，发现数据中没有任何变化，除了变量均值现在以零为中心并且分布已按比例缩放之外。</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="一般线性模型---方差分析第-2-部分.html#cb261-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(my_scaled_data<span class="sc">$</span>Gaming))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="一般线性模型---方差分析第-2-部分.html#cb262-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(my_scaled_data<span class="sc">$</span>centred_gaming))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="一般线性模型---方差分析第-2-部分.html#cb263-1" tabindex="-1"></a>model_ancova_centred <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ability <span class="sc">~</span> centred_gaming <span class="sc">+</span> Condition, <span class="at">data =</span> my_scaled_data)</span>
+<span id="cb263-2"><a href="一般线性模型---方差分析第-2-部分.html#cb263-2" tabindex="-1"></a>model_ancova_centred</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Ability ~ centred_gaming + Condition, data = my_scaled_data)
+## 
+## Coefficients:
+##              (Intercept)            centred_gaming  
+##                   7.3280                    2.3046  
+## ConditionDouble Espresso  ConditionSingle Espresso  
+##                  -1.0085                   -0.4563</code></pre>
+<p>我们看到截距现在对应于水组的调整后平均值。 我们可以通过从 7.3280 减去 1.0085 来计算 Double Espresso 组的调整平均值，并且可以通过从 7.3280 减去 0.4563 来计算 Single Espresso 组的调整平均值。 希望您看到协变量的缩放和居中使得解释我们的线性模型的系数变得容易得多。</p>
+</div>
+</div>
+<div id="帮助我们改进本节课程-8" class="section level2 unnumbered hasAnchor">
+<h2>帮助我们改进本节课程<a href="一般线性模型---方差分析第-2-部分.html#帮助我们改进本节课程-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>此处应插入文本和反馈二维码或问卷链接</em></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="一般线性模型---方差分析第-1-部分.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-ANOVAPart2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

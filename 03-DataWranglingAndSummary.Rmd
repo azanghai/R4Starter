@@ -1,4 +1,4 @@
-# 数据整理和总结{-}
+# 数据整理和总结
 
 在本次研讨会中，我将向您介绍许多关键包，Tidyverse这些包包含大量用于处理整齐格式数据的函数。通过使我们的数据整理可重现（即，通过用 R 进行编码），我们可以在添加新数据时轻松地重新运行分析流程的此阶段。数据整理阶段的可重复性是分析过程的关键部分，但在需要确保其可重复性方面经常被忽视。本次研讨会分为两个部分。第一个重点是数据整理，第二部分是数据总结。
 
@@ -312,7 +312,7 @@ head(large_ind_diffs)
 left_join(my_longer_data, large_ind_diffs, by = "ID")
 ```
 
-## 作业{-}
+### 作业{-}
 
 尝试通过使用 RStudio Desktop 编写你的第一个脚本来重现上面的内容。
 
@@ -322,11 +322,126 @@ left_join(my_longer_data, large_ind_diffs, by = "ID")
 
 一旦数据集被整理好，我们通常想要做的第一件事之一就是生成摘要统计数据。在这个研讨会中，我们将使用内置于 `tidyverse` 中的 `mpg` 数据集。这个数据集包含了许多不同制造商生产的汽车的信息（如发动机大小、燃油经济性等）。我们如何生成（例如）按汽车制造商分组的某个变量的平均值和标准偏差？请观看以下视频，我将引导你完成这个工作表。然后，我希望你通过在自己的机器上编写（并运行）脚本来完成内容。
 
-在继续之前，请记得为这节课设置一个 .Rproj 文件。在你的脚本中，你首先需要加载 tidyverse。
+在继续之前，请记得为这节课设置一个 .Rproj 文件。在你的脚本中，你首先需要加载 `tidyverse`。
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 rm(list=ls())
 ```
 
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
 ### 使用 `group_by()` 和 `summarise()` {-}
 
+我们将使用`group_by()`函数对数据集进行分组，然后使用`summarise()`函数计算`hwy`变量的均值和标准差。`summarise()`函数可以使用许多不同的函数来提供摘要统计信息。要了解更多不同选项，请在控制台窗口中键入`?summarise`。常用的函数包括`mean()`、`median()`和`sd()`。
+
+```{r message=FALSE, warning=FALSE}
+mpg %>%
+  group_by(manufacturer) %>%
+  summarise(mean_hwy = mean(hwy), sd_hwy = sd(hwy), number = n())
+```
+
+请注意，此输出当前按第一列 `manufacturer` 的字母顺序排列。如果我们想按高速公路平均燃油经济性从高到低的顺序排列呢？我们可以使用 `arrange()` 函数。
+
+### 使用`arrange()`重新排序输出 {-}
+
+```{r message=FALSE, warning=FALSE}
+mpg %>%
+  group_by(manufacturer) %>%
+  summarise(mean_hwy = mean(hwy), sd_hwy = sd(hwy), number = n()) %>%
+  arrange(mean_hwy)
+```
+
+emmmmmmmm，这不是我们想要的,这是从最低到最高的顺序，这是R的默认顺序。我们可以通过在参数前加上-符号来改变这一点。
+
+```{r message=FALSE, warning=FALSE}
+mpg %>%
+  group_by(manufacturer) %>%
+  summarise(mean_hwy = mean(hwy), sd_hwy = sd(hwy), number = n()) %>%
+  arrange(-mean_hwy)
+```
+
+这看起来更好了。
+
+### `summarise_at()` 的变体 {-}
+
+除了使用`summarise()`之外，您还可以使用相关的函数，例如`summarise_at()`。这是`summarise()`函数的作用范围版本，可以应用于多个列。请注意，在使用`summarise_at()`时，您需要用引号将要进行汇总的列括起来。您还需要提供汇总函数 - 在本例中为`mean`。最后，如果我们的数据集包含任何缺失值（由NA表示），我们将设置参数`na.rm = TRUE`。这将确保在应用操作之前移除缺失的数据点。如果我们有缺失的数据，但没有告诉R我们想要做什么，它会抛出一个错误。
+
+```{r message=FALSE, warning=FALSE}
+mpg %>% 
+  group_by(manufacturer) %>%
+  summarise_at(c("displ", "cty", "hwy"), mean, na.rm = TRUE)
+```
+
+### `summarise_if()` 的变体 {-}
+
+假设我们有一个非常庞大的数据集，并且希望总结所有特定类型的列。我们可以使用`summarise_if()`函数来计算每个汽车制造商的平均值，如下所示：
+
+```{r message=FALSE, warning=FALSE}
+mpg %>% 
+  group_by(manufacturer) %>%
+  summarise_if(is.numeric, mean, na.rm = TRUE)
+```
+
+在`summarise_if()`中的第一个参数是应用于每一列的逻辑测试 - 在这种情况下，如果一列是数值（即，一个数字） - 那么测试结果为TRUE，然后应用第二个函数`mean`。同样，我们告诉R忽略缺失的（`NA`）数据值，使用`na.rm = TRUE`参数。
+
+R函数在参数方面有所不同。我经常忘记它们,如果你开始输入一个函数名，你会在你输入的位置上方得到一个小气泡，提醒你需要哪些参数。如果你记不住细节，你可以在控制台中键入`help(function_name)`或`?function_name`来获取任何需要帮助的函数的帮助。使用R（或Python或任何其他语言）进行大量的数据分析通常需要大量的搜索。这是正常的。有些东西我永远记不住，总是不得不查一下！
+
+### 使用mutate()添加列 {-}
+
+我们可以使用`mutate()`函数像这样添加一个新的列，我称之为mean_hwy。
+
+```{r message=FALSE, warning=FALSE}
+mpg %>% 
+  group_by(manufacturer) %>%
+  mutate(mean_hwy = mean(hwy), sd_hwy = sd(hwy))
+```
+
+我们在这个页面上有太多的列要显示，所以我们可以通过稍微不同地使用`select()`函数来删除一些列。通过在`select()`中的列名前面加上-符号，我们最终删除了它。
+
+```{r message=FALSE, warning=FALSE}
+mpg %>% 
+  group_by(manufacturer) %>%
+  mutate(mean_hwy = mean(hwy), sd_hwy = sd(hwy)) %>%
+  select(-class, -trans)
+```
+
+请注意，这不会永久更改`mpg`数据集 - 除非我们将此代码的输出映射到新变量，否则不会保存更改。 下面我通过使用赋值运算符`<-`将其映射到我称为`mpg_with_mean`新变量来执行此操作。 请注意，我们在最后删除了分组，因为我们不希望分组规则保留在新的数据框中。
+
+```{r message=FALSE, warning=FALSE}
+mpg_with_mean <- mpg %>% 
+  group_by(manufacturer) %>%
+    mutate(mean_hwy = mean(hwy), sd_hyw = sd(hwy)) %>%
+  ungroup() %>%
+  select(-class, -trans) 
+```
+
+然后我们可以使用head()和str()检查这个新变量。
+
+```{r message=FALSE, warning=FALSE}
+head(mpg_with_mean)
+```
+
+```{r message=FALSE, warning=FALSE}
+str(mpg_with_mean)
+```
+
+### 作业 {-}
+
+`Tidyverse`还有许多其他内置数据集。 另一个是`starwars`数据集。 您可以通过输入`starwars`或输入`view(starwars)`来查看它。 第二个选项将在新窗口中打开数据集。 尝试一下吧。 计算出星球大战宇宙中人类的平均身高。 可能存在一些缺失数据（由`NA`指示）。 您可以在`summarise()`函数中使用`na.rm = TRUE`参数来在生成汇总统计信息时忽略这些值。
+
+过滤掉`NA`值的另一种方法是在管道中使用`filter()`函数。 函数`is.na()`返回逻辑值 `TRUE` 或 `FALSE`。 操作符`!` 表示 `NOT`，因此当高度值存在时，表达式`!is.na(height)`将返回 `TRUE`，如果不存在，则返回 `FALSE`。 通过将其与`filter()`相结合，我们得到了行`filter(!is.na(height))` ，它将仅过滤我们有高度数据的情况（即`!is.na(height)`为 `TRUE`）。 所以你的代码可能如下所示：
+
+```{r message=FALSE, warning=FALSE}
+starwars %>%
+  filter(!is.na(height)) %>%
+  filter(species == "Human") %>%
+  summarise(mean_height = mean(height))
+```
+
+将`summarise()`行中的单词`mean`替换为`median` 。 你还可以用什么其他东西来代替它？ 提示：在控制台中输入`?summarise` 。 您还可以从此数据集中提取哪些其他摘要信息？
+
+## 帮助我们改进本节课程 {.unnumbered}
+
+*此处应插入文本和反馈二维码或问卷链接*
