@@ -209,7 +209,7 @@ knitr::include_graphics("Pictures/codingmeme02.png")
 <iframe src="【在此输入视频地址Your First R Script】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
-安装软件包后，将以下代码键入新的 R 脚本中。脚本中的数据集可以在[这个链接](【插入链接】)中下载。按照视频中向展示的相同方式运行代码。您的可视化看起来和我的一样嘛？
+安装软件包后，将以下代码键入新的 R 脚本中。脚本中的数据集可以在[这个链接](https://cyouthchange.feishu.cn/file/UqWdb3XsXoKQ8dxLESScbFvlnu6?from=from_copylink)中下载。按照视频中向展示的相同方式运行代码。您的可视化看起来和我的一样嘛？
 
 ```{r YourFirstRScript, eval=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse) # 加载 tidyverse 包

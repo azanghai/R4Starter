@@ -24,7 +24,7 @@ library(emmeans) # Needed for pairwise comparisons
 
 ### 读取我们的数据 {-}
 
-现在我们要读入我们的数据。数据可以在[这里](插入链接)下载
+现在我们要读入我们的数据。数据可以在[这里](https://cyouthchange.feishu.cn/file/AsqEbfNwwob43NxQrpZclklnnlh?from=from_copylink)下载
 
 ```{r message=FALSE, warning=FALSE}
 my_data <- read_csv("Dataset/ancova_data.csv")

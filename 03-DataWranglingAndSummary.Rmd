@@ -157,7 +157,7 @@ mpg %>%
 
 #### 重新编码变量{-}
 
-在现实世界中，数据集（Data Frames）并不总是以整齐的格式到达我们的计算机。通常，您需要先进行一些数据整理，然后才能对它们进行任何有用的操作。我们将看一个示例，说明如何从杂乱的数据变为整洁的数据。使用的数据集可以在[这里下载](插入下载链接)
+在现实世界中，数据集（Data Frames）并不总是以整齐的格式到达我们的计算机。通常，您需要先进行一些数据整理，然后才能对它们进行任何有用的操作。我们将看一个示例，说明如何从杂乱的数据变为整洁的数据。使用的数据集可以在[这里下载](https://cyouthchange.feishu.cn/file/G7Y3b1PSioOnJNx3RVOcSt94nhg?from=from_copylink)
 
 ```{r message=FALSE, warning=FALSE, results='hide'}
 my_messy_data <- read_csv("Dataset/my_data.csv")
@@ -213,7 +213,7 @@ my_messy_data %>%
 
 ### pivot 函数{-}
 
-我们将在 R 中进行的大多数分析都要求数据处于整洁或长格式。在这样的数据集中，一行对应一个观测值。在现实世界中，数据很少处于适合分析的正确格式。在 R 中，`pivot_wider()` 和 `pivot_longer()` 函数被设计用来重塑我们的数据文件。首先，让我们加载一个处于宽格式的数据文件（即，每行有多个观测值）。它来自一个我们进行了四种条件（标记为 Condition1、Condition2、Condition3 和 Condition4）的实验。除了有四种条件的每一列之外，我们还有一列对应于参与者 ID。数据集中的每个单元格对应一个反应时间（以毫秒为单位）。
+我们将在 R 中进行的大多数分析都要求数据处于整洁或长格式。在这样的数据集中，一行对应一个观测值。在现实世界中，数据很少处于适合分析的正确格式。在 R 中，`pivot_wider()` 和 `pivot_longer()` 函数被设计用来重塑我们的数据文件。首先，让我们加载一个处于宽格式的数据文件（即，每行有多个观测值）。它来自一个我们进行了四种条件（标记为 Condition1、Condition2、Condition3 和 Condition4）的实验。除了有四种条件的每一列之外，我们还有一列对应于参与者 ID。数据集中的每个单元格对应一个反应时间（以毫秒为单位）。数据可以在[这里](https://cyouthchange.feishu.cn/file/LsEbbWqBQo7PhnxfAGAcX4lPn4d?from=from_copylink)下载
 
 ```{r}
 my_wide_data <- read_csv("Dataset/my_wide_data.csv")
@@ -268,7 +268,7 @@ head(my_wider_data)
 
 ### 合并两个数据集{-}
 
-有时你可能需要合并两个数据集。例如，你可能有一个包含阅读时间数据的数据集（就像上面那个）和另一个包含第一个数据集中参与者的个体差异测量的数据集。我们如何才能合并这两个数据集，以便最终得到一个既包括阅读时间数据又包括个体差异测量（我们可能稍后想要协变掉）的数据集？幸运的是，`dplyr` 包包含了许多连接函数，允许你将不同的tibbles连接在一起。首先，让我们加载包含个体差异测量的数据。该数据集可以在这里[下载](插入链接)
+有时你可能需要合并两个数据集。例如，你可能有一个包含阅读时间数据的数据集（就像上面那个）和另一个包含第一个数据集中参与者的个体差异测量的数据集。我们如何才能合并这两个数据集，以便最终得到一个既包括阅读时间数据又包括个体差异测量（我们可能稍后想要协变掉）的数据集？幸运的是，`dplyr` 包包含了许多连接函数，允许你将不同的tibbles连接在一起。首先，让我们加载包含个体差异测量的数据。该数据集可以在这里[下载](https://cyouthchange.feishu.cn/file/EpCXbHvv5oXvAbx7WH9c08SYnAc?from=from_copylink)
 
 ```{r message=FALSE, warning=FALSE}
 individual_diffs <- read_csv("Dataset/individual_diffs.csv")
@@ -296,7 +296,7 @@ combined_data
 
 #### 左合并{-}
 
-当然，你可能会想，我们可以简单地使用Excel对我们想要的列进行剪切和粘贴，从一个数据集转移到另一个数据集。但是，如果我们的个体差异文件包含了10,000个参与者的ID（以随机顺序排列），而我们只对在两个数据集匹配的情况下进行合并感兴趣呢？
+当然，你可能会想，我们可以简单地使用Excel对我们想要的列进行剪切和粘贴，从一个数据集转移到另一个数据集。但是，如果我们的个体差异文件包含了10,000个参与者的ID（以随机顺序排列），而我们只对在两个数据集匹配的情况下进行合并感兴趣呢？数据可以在[这里](https://cyouthchange.feishu.cn/file/HHySb9ZF7oFWLvxjYoJcfEQcngb?from=from_copylink)下载
 
 ```{r message=FALSE, warning=FALSE, results='hide'}
 large_ind_diffs <- read_csv("Dataset/large_ind_diffs.csv")

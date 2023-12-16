@@ -10,6 +10,8 @@
 <iframe src="【在此输入视频地址RegressionPart1】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
+Dataset1.csv可以在[这里]下载()
+
 ## 简单线性回归 {-}
 
 在观看了上面的视频之后，我希望你能够通过下面的一个简单线性回归的例子在R中进行实践。记得创建一个新的`.Rproj`文件来保持事物的有序。
@@ -30,7 +32,7 @@ library(performance)
 
 ### 导入数据 {-}
 
-导入名为crime_dataset.csv的数据集 - 这个数据集包含美国城市的人口数据、房价指数数据和犯罪数据。数据包可以点击[这里]()下载
+导入名为crime_dataset.csv的数据集 - 这个数据集包含美国城市的人口数据、房价指数数据和犯罪数据。数据包可以点击[这里](https://cyouthchange.feishu.cn/file/D23nbWestoCMW3xwlJzc0atcnvd?from=from_copylink)下载
 
 我们可以使用函数`head()`来显示我们名为“crime”的数据集的前几行。
 

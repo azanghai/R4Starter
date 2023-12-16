@@ -33,7 +33,7 @@ library(performance) # Needed to check model assumptions
 
 ### 导入数据 {-}
 
-现在您需要读取数据文件。数据文件可以点击[这里](插入链接)下载。
+现在您需要读取数据文件。数据文件可以点击[这里](https://cyouthchange.feishu.cn/file/Gln6bvsIXoj8nJxauEAcDd0Jnlf?from=from_copylink)下载。
 
 ```{r message=FALSE, warning=FALSE}
 MRes_tut2 <- read_csv("Dataset/MRes_tut2.csv")
