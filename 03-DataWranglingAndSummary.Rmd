@@ -11,7 +11,7 @@
 请观看以下视频，我将在其中引导您完成此工作表。然后我希望您通过在自己的计算机上编写（并运行）脚本来完成内容。
 
 <center>
-<iframe src="【在此输入视频地址-数据整理】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+<iframe src="//player.bilibili.com/player.html?aid=282326237&bvid=BV1zc41127sz&cid=1369827544&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
 ### 加载Tidyverse{-}
@@ -321,6 +321,10 @@ left_join(my_longer_data, large_ind_diffs, by = "ID")
 ### 概述{-}
 
 一旦数据集被整理好，我们通常想要做的第一件事之一就是生成摘要统计数据。在这个研讨会中，我们将使用内置于 `tidyverse` 中的 `mpg` 数据集。这个数据集包含了许多不同制造商生产的汽车的信息（如发动机大小、燃油经济性等）。我们如何生成（例如）按汽车制造商分组的某个变量的平均值和标准偏差？请观看以下视频，我将引导你完成这个工作表。然后，我希望你通过在自己的机器上编写（并运行）脚本来完成内容。
+
+<center>
+<iframe src="//player.bilibili.com/player.html?aid=537263993&bvid=BV1Zi4y1Y7ur&cid=1369827612&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+</center>
 
 在继续之前，请记得为这节课设置一个 .Rproj 文件。在你的脚本中，你首先需要加载 `tidyverse`。
 

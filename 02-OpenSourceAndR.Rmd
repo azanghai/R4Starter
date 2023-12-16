@@ -177,7 +177,7 @@ knitr::include_graphics("Pictures/codingmeme02.png")
 如果您使用的是 Chromebook，或拥有平板电脑，或者在计算机上安装 R 和 RStudio Desktop 时遇到困难，则可以使用[RStudio Cloud](https://rstudio.cloud/)在浏览器中运行 RStudio 环境。您需要注册，有一个免费计划可供您每月使用 RStudio Cloud 15 小时。**不过我们强烈建议您在本地安装R与RStudio Desktop**。
 
 <center>
-<iframe src="【在此输入视频地址Getting Started with R and RStudio Desktop】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+<iframe src="//player.bilibili.com/player.html?aid=409752958&bvid=BV13G411a7Ba&cid=1369827721&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
 
@@ -192,8 +192,9 @@ knitr::include_graphics("Pictures/codingmeme02.png")
 在下面的视频中，将讨论良好的编码风格。当您编写分析脚本时，确保您的代码能够被其他人和未来的您理解是很重要的。如果您尽早养成良好的编码风格的习惯，从长远来看，这将使事情变得更加容易 - 并且您会发现协作工作更容易，因为其他人会发现与您合作更容易。
 
 <center>
-<iframe src="【在此输入视频地址Good Coding Style】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+<iframe src="//player.bilibili.com/player.html?aid=749820373&bvid=BV16C4y1u7NM&cid=1369827582&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
+
 
 [您可以在此处查看](https://style.tidyverse.org/)有用的 Tidyverse 风格指南。
 
@@ -206,8 +207,9 @@ knitr::include_graphics("Pictures/codingmeme02.png")
 您现在将运行您的第一个 R 脚本。我们将使用多年来超过 80,000 次 UFO 目击事件的数据库创建美国 UFO 目击事件的三种可视化效果。在运行代码之前，您需要在计算机上安装两个软件包 - 它们是tidyverse和patchwork。
 
 <center>
-<iframe src="【在此输入视频地址Your First R Script】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+<iframe src="//player.bilibili.com/player.html?aid=324845913&bvid=BV1Yw411x7iG&cid=1369827565&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
+
 
 安装软件包后，将以下代码键入新的 R 脚本中。脚本中的数据集可以在[这个链接](https://cyouthchange.feishu.cn/file/UqWdb3XsXoKQ8dxLESScbFvlnu6?from=from_copylink)中下载。按照视频中向展示的相同方式运行代码。您的可视化看起来和我的一样嘛？
 

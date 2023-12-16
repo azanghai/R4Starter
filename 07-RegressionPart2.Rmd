@@ -7,7 +7,7 @@
 首先，我想让您观看以下视频，该视频是第一个回归工作坊的延续。我们将探讨如何使用R中的`lm()`函数构建具有多个预测变量的回归模型，测试我们的模型假设，并解释输出结果。我们将研究使用多个预测变量构建逐步回归模型的不同方法，最后讨论中介和调节。
 
 <center>
-<iframe src="【在此输入视频地址RegressionPart2】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+<iframe src="//player.bilibili.com/player.html?aid=537293021&bvid=BV1Mi4y1e7ar&cid=1369827819&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
 ## 多元回归 {-}

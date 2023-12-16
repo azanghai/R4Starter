@@ -6,10 +6,6 @@
 
 在本次研讨会中，我们将继续检验方差分析。 具体来说，我们将重点关注 ANCOVA（协方差分析），然后再探讨 AN(C)OVA 为何是回归的特殊情况以及如何在一般线性模型的背景下理解两者。
 
-<center>
-<iframe src="【在此输入视频地址ANOVAPart2】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
-</center>
-
 ## 建立我们的ANCOVA {-}
 
 ### 加载我们的包 {-}
