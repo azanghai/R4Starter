@@ -2,6 +2,8 @@ tab:unnamed-chunk-1
 fig:figure01
 fig:figure02
 fig:figure03
+我可以参加课程嘛
+联系我们
 在开始之前
 开源软件和r语言
 做好准备上手编写代码

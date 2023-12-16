@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 开源软件和R语言 | R语言入门</title>
+  <title>Chapter 6 R Markdown | R语言入门</title>
   <meta name="description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 开源软件和R语言 | R语言入门" />
+  <meta property="og:title" content="Chapter 6 R Markdown | R语言入门" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
   <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="github-repo" content="azanghai/R4Starter" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 开源软件和R语言 | R语言入门" />
+  <meta name="twitter:title" content="Chapter 6 R Markdown | R语言入门" />
   
   <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="twitter:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
@@ -23,15 +23,15 @@
 <meta name="author" content="文庭" />
 
 
-<meta name="date" content="2023-12-15" />
+<meta name="date" content="2023-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="在开始之前.html"/>
-<link rel="next" href="数据整理和总结.html"/>
+<link rel="prev" href="数据可视化.html"/>
+<link rel="next" href="普通线性模型---回归-第一部分.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -165,10 +165,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习形式"><i class="fa fa-check"></i>学习形式</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#关于r语言课程"><i class="fa fa-check"></i>关于R语言课程</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程是如何开展的"><i class="fa fa-check"></i>课程是如何开展的？</a></li>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#我可以参加课程嘛"><i class="fa fa-check"></i><b>0.1</b> 我可以参加课程嘛？</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>1</b> 在开始之前</a>
+<li class="chapter" data-level="1" data-path="联系我们.html"><a href="联系我们.html"><i class="fa fa-check"></i><b>1</b> 联系我们</a></li>
+<li class="chapter" data-level="2" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>2</b> 在开始之前</a>
 <ul>
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究和可重复性"><i class="fa fa-check"></i>开放研究和可重复性</a>
 <ul>
@@ -185,7 +188,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#总结"><i class="fa fa-check"></i>总结</a></li>
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#帮助我们改进本节课程"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>2</b> 开源软件和R语言</a>
+<li class="chapter" data-level="3" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>3</b> 开源软件和R语言</a>
 <ul>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件"><i class="fa fa-check"></i>开源软件</a>
 <ul>
@@ -202,7 +205,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#关于r的书籍"><i class="fa fa-check"></i>关于R的书籍</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#hadley-wickham"><i class="fa fa-check"></i>Hadley Wickham</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r语言被许多机构广泛使用"><i class="fa fa-check"></i>R语言被许多机构广泛使用</a></li>
-<li class="chapter" data-level="2.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>2.0.1</b> 做好准备！上手编写代码！</a></li>
+<li class="chapter" data-level="3.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>3.0.1</b> 做好准备！上手编写代码！</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#入门"><i class="fa fa-check"></i>入门</a>
 <ul>
@@ -211,7 +214,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始你的第一个脚本"><i class="fa fa-check"></i>开始你的第一个脚本</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#帮助我们改进本节课程-1"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>3</b> 数据整理和总结</a>
+<li class="chapter" data-level="4" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>4</b> 数据整理和总结</a>
 <ul>
 <li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据整理"><i class="fa fa-check"></i>数据整理</a>
 <ul>
@@ -240,7 +243,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#帮助我们改进本节课程-2"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<li class="chapter" data-level="5" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>5</b> 数据可视化</a>
 <ul>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#概述-3"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggplot2-的基础知识"><i class="fa fa-check"></i>ggplot2 的基础知识</a></li>
@@ -269,13 +272,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#附加资源"><i class="fa fa-check"></i>附加资源</a></li>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#帮助我们改进本节课程-3"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>5</b> R Markdown</a>
+<li class="chapter" data-level="6" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>6</b> R Markdown</a>
 <ul>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#概述-4"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#作业-3"><i class="fa fa-check"></i>作业</a></li>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#帮助我们改进本节课程-4"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>6</b> 普通线性模型 - 回归 第一部分</a>
+<li class="chapter" data-level="7" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第一部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#概述-5"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#简单线性回归"><i class="fa fa-check"></i>简单线性回归</a>
@@ -292,7 +295,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#帮助我们改进本节课程-5"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第二部分</a>
+<li class="chapter" data-level="8" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>8</b> 普通线性模型 - 回归 第二部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#概述-6"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#多元回归"><i class="fa fa-check"></i>多元回归</a>
@@ -317,7 +320,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#帮助我们改进本节课程-6"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>8</b> 一般线性模型 - 方差分析第 1 部分</a>
+<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 1 部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#概述-7"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#参与者之间的方差分析between-participants-anova"><i class="fa fa-check"></i>参与者之间的方差分析（Between Participants ANOVA）</a>
@@ -360,7 +363,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#帮助我们改进本节课程-7"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 2 部分</a>
+<li class="chapter" data-level="10" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>10</b> 一般线性模型 - 方差分析第 2 部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#概述-8"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的ancova"><i class="fa fa-check"></i>建立我们的ANCOVA</a>
@@ -402,276 +405,39 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="开源软件和r语言" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> 开源软件和R语言<a href="开源软件和r语言.html#开源软件和r语言" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="开源软件" class="section level2 unnumbered hasAnchor">
-<h2>开源软件<a href="开源软件和r语言.html#开源软件" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="概述" class="section level3 unnumbered hasAnchor">
-<h3>概述<a href="开源软件和r语言.html#概述" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>如果您想进行开放且可重复的研究，您应该在工作流程中使用开源软件。使用专有软件进行的研究不能轻易被其他人复制。</p>
-<p>开源软件是被许可可以自由修改、重新混合和改进的软件。它通常是免费使用的，并以开放交流、协作参与、快速原型制作、透明度、精英管理和面向社区的开发等原则为中心。开源运动始于 20 世纪 80 年代初，部分原因是<a href="https://medium.com/@amogh/the-story-of-open-source-so-far-bfcb685d85a4">打印机</a>的出现，并在该十年以<a href="https://en.wikipedia.org/wiki/Richard_Stallman">Richard Stallman</a>建立的<a href="https://en.wikipedia.org/wiki/Free_Software_Foundation">自由软件基金会</a>的形式进一步发展。20 世纪 90 年代末，<a href="https://opensource.org/">开源倡议</a>发起，旨在提高人们对开源软件的认识和采用，并在开源实践社区之间架起桥梁。</p>
-<p>开源软件由许多人制作，并在符合 OSD 的许可证下分发，该许可证授予以修改和未修改的形式使用、研究、更改和共享该软件的所有权利。软件自由对于实现开源软件的社区开发至关重要。</p>
-<p>有大量可用的开源软件 - 您会发现其中一些不仅在本单元的背景下有用，而且在您如何学习以及如何进行研究的背景下也很有用。</p>
-<p><a href="https://youtu.be/SpeDK1TPbew">这里是一个有趣的 CNBC 视频（Youtube平台）</a>，讨论了开源软件的兴起 - 它最后提到需要以开放的方式合作应对环境、癌症和阿尔茨海默病等全球挑战。</p>
-</div>
-<div id="统计与科学计算" class="section level3 unnumbered hasAnchor">
-<h3>统计与科学计算<a href="开源软件和r语言.html#统计与科学计算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="r-与-rstudio-desktop" class="section level4 unnumbered hasAnchor">
-<h4>R 与 RStudio Desktop<a href="开源软件和r语言.html#r-与-rstudio-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>不言而喻，R 和 RStudio Desktop 是与本课程相关的开源软件的两个最明显的示例。就用于数据分析和统计建模的其他开源语言而言，您可能还对 Python 和 Julia 感兴趣。</p>
+<div id="r-markdown" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> R Markdown<a href="r-markdown.html#r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>在本次研讨会中，我将向您展示如何使用 R Markdown 生成 <code>.html</code> 格式的报告。 使用 R Markdown 编写的报告允许您将编写的叙述与 R 代码块以及与这些代码块相关的输出全部合并到一个knitted文档中。 本单元的作业需要使用 R Markdown 生成。</p>
+<div id="概述-4" class="section level2 unnumbered hasAnchor">
+<h2>概述<a href="r-markdown.html#概述-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在这个研讨会中，我们将简要介绍如何使用R Markdown生成包含叙述、代码和代码输出的报告。</p>
+<p>在下面的视频中，我将简要介绍如何将您编写的R脚本转换为R Markdown文档，您可以将其“编织”并与他人共享。</p>
 <center>
-<a href="https://www.r-project.org"><img src="Pictures/r_logo.jpeg" style="width:15.0%" alt="R logo" /></a>            <a href="https://www.r-project.org"><img src="Pictures/RStudio-Logo-Flat.png" style="width:25.0%" alt="RStudio logo" /></a>
-</center>
-</div>
-<div id="python" class="section level4 unnumbered hasAnchor">
-<h4>Python<a href="开源软件和r语言.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>虽然 R 往往是对数据整理、数据可视化和统计建模感兴趣的人的首选语言，但从更通用的意义上来说，Python 可以说是”更好”的语言。Python 被机器学习社区广泛使用（仅举例）。</p>
-<center>
-<a href="https://www.python.org"><img src="Pictures/python-logo-master-v3-TM.png" style="width:25.0%" alt="Python logo" /></a>
-</center>
-</div>
-<div id="octave" class="section level4 unnumbered hasAnchor">
-<h4>Octave<a href="开源软件和r语言.html#octave" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>您可能听说过甚至使用过 MATLAB 进行数值计算。有一个开源的等效项，称为GNU Octave，您可能有兴趣查看一下。</p>
-<center>
-<a href="https://www.gnu.org/software/octave/"><img src="Pictures/gnuoctave.jpg" style="width:25.0%" alt="Octave logo" /></a>
-</center>
-</div>
-<div id="文档创建" class="section level4 unnumbered hasAnchor">
-<h4>文档创建<a href="开源软件和r语言.html#文档创建" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>到目前为止，您可能主要使用 Microsoft Word 来编写文档。<a href="https://www.libreoffice.org/">LibreOffice</a>是一个与 Microsoft Office 套件相当的优秀开源软件，提供了大量用于文档编写、处理电子表格和创建演示文稿的应用程序。</p>
-<center>
-<a href="https://www.libreoffice.org/"><img src="Pictures/LibreOffice-6.4.png" style="width:25.0%" alt="LibreOffice logo" /></a>
-</center>
-<p>如果您有兴趣使用<a href="https://www.markdownguide.org/">Markdown</a>进行写作（这确实很容易掌握），您可能会对使用<a href="https://opensource.com/article/19/7/enable-collaboration-hackmd">HackMD</a>感兴趣。HackMD 是一款 Markdown 编辑器，可让您与他人一起编写协作文档和演示文稿。</p>
-<center>
-<a href="https://opensource.com/article/19/7/enable-collaboration-hackmd"><img src="Pictures/hack_md.png" style="width:25.0%" alt="HackMD logo" /></a>
-</center>
-</div>
-<div id="构建实验" class="section level4 unnumbered hasAnchor">
-<h4>构建实验<a href="开源软件和r语言.html#构建实验" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://www.psychopy.org/">PsychoPy</a>提供了一个出色的开源解决方案来构建收集人类数据的实验，并且通过配套托管网站<a href="https://pavlovia.org/">Pavlovia</a>提供了一种易于使用的方法来在线运行 PsychoPy 实验。PsychoPy 已经存在很多年了，并且有许多预先构建的实验模板，您可以根据需要进行调整。<a href="https://link.springer.com/article/10.3758/s13428-018-01193-y">这里</a>有一个很好的参考资料描述了 PsychoPy 环境。</p>
-<center>
-<a href="https://www.psychopy.org"><img src="Pictures/psychopyLogoOnlineStrap_h480.png" style="width:25.0%" alt="PsychPy logo" /></a>            <a href="https://pavlovia.org"><img src="Pictures/pavlovia.png" style="width:25.0%" alt="Pavlovia logo" /></a>
-</center>
-</div>
-<div id="linux" class="section level4 unnumbered hasAnchor">
-<h4>Linux<a href="开源软件和r语言.html#linux" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Linux 操作系统是使用最广泛的开源软件之一。您可以选择使用<a href="https://www.linux.org/">Linux</a>来运行计算机，而不是在 Windows 或 Mac OS 上运行计算机。Linux 运行着世界上大多数互联网服务器，并且在学术环境中变得越来越流行。Linux 指的是一堆开源的类 Unix 操作系统。它由<a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a>于 1991 年开发并发布。</p>
-<center>
-<a href="https://www.linux.org/"><img src="Pictures/linux.jpg" style="width:25.0%" alt="Linux logo" /></a>
-</center>
-<p>一些最流行的 Linux 发行版是<a href="https://ubuntu.com/">Ubuntu</a>（我目前使用的<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>）、<a href="https://getfedora.org/en/workstation/download/">Fedora</a>和<a href="https://www.debian.org/">Debian</a>。如果您真的想进入计算方面的研究，那么探索 Linux 的世界就很重要。</p>
-<center>
-<a href="https://ubuntu.com"><img src="Pictures/ubuntu-logo112.png" style="width:20.0%" alt="Ubuntu logo" /></a><a href="(https://getfedora.org/en/workstation/download/)"><img src="Pictures/Fedora-Logo.jpg" style="width:25.0%" alt="Fedora logo" /></a><a href="https://www.debian.org"><img src="Pictures/openlogo.ps.jpg" style="width:15.0%" alt="Debian logo" /></a>
-</center>
-</div>
-<div id="更多开源软件" class="section level4 unnumbered hasAnchor">
-<h4>更多开源软件<a href="开源软件和r语言.html#更多开源软件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>如果您对开源软件的其他示例感兴趣，您可能有兴趣查看<a href="https://www.techradar.com/uk/best/best-open-source-software">Tech Radar</a> 网站上的开源替代品列表。</p>
-<center>
-<a href="https://www.techradar.com/uk/best/best-open-source-software"><img src="Pictures/oss.png" style="width:75.0%" alt="open source software logo" /></a>
-</center>
-</div>
-</div>
-</div>
-<div id="开始使用-r-和-rstudio-desktop" class="section level2 unnumbered hasAnchor">
-<h2>开始使用 R 和 RStudio Desktop<a href="开源软件和r语言.html#开始使用-r-和-rstudio-desktop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>在下面的内容中，将向介绍R语言和RStudio Desktop，这是一种集成开发环境 (IDE)，您将使用它来编写可重复的代码，涉及数据的整理、可视化、摘要和统计建模。R 和 RStudio Desktop 都是开源软件的示例。开源是进行可重复研究的关键，因为开源软件是免费的并向所有人开放。</p>
-<p>在下面的内容中，将介绍 R 并讨论在我们的研究分析工作流程中采用此类工具的重要性。</p>
-<div id="为什么是r" class="section level3 unnumbered hasAnchor">
-<h3>为什么是R？<a href="开源软件和r语言.html#为什么是r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p>R语言允许您进行可重复的研究和构建可重复的工作流程。R的统计包反映了统计学和数据科学领域的最新进展。</p></li>
-<li><p>R中有很多令人惊叹的数据可视化包。</p></li>
-<li><p>在许多机构中，下一代学者（硕士和博士学生、博士后等）正在他们的培训中学习R语言技能。</p></li>
-<li><p>R编程技能在工业界、ONS、NHS、公务员<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>等领域非常受欢迎。</p></li>
-</ul>
-</div>
-<div id="开源软件-1" class="section level3 unnumbered hasAnchor">
-<h3>开源软件<a href="开源软件和r语言.html#开源软件-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p><a href="https://opensource.org/history">开源软件</a>是免费的，由社区（包括您在内！）建立、维护、修改和改进的——查看其许可证以获取完整详情。</p></li>
-<li><p>您可以自由使用开源软件，因此不再被需要付费的专有软件（例如SPSS）所束缚。</p></li>
-<li><p>开源软件得到了大型公司的支持——例如，Linux得到了包括谷歌、微软、英特尔、三星等在内的Linux基金会的支持。在过去几十年中，开源在公共和私营部门广泛使用，并对计算产生了巨大影响。</p></li>
-</ul>
-</div>
-<div id="选择合适的软件做合适的工作" class="section level3 unnumbered hasAnchor">
-<h3>选择合适的软件做合适的工作<a href="开源软件和r语言.html#选择合适的软件做合适的工作" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>如果您希望您的研究开放且可重复，不应使用专有（封闭）软件，如Excel、SPSS、GraphPad、MATLAB等。更好的选择是使用开源软件，如R、Octave、Python、Julia等。</p>
-<p>您需要使整个分析流程可重复——从数据导入、数据整理、可视化、统计建模到报告生成。编写代码！</p>
-<p>当您想与其他地方或另一个实验室（拥有不同基础设施）的同事共享研究流程分析时会发生什么？</p>
-<p><strong>“在我的机器上有效！”</strong>——但如果在您的合作者的机器上（或您的新机器上）不起作用，那就不好了。</p>
-</div>
-<div id="开源与闭源软件" class="section level3 unnumbered hasAnchor">
-<h3>开源与闭源软件<a href="开源软件和r语言.html#开源与闭源软件" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>开源软件使您的数据处理、整理、可视化建模等过程具有透明性和可重复性。</p>
-<p>它允许其他人发现并纠正错误…</p>
-<center>
-<a href="https://arstechnica.com/information-technology/2019/10/chemists-discover-cross-platform-python-scripts-not-so-cross-platform/"><img src="Pictures/find_python_bug.png" style="width:75.0%" alt="Find Python Bug" /></a>
-</center>
-<p>同时，闭源软件可能有一些风险：</p>
-<center>
-<img src="Pictures/RiskForClosedSourceSoftware01.png" style="width:75.0%" alt="Excel Bug" /> <img src="Pictures/RiskForClosedSourceSoftware02.png" style="width:75.0%" alt="Excel Bug2" />
-</center>
-</div>
-<div id="r-vs.-spss" class="section level3 unnumbered hasAnchor">
-<h3>R vs. SPSS<a href="开源软件和r语言.html#r-vs.-spss" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>下面这段话风趣地对比了R与SPSS</p>
-<blockquote>
-<p>“SPSS就像一辆公交车——对标准事物来说使用起来很容易，但如果你想做一些没有预先编程的事情，就会非常沮丧。</p>
-</blockquote>
-<blockquote>
-<p>R就像一辆带着自行车在后面，皮划艇在顶上，好的步行和跑鞋在副驾驶座位上，以及山地攀登和洞穴探险装备在后备箱的四轮驱动越野车。</p>
-</blockquote>
-<blockquote>
-<p>如果你愿意花时间学习如何使用这些设备，R可以带你去任何你想去的地方，但这需要的时间会比学习SPSS的公交站点要长。”</p>
-</blockquote>
-<p>Greg Snow, 2010, stackoverflow.com</p>
-<p><img src="Pictures/RSPSSMeme.png" width="75%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="关于r的书籍" class="section level3 unnumbered hasAnchor">
-<h3>关于R的书籍<a href="开源软件和r语言.html#关于r的书籍" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="http://r4ds.had.co.nz"><strong><em>《R for Data Science》</em></strong></a> 这本书还有<a href="https://r4ds.hadley.nz/">第二版</a>，但是目前官方尚未翻译为中文。值得注意的是，该书的中文翻译版由国内出版商发行，并未开源获取。</p>
-<p><a href="https://adv-r.hadley.nz/"><strong><em>《Advanced R》</em></strong></a></p>
-</div>
-<div id="hadley-wickham" class="section level3 unnumbered hasAnchor">
-<h3>Hadley Wickham<a href="开源软件和r语言.html#hadley-wickham" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>“彻底变革了R语言的人”</p>
-<p>RStudio的首席科学家，关键R包的（主要）作者，包括ggplot2、tidyr、dplyr——这些都是tidyverse的组成部分。</p>
-<p><img src="Pictures/Hadley%20Wickham.png" width="75%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="r语言被许多机构广泛使用" class="section level3 unnumbered hasAnchor">
-<h3>R语言被许多机构广泛使用<a href="开源软件和r语言.html#r语言被许多机构广泛使用" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>可以查看<a href="https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535">这个例子</a>，这个例子描述了BBC的数据新闻团队是如何使用R语言进行绘图的。大家亦可作为参考。</p>
-</div>
-<div id="做好准备上手编写代码" class="section level3 hasAnchor" number="2.0.1">
-<h3><span class="header-section-number">2.0.1</span> 做好准备！上手编写代码！<a href="开源软件和r语言.html#做好准备上手编写代码" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>做好准备，我们即将开始编写代码。不用担心，学习R是一趟旅途，总会有起伏，但是我们会从不同的角度帮助你思考问题从而将一个个大问题分解为更小的问题，使你可以独立解决他们。如果你之前从未接触过编程语言或者撰写过任何代码，也无需担心。本课程所讲述的所有内容均提前假设参加者没有任何的编码经验。</p>
-<p><img src="Pictures/codingmeme01.png" width="75%" style="display: block; margin: auto;" /></p>
-<p>同样的，在编写代码时，我们会经历不同的困难，并且很可能一直在下面两种状态中转换，这是正常的请不用担心，随着练习的增多，你会逐渐趋于熟练并迎接新的挑战。</p>
-<p><img src="Pictures/codingmeme02.png" width="75%" style="display: block; margin: auto;" /></p>
-<p><a href="https://rstudio.com/resources/rstudioconf-2020/open-source-software-for-data-science/">这里</a>是 RStudio（和其他组织）的企业家兼创始人 JJ Allaire 的精彩演讲视频。该视频来自 rstudio::conf 2020，其中 JJ 讲述了他从成为一名政治科学家的历程、他如何参与 R 以及开源在可复制数据科学背景下的重要性。如果感兴趣，您可能想观看 RStudio 网站上的其他一些视频。</p>
-</div>
-</div>
-<div id="入门" class="section level2 unnumbered hasAnchor">
-<h2>入门<a href="开源软件和r语言.html#入门" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>接下来将展示如何安装 R（语言）和 RStudio Desktop（用于使用该语言的 IDE）。您可以从<a href="https://www.stats.bris.ac.uk/R/">此处</a>下载适用于各种平台的 R，包括 Mac OS、Windows 和 Ubuntu。要下载免费的 RStudio Desktop，只需转到<a href="https://rstudio.com/products/rstudio/download/">此处</a>。</p>
-<p>如果您遇到了网络访问问题，也可以通过这个飞书链接下载我们预下载的<a href="">Windows版本的R</a>和<a href="">MacOs版本的R</a>，以及<a href="">Windows版本的RStudio Desktop</a>和<a href="">MacOs版本的RStudio Desktop</a>。</p>
-<p>如果您使用的是 Chromebook，或拥有平板电脑，或者在计算机上安装 R 和 RStudio Desktop 时遇到困难，则可以使用<a href="https://rstudio.cloud/">RStudio Cloud</a>在浏览器中运行 RStudio 环境。您需要注册，有一个免费计划可供您每月使用 RStudio Cloud 15 小时。<strong>不过我们强烈建议您在本地安装R与RStudio Desktop</strong>。</p>
-<center>
-<iframe src="【在此输入视频地址Getting Started with R and RStudio Desktop】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+<iframe src="【在此输入视频地址RMarkdown】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
 </iframe>
 </center>
-<center>
-<iframe src="//player.bilibili.com/player.html?aid=664017349&amp;bvid=BV19a4y1d7fq&amp;cid=1349316930&amp;p=1&amp;autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
-</iframe>
-</center>
-<div id="好的编码风格" class="section level3 unnumbered hasAnchor">
-<h3>好的编码风格<a href="开源软件和r语言.html#好的编码风格" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>在下面的视频中，将讨论良好的编码风格。当您编写分析脚本时，确保您的代码能够被其他人和未来的您理解是很重要的。如果您尽早养成良好的编码风格的习惯，从长远来看，这将使事情变得更加容易 - 并且您会发现协作工作更容易，因为其他人会发现与您合作更容易。</p>
-<center>
-<iframe src="【在此输入视频地址Good Coding Style】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
-</iframe>
-</center>
-<p><a href="https://style.tidyverse.org/">您可以在此处查看</a>有用的 Tidyverse 风格指南。</p>
-<p>如果您想让您的代码和数据开放（您确实应该这样做，除非有充分的理由不这样做），那么正确许可它以允许其他人（重新）使用和重新混合它非常重要。对于我自己的工作，我倾向于使用尽可能宽松的许可证。我的“首选”许可证是<a href="https://opensource.org/licenses/MIT">MIT许可证</a>和<a href="https://creativecommons.org/licenses/by/4.0/">知识共享许可证 CC-BY 4.0</a>。</p>
-<p>如果您需要帮助为自己的作品选择正确的许可证，您可以使用这个<a href="https://choosealicense.com/">方便的指南</a>。</p>
+<p>有很多资源可帮助您探索 R Markdown 的各种可能性。一个很好的起点是 Yihui Xie、J. J. Allaire 和 Garrett Grolemund 的《R Markdown: The Definitive Guide》。只需点击<a href="https://bookdown.org/yihui/rmarkdown/">这个链接</a>即可进入该书的在线版本。</p>
+<p>您可能还对 Yihui Xie、Christophe Dervieux 和 Emily Riederer 的“R Markdown Cookbook”感兴趣。再次，只需点击<a href="https://bookdown.org/yihui/rmarkdown-cookbook/">这个链接</a>即可进入该书的在线版本。</p>
 </div>
+<div id="作业-3" class="section level2 unnumbered hasAnchor">
+<h2>作业<a href="r-markdown.html#作业-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>拿出你已经写好的脚本之一 - 也许是你开发的可视化脚本之一 - 并使用它创建一个 R Markdown 文档。将你的脚本代码添加到一个新的 R Markdown 文档中，以有意义的小代码块的形式（每个代码块可能只有几行代码） - 你可能有一个代码块来加载你的库，一个代码块来读取你的数据，另一个代码块用于整理你的数据，然后为你编写的每个可视化部分分别创建代码块。在每个小代码块之前，添加一些解释以下代码块的叙述。调整每个代码块开头的消息和警告参数，以便警告和消息不会显示在最终生成的 R Markdown <code>.html</code>文件中。</p>
+<p>记住，当你编写一个 R Markdown 文档时，它是在它自己的 R 会话中工作的，因此无法访问你编写 R Markdown 文档所在的主要 R 会话中的任何内容。这意味着你的 R Markdown 必须在文档内部加载所需的库并读取数据。</p>
+<p>这个单元中的所有内容都是用R Markdown编写的 - 所以如果你想看看我是如何做到的，你可以点击<a href="https://github.com/azanghai/R4Starter">这个</a>链接，然后查看相关GitHub仓库上脚本文件夹中的.Rmd文件。</p>
 </div>
-<div id="开始你的第一个脚本" class="section level2 unnumbered hasAnchor">
-<h2>开始你的第一个脚本<a href="开源软件和r语言.html#开始你的第一个脚本" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>您现在将运行您的第一个 R 脚本。我们将使用多年来超过 80,000 次 UFO 目击事件的数据库创建美国 UFO 目击事件的三种可视化效果。在运行代码之前，您需要在计算机上安装两个软件包 - 它们是tidyverse和patchwork。</p>
-<center>
-<iframe src="【在此输入视频地址Your First R Script】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
-</iframe>
-</center>
-<p>安装软件包后，将以下代码键入新的 R 脚本中。脚本中的数据集可以在<a href="【插入链接】">这个链接</a>中下载。按照视频中向展示的相同方式运行代码。您的可视化看起来和我的一样嘛？</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="开源软件和r语言.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># 加载 tidyverse 包</span></span>
-<span id="cb1-2"><a href="开源软件和r语言.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(patchwork) <span class="co"># 使用这个包将图拼接在一起</span></span>
-<span id="cb1-3"><a href="开源软件和r语言.html#cb1-3" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="开源软件和r语言.html#cb1-4" tabindex="-1"></a><span class="co"># 读取数据，在这里，我将数据存储在了Datasets文件夹下。 </span></span>
-<span id="cb1-5"><a href="开源软件和r语言.html#cb1-5" tabindex="-1"></a>ufo_sightings <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Datasets/ufo_sightings.csv&quot;</span>)</span>
-<span id="cb1-6"><a href="开源软件和r语言.html#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="开源软件和r语言.html#cb1-7" tabindex="-1"></a><span class="co"># 作图：美国前 10 个州的目击事件数量</span></span>
-<span id="cb1-8"><a href="开源软件和r语言.html#cb1-8" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> ufo_sightings <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="开源软件和r语言.html#cb1-9" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(state)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-10"><a href="开源软件和r语言.html#cb1-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">str_to_upper</span>(state)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a href="开源软件和r语言.html#cb1-11" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="开源软件和r语言.html#cb1-12" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-13"><a href="开源软件和r语言.html#cb1-13" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-14"><a href="开源软件和r语言.html#cb1-14" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(state, n), <span class="at">y =</span> n, <span class="at">fill =</span> state)) <span class="sc">+</span></span>
-<span id="cb1-15"><a href="开源软件和r语言.html#cb1-15" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb1-16"><a href="开源软件和r语言.html#cb1-16" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb1-17"><a href="开源软件和r语言.html#cb1-17" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb1-18"><a href="开源软件和r语言.html#cb1-18" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Top 10 States for UFO Sightings&quot;</span>,</span>
-<span id="cb1-19"><a href="开源软件和r语言.html#cb1-19" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, </span>
-<span id="cb1-20"><a href="开源软件和r语言.html#cb1-20" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb1-21"><a href="开源软件和r语言.html#cb1-21" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">11000</span>) <span class="sc">+</span></span>
-<span id="cb1-22"><a href="开源软件和r语言.html#cb1-22" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-23"><a href="开源软件和r语言.html#cb1-23" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>))</span>
-<span id="cb1-24"><a href="开源软件和r语言.html#cb1-24" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="开源软件和r语言.html#cb1-25" tabindex="-1"></a><span class="co"># 计算出纬度和经度范围内的州（即排除阿拉斯加）</span></span>
-<span id="cb1-26"><a href="开源软件和r语言.html#cb1-26" tabindex="-1"></a>tidied_ufo <span class="ot">&lt;-</span> ufo_sightings <span class="sc">%&gt;%</span></span>
-<span id="cb1-27"><a href="开源软件和r语言.html#cb1-27" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;us&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-28"><a href="开源软件和r语言.html#cb1-28" tabindex="-1"></a>  <span class="fu">filter</span>(latitude <span class="sc">&gt;</span> <span class="dv">24</span> <span class="sc">&amp;</span> latitude <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
-<span id="cb1-29"><a href="开源软件和r语言.html#cb1-29" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="开源软件和r语言.html#cb1-30" tabindex="-1"></a><span class="co"># 在美国地图上绘制所有目击事件</span></span>
-<span id="cb1-31"><a href="开源软件和r语言.html#cb1-31" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> tidied_ufo <span class="sc">%&gt;%</span></span>
-<span id="cb1-32"><a href="开源软件和r语言.html#cb1-32" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> longitude, <span class="at">y =</span> latitude)) <span class="sc">+</span> </span>
-<span id="cb1-33"><a href="开源软件和r语言.html#cb1-33" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
-<span id="cb1-34"><a href="开源软件和r语言.html#cb1-34" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb1-35"><a href="开源软件和r语言.html#cb1-35" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>() <span class="sc">+</span></span>
-<span id="cb1-36"><a href="开源软件和r语言.html#cb1-36" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Sites of UFO Sightings in the US&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1-37"><a href="开源软件和r语言.html#cb1-37" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>))</span>
-<span id="cb1-38"><a href="开源软件和r语言.html#cb1-38" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="开源软件和r语言.html#cb1-39" tabindex="-1"></a><span class="co"># 作图：加利福尼亚州发现的十大 UFO 形状图</span></span>
-<span id="cb1-40"><a href="开源软件和r语言.html#cb1-40" tabindex="-1"></a>plot3 <span class="ot">&lt;-</span> tidied_ufo <span class="sc">%&gt;%</span></span>
-<span id="cb1-41"><a href="开源软件和r语言.html#cb1-41" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;ca&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-42"><a href="开源软件和r语言.html#cb1-42" tabindex="-1"></a>  <span class="fu">filter</span>(ufo_shape <span class="sc">!=</span> <span class="st">&quot;other&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-43"><a href="开源软件和r语言.html#cb1-43" tabindex="-1"></a>  <span class="fu">filter</span>(ufo_shape <span class="sc">!=</span> <span class="st">&quot;unknown&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-44"><a href="开源软件和r语言.html#cb1-44" tabindex="-1"></a>  <span class="fu">group_by</span>(ufo_shape) <span class="sc">%&gt;%</span></span>
-<span id="cb1-45"><a href="开源软件和r语言.html#cb1-45" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-46"><a href="开源软件和r语言.html#cb1-46" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-47"><a href="开源软件和r语言.html#cb1-47" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ufo_shape =</span> <span class="fu">str_to_title</span>(ufo_shape)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-48"><a href="开源软件和r语言.html#cb1-48" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(ufo_shape, n), <span class="at">y =</span> n, <span class="at">fill =</span> ufo_shape)) <span class="sc">+</span></span>
-<span id="cb1-49"><a href="开源软件和r语言.html#cb1-49" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb1-50"><a href="开源软件和r语言.html#cb1-50" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb1-51"><a href="开源软件和r语言.html#cb1-51" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb1-52"><a href="开源软件和r语言.html#cb1-52" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Top 10 UFO Shapes spotted in California&quot;</span>,</span>
-<span id="cb1-53"><a href="开源软件和r语言.html#cb1-53" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, </span>
-<span id="cb1-54"><a href="开源软件和r语言.html#cb1-54" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb1-55"><a href="开源软件和r语言.html#cb1-55" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-56"><a href="开源软件和r语言.html#cb1-56" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>))</span>
-<span id="cb1-57"><a href="开源软件和r语言.html#cb1-57" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="开源软件和r语言.html#cb1-58" tabindex="-1"></a><span class="co"># 将图拼接在一起</span></span>
-<span id="cb1-59"><a href="开源软件和r语言.html#cb1-59" tabindex="-1"></a>my_plot <span class="ot">&lt;-</span> (plot1 <span class="sc">+</span> plot3) <span class="sc">/</span> (plot2)</span>
-<span id="cb1-60"><a href="开源软件和r语言.html#cb1-60" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="开源软件和r语言.html#cb1-61" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;ufo_plot.jpg&quot;</span>, <span class="at">plot =</span> my_plot, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">10</span>)</span></code></pre></div>
-<center>
-<span width="100%"><img src="Pictures/ufo_plot.jpg" alt="UFO visualisation" /></span>
-</center>
-</div>
-<div id="帮助我们改进本节课程-1" class="section level2 unnumbered hasAnchor">
-<h2>帮助我们改进本节课程<a href="开源软件和r语言.html#帮助我们改进本节课程-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="帮助我们改进本节课程-4" class="section level2 unnumbered hasAnchor">
+<h2>帮助我们改进本节课程<a href="r-markdown.html#帮助我们改进本节课程-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>此处应插入文本和反馈二维码或问卷链接</em></p>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>笔者注：这里指原文的作者Prof. Andrew Stewart。可以看得出他确实是一名开源软件的爱好者，当在课上谈起Linux时，他讲了许多并十分推荐我们尝试Linux，并且眼睛似乎都在放光<a href="开源软件和r语言.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>笔者注：这里指英国公务员<a href="开源软件和r语言.html#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="在开始之前.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="数据整理和总结.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="数据可视化.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="普通线性模型---回归-第一部分.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -702,7 +468,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-OpenSourceAndR.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-RMarkdown.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 普通线性模型 - 回归 第一部分 | R语言入门</title>
+  <title>Chapter 8 普通线性模型 - 回归 第二部分 | R语言入门</title>
   <meta name="description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 普通线性模型 - 回归 第一部分 | R语言入门" />
+  <meta property="og:title" content="Chapter 8 普通线性模型 - 回归 第二部分 | R语言入门" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
   <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="github-repo" content="azanghai/R4Starter" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 普通线性模型 - 回归 第一部分 | R语言入门" />
+  <meta name="twitter:title" content="Chapter 8 普通线性模型 - 回归 第二部分 | R语言入门" />
   
   <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="twitter:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
@@ -23,15 +23,15 @@
 <meta name="author" content="文庭" />
 
 
-<meta name="date" content="2023-12-15" />
+<meta name="date" content="2023-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-markdown.html"/>
-<link rel="next" href="普通线性模型---回归-第二部分.html"/>
+<link rel="prev" href="普通线性模型---回归-第一部分.html"/>
+<link rel="next" href="一般线性模型---方差分析第-1-部分.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -165,10 +165,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习形式"><i class="fa fa-check"></i>学习形式</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#关于r语言课程"><i class="fa fa-check"></i>关于R语言课程</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程是如何开展的"><i class="fa fa-check"></i>课程是如何开展的？</a></li>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#我可以参加课程嘛"><i class="fa fa-check"></i><b>0.1</b> 我可以参加课程嘛？</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>1</b> 在开始之前</a>
+<li class="chapter" data-level="1" data-path="联系我们.html"><a href="联系我们.html"><i class="fa fa-check"></i><b>1</b> 联系我们</a></li>
+<li class="chapter" data-level="2" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>2</b> 在开始之前</a>
 <ul>
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究和可重复性"><i class="fa fa-check"></i>开放研究和可重复性</a>
 <ul>
@@ -185,7 +188,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#总结"><i class="fa fa-check"></i>总结</a></li>
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#帮助我们改进本节课程"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>2</b> 开源软件和R语言</a>
+<li class="chapter" data-level="3" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>3</b> 开源软件和R语言</a>
 <ul>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件"><i class="fa fa-check"></i>开源软件</a>
 <ul>
@@ -202,7 +205,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#关于r的书籍"><i class="fa fa-check"></i>关于R的书籍</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#hadley-wickham"><i class="fa fa-check"></i>Hadley Wickham</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r语言被许多机构广泛使用"><i class="fa fa-check"></i>R语言被许多机构广泛使用</a></li>
-<li class="chapter" data-level="2.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>2.0.1</b> 做好准备！上手编写代码！</a></li>
+<li class="chapter" data-level="3.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>3.0.1</b> 做好准备！上手编写代码！</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#入门"><i class="fa fa-check"></i>入门</a>
 <ul>
@@ -211,7 +214,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始你的第一个脚本"><i class="fa fa-check"></i>开始你的第一个脚本</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#帮助我们改进本节课程-1"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>3</b> 数据整理和总结</a>
+<li class="chapter" data-level="4" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>4</b> 数据整理和总结</a>
 <ul>
 <li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据整理"><i class="fa fa-check"></i>数据整理</a>
 <ul>
@@ -240,7 +243,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#帮助我们改进本节课程-2"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<li class="chapter" data-level="5" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>5</b> 数据可视化</a>
 <ul>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#概述-3"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggplot2-的基础知识"><i class="fa fa-check"></i>ggplot2 的基础知识</a></li>
@@ -269,13 +272,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#附加资源"><i class="fa fa-check"></i>附加资源</a></li>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#帮助我们改进本节课程-3"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>5</b> R Markdown</a>
+<li class="chapter" data-level="6" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>6</b> R Markdown</a>
 <ul>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#概述-4"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#作业-3"><i class="fa fa-check"></i>作业</a></li>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#帮助我们改进本节课程-4"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>6</b> 普通线性模型 - 回归 第一部分</a>
+<li class="chapter" data-level="7" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第一部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#概述-5"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#简单线性回归"><i class="fa fa-check"></i>简单线性回归</a>
@@ -292,7 +295,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#帮助我们改进本节课程-5"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第二部分</a>
+<li class="chapter" data-level="8" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>8</b> 普通线性模型 - 回归 第二部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#概述-6"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#多元回归"><i class="fa fa-check"></i>多元回归</a>
@@ -317,7 +320,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#帮助我们改进本节课程-6"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>8</b> 一般线性模型 - 方差分析第 1 部分</a>
+<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 1 部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#概述-7"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#参与者之间的方差分析between-participants-anova"><i class="fa fa-check"></i>参与者之间的方差分析（Between Participants ANOVA）</a>
@@ -360,7 +363,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#帮助我们改进本节课程-7"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 2 部分</a>
+<li class="chapter" data-level="10" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>10</b> 一般线性模型 - 方差分析第 2 部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#概述-8"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的ancova"><i class="fa fa-check"></i>建立我们的ANCOVA</a>
@@ -402,213 +405,348 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="普通线性模型---回归-第一部分" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 普通线性模型 - 回归 第一部分<a href="普通线性模型---回归-第一部分.html#普通线性模型---回归-第一部分" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>在本次研讨会中，我们将在一般线性模型 (GLM) 的背景下探索简单回归。 您还将有机会构建一些回归模型，在其中根据一个预测变量预测结果变量。 您还将学习如何运行模型诊断，以确保您不会违反回归的任何关键假设。</p>
-<div id="概述-5" class="section level2 unnumbered hasAnchor">
-<h2>概述<a href="普通线性模型---回归-第一部分.html#概述-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>首先，我想让您观看以下视频，这些视频从复习相关性的基础知识开始，然后再介绍我们如何构建回归模型。</p>
+<div id="普通线性模型---回归-第二部分" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 普通线性模型 - 回归 第二部分<a href="普通线性模型---回归-第二部分.html#普通线性模型---回归-第二部分" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>在本次研讨会中，我们将探讨一般线性模型 (GLM) 背景下的多元回归。 多重回归建立在简单回归的基础上，不同之处在于，只有一个预测变量（就像简单回归的情况），我们将处理多个预测变量。 同样，您将有机会构建一些回归模型并使用各种方法来决定哪一个是“最好的”。 您还将学习如何对这些模型运行模型诊断，就像在简单回归中所做的那样。</p>
+<div id="概述-6" class="section level2 unnumbered hasAnchor">
+<h2>概述<a href="普通线性模型---回归-第二部分.html#概述-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>首先，我想让您观看以下视频，该视频是第一个回归工作坊的延续。我们将探讨如何使用R中的<code>lm()</code>函数构建具有多个预测变量的回归模型，测试我们的模型假设，并解释输出结果。我们将研究使用多个预测变量构建逐步回归模型的不同方法，最后讨论中介和调节。</p>
 <center>
-<iframe src="【在此输入视频地址RegressionPart1】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
+<iframe src="【在此输入视频地址RegressionPart2】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
 </iframe>
 </center>
 </div>
-<div id="简单线性回归" class="section level2 unnumbered hasAnchor">
-<h2>简单线性回归<a href="普通线性模型---回归-第一部分.html#简单线性回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>在观看了上面的视频之后，我希望你能够通过下面的一个简单线性回归的例子在R中进行实践。记得创建一个新的<code>.Rproj</code>文件来保持事物的有序。</p>
-<center>
-<iframe src="【在此输入视频地址线性回归第二部分】" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts">
-</iframe>
-</center>
-<div id="我们需要的r包" class="section level3 unnumbered hasAnchor">
-<h3>我们需要的R包<a href="普通线性模型---回归-第一部分.html#我们需要的r包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>首先，我们需要安装所需的软件包。我们将安装<code>tidyverse</code>软件包以及其他几个软件包。软件包<code>Hmisc</code>允许我们使用<code>rcorr()</code>函数来计算Pearson’s r，而<code>performance</code>软件包则允许我们测试我们的模型假设。请记住，如果您之前没有在笔记本电脑上安装这些软件包，您首先需要在控制台中输入<code>install.packages("packagename")</code>才能调用该软件包的<code>library()</code>函数。您可能还需要安装<code>see</code>软件包才能使<code>performance</code>软件包正常工作。如果需要，请在控制台中输入<code>install.packages("see")</code>进行安装。</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="普通线性模型---回归-第一部分.html#cb113-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb113-2"><a href="普通线性模型---回归-第一部分.html#cb113-2" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
-<span id="cb113-3"><a href="普通线性模型---回归-第一部分.html#cb113-3" tabindex="-1"></a><span class="fu">library</span>(performance)</span></code></pre></div>
+<div id="多元回归" class="section level2 unnumbered hasAnchor">
+<h2>多元回归<a href="普通线性模型---回归-第二部分.html#多元回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在标准多元回归中，所有自变量（independent variables, IVs）都被输入到方程中，并同时进行评估其贡献。让我们通过一个具体的例子来进行讲解。</p>
+<p>教育心理学家进行了一项研究，调查了7至9岁的小学生的拼写能力与心理语言学变量之间的关系。研究人员向孩子们展示了48个单词，这些单词根据一定的特征进行了系统变化，如掌握年龄、词频、词长和形象性。心理学家想要检查测试结果是否准确反映了孩子们的拼写能力，这是通过标准化拼写测试来估计的。也就是说，心理学家想要检查她的测试是否合适。</p>
+<p>儿童的实际年龄（以月为单位）（年龄），他们的阅读年龄（reading age, RA），他们的标准化阅读年龄（standardised reading age, std_RA）以及他们的标准化拼写分数（standardised spelling score, std_SPELL）被选择为预测变量。准则变量（Y）是每个孩子使用48个单词列表时达到的正确拼写百分比（percentage correct spelling, corr_spell）得分。</p>
+<p>首先，我们需要加载我们需要的软件包 - require函数假设它们已经在您的计算机上。如果它们不在，那么您首先需要<code>install.packages (“packagename”)</code> ：</p>
+<div id="我们需要的包" class="section level3 unnumbered hasAnchor">
+<h3>我们需要的包<a href="普通线性模型---回归-第二部分.html#我们需要的包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="普通线性模型---回归-第二部分.html#cb135-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Load the tidyverse packages</span></span>
+<span id="cb135-2"><a href="普通线性模型---回归-第二部分.html#cb135-2" tabindex="-1"></a><span class="fu">library</span>(Hmisc) <span class="co"># Needed for correlation</span></span>
+<span id="cb135-3"><a href="普通线性模型---回归-第二部分.html#cb135-3" tabindex="-1"></a><span class="fu">library</span>(MASS) <span class="co"># Needed for maths functions</span></span>
+<span id="cb135-4"><a href="普通线性模型---回归-第二部分.html#cb135-4" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># Needed for VIF calculation</span></span>
+<span id="cb135-5"><a href="普通线性模型---回归-第二部分.html#cb135-5" tabindex="-1"></a><span class="fu">library</span>(olsrr) <span class="co"># Needed for stepwise regression </span></span>
+<span id="cb135-6"><a href="普通线性模型---回归-第二部分.html#cb135-6" tabindex="-1"></a><span class="fu">library</span>(performance) <span class="co"># Needed to check model assumptions</span></span></code></pre></div>
 </div>
-<div id="导入数据" class="section level3 unnumbered hasAnchor">
-<h3>导入数据<a href="普通线性模型---回归-第一部分.html#导入数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>导入名为crime_dataset.csv的数据集 - 这个数据集包含美国城市的人口数据、房价指数数据和犯罪数据。数据包可以点击<a href="">这里</a>下载</p>
-<p>我们可以使用函数<code>head()</code>来显示我们名为“crime”的数据集的前几行。</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="普通线性模型---回归-第一部分.html#cb114-1" tabindex="-1"></a>crime <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/crime_dataset.csv&quot;</span>)</span>
-<span id="cb114-2"><a href="普通线性模型---回归-第一部分.html#cb114-2" tabindex="-1"></a><span class="fu">head</span>(crime)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 9
-##    Year index_nsa `City, State` Population `Violent Crimes` Homicides Rapes Assaults Robberies
-##   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1  1975      41.1 Atlanta, GA       490584             8033       185   443     3518      3887
-## 2  1975      30.8 Chicago, IL      3150000            37160       818  1657    12514     22171
-## 3  1975      36.4 Cleveland, OH     659931            10403       288   491     2524      7100
-## 4  1975      20.9 Oakland, CA       337748             5900       111   316     2288      3185
-## 5  1975      20.4 Seattle, WA       503500             3971        52   324     1492      2103
-## 6    NA      NA   &lt;NA&gt;                  NA               NA        NA    NA       NA        NA</code></pre>
+<div id="导入数据-1" class="section level3 unnumbered hasAnchor">
+<h3>导入数据<a href="普通线性模型---回归-第二部分.html#导入数据-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>现在您需要读取数据文件。数据文件可以点击<a href="https://cyouthchange.feishu.cn/file/Gln6bvsIXoj8nJxauEAcDd0Jnlf?from=from_copylink">这里</a>下载。</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="普通线性模型---回归-第二部分.html#cb136-1" tabindex="-1"></a>MRes_tut2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/MRes_tut2.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="整理数据-1" class="section level3 unnumbered hasAnchor">
-<h3>整理数据<a href="普通线性模型---回归-第一部分.html#整理数据-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>首先让我们进行一些整理。有一列将城市和州的信息合并在一起。让我们使用函数<code>separate()</code>将该信息分离成两个新列，分别称为“City”和“State”。我们还将重命名列，将“index_nsa”列的名称更改为“House_price”，并去掉“Violent Crimes”标题中的空格。</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="普通线性模型---回归-第一部分.html#cb116-1" tabindex="-1"></a>crime_tidied <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span></span>
-<span id="cb116-2"><a href="普通线性模型---回归-第一部分.html#cb116-2" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">&quot;City, State&quot;</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;City&quot;</span>, <span class="st">&quot;State&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb116-3"><a href="普通线性模型---回归-第一部分.html#cb116-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">House_price =</span> index_nsa) <span class="sc">%&gt;%</span></span>
-<span id="cb116-4"><a href="普通线性模型---回归-第一部分.html#cb116-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Violent_Crimes =</span> <span class="st">&quot;Violent Crimes&quot;</span>)</span>
-<span id="cb116-5"><a href="普通线性模型---回归-第一部分.html#cb116-5" tabindex="-1"></a><span class="fu">head</span>(crime_tidied)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 10
-##    Year House_price City      State Population Violent_Crimes Homicides Rapes Assaults Robberies
-##   &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1  1975        41.1 Atlanta   GA        490584           8033       185   443     3518      3887
-## 2  1975        30.8 Chicago   IL       3150000          37160       818  1657    12514     22171
-## 3  1975        36.4 Cleveland OH        659931          10403       288   491     2524      7100
-## 4  1975        20.9 Oakland   CA        337748           5900       111   316     2288      3185
-## 5  1975        20.4 Seattle   WA        503500           3971        52   324     1492      2103
-## 6    NA        NA   &lt;NA&gt;      &lt;NA&gt;          NA             NA        NA    NA       NA        NA</code></pre>
+<div id="检查可能的关系" class="section level3 unnumbered hasAnchor">
+<h3>检查可能的关系<a href="普通线性模型---回归-第二部分.html#检查可能的关系" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>在我们开始之前，让我们来看一下我们的自变量IVs（预测因子，predictors）和因变量DV（结果，outcome）之间的关系。我们可以绘制图表来描述它们之间的相关性。我们将依次绘制测试表现与我们的四个预测因子之间的关系图：</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="普通线性模型---回归-第二部分.html#cb137-1" tabindex="-1"></a><span class="fu">ggplot</span>(MRes_tut2, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> corr_spell)) <span class="sc">+</span> </span>
+<span id="cb137-2"><a href="普通线性模型---回归-第二部分.html#cb137-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb137-3"><a href="普通线性模型---回归-第二部分.html#cb137-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb137-4"><a href="普通线性模型---回归-第二部分.html#cb137-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb137-5"><a href="普通线性模型---回归-第二部分.html#cb137-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="普通线性模型---回归-第二部分.html#cb138-1" tabindex="-1"></a><span class="fu">ggplot</span>(MRes_tut2, <span class="fu">aes</span>(<span class="at">x =</span> RA, <span class="at">y =</span> corr_spell)) <span class="sc">+</span> </span>
+<span id="cb138-2"><a href="普通线性模型---回归-第二部分.html#cb138-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb138-3"><a href="普通线性模型---回归-第二部分.html#cb138-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb138-4"><a href="普通线性模型---回归-第二部分.html#cb138-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb138-5"><a href="普通线性模型---回归-第二部分.html#cb138-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="普通线性模型---回归-第二部分.html#cb139-1" tabindex="-1"></a><span class="fu">ggplot</span>(MRes_tut2, <span class="fu">aes</span>(<span class="at">x =</span> std_RA, <span class="at">y =</span> corr_spell)) <span class="sc">+</span> </span>
+<span id="cb139-2"><a href="普通线性模型---回归-第二部分.html#cb139-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb139-3"><a href="普通线性模型---回归-第二部分.html#cb139-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb139-4"><a href="普通线性模型---回归-第二部分.html#cb139-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb139-5"><a href="普通线性模型---回归-第二部分.html#cb139-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="普通线性模型---回归-第二部分.html#cb140-1" tabindex="-1"></a><span class="fu">ggplot</span>(MRes_tut2, <span class="fu">aes</span>(<span class="at">x =</span> std_SPELL, <span class="at">y =</span> corr_spell)) <span class="sc">+</span> </span>
+<span id="cb140-2"><a href="普通线性模型---回归-第二部分.html#cb140-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb140-3"><a href="普通线性模型---回归-第二部分.html#cb140-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb140-4"><a href="普通线性模型---回归-第二部分.html#cb140-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb140-5"><a href="普通线性模型---回归-第二部分.html#cb140-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
 </div>
-<div id="绘制数据" class="section level3 unnumbered hasAnchor">
-<h3>绘制数据<a href="普通线性模型---回归-第一部分.html#绘制数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们可能首先认为随着人口规模的增加，犯罪率也会增加。让我们先建立一个散点图。</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="普通线性模型---回归-第一部分.html#cb118-1" tabindex="-1"></a>crime_tidied <span class="sc">%&gt;%</span></span>
-<span id="cb118-2"><a href="普通线性模型---回归-第一部分.html#cb118-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Population, <span class="at">y =</span> Violent_Crimes)) <span class="sc">+</span> </span>
-<span id="cb118-3"><a href="普通线性模型---回归-第一部分.html#cb118-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb118-4"><a href="普通线性模型---回归-第一部分.html#cb118-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb118-5"><a href="普通线性模型---回归-第一部分.html#cb118-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb118-6"><a href="普通线性模型---回归-第一部分.html#cb118-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
-<span id="cb118-7"><a href="普通线性模型---回归-第一部分.html#cb118-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Population&quot;</span>, </span>
-<span id="cb118-8"><a href="普通线性模型---回归-第一部分.html#cb118-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Violent Crimes&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
-</div>
-<div id="皮尔逊相关系数pearsons-r" class="section level3 unnumbered hasAnchor">
-<h3>皮尔逊相关系数(Pearson’s r)<a href="普通线性模型---回归-第一部分.html#皮尔逊相关系数pearsons-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>这个图看起来相当有趣。怎么样计算皮尔逊相关系数？</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="普通线性模型---回归-第一部分.html#cb119-1" tabindex="-1"></a><span class="fu">rcorr</span>(crime_tidied<span class="sc">$</span>Population, crime_tidied<span class="sc">$</span>Violent_Crimes)</span></code></pre></div>
-<pre><code>##      x    y
-## x 1.00 0.81
-## y 0.81 1.00
-## 
-## n
-##      x    y
-## x 1714 1708
-## y 1708 1708
-## 
-## P
-##   x  y 
-## x     0
-## y  0</code></pre>
-<p>看看r值和p值 - r = .81，p &lt; .001。因此，我们的暴力犯罪变量中约64%的变异（ variance）可以通过我们的人口大小变量来解释。很明显，人口规模和暴力犯罪率之间存在正相关关系。从图中可以看出，我们可能会得出结论，这种关系受到一小部分非常大城市犯罪的过度影响（图上方的右上角）。让我们排除人口超过2,000,000的城市。</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="普通线性模型---回归-第一部分.html#cb121-1" tabindex="-1"></a>crime_filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(crime_tidied, Population <span class="sc">&lt;</span> <span class="dv">2000000</span>)</span></code></pre></div>
-<p>现在让我们重新绘制图表。由于可能仍然有很多点（因此会出现很多点大致出现在同一位置），我们可以在代码的<code>geom_point()</code>行中将alpha参数设置为&lt;1。该参数对应每个点的透明度。将其更改为其他值以查看发生了什么。</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="普通线性模型---回归-第一部分.html#cb122-1" tabindex="-1"></a>crime_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb122-2"><a href="普通线性模型---回归-第一部分.html#cb122-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Population, <span class="at">y =</span> Violent_Crimes)) <span class="sc">+</span> </span>
-<span id="cb122-3"><a href="普通线性模型---回归-第一部分.html#cb122-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span> </span>
-<span id="cb122-4"><a href="普通线性模型---回归-第一部分.html#cb122-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb122-5"><a href="普通线性模型---回归-第一部分.html#cb122-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb122-6"><a href="普通线性模型---回归-第一部分.html#cb122-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
-<span id="cb122-7"><a href="普通线性模型---回归-第一部分.html#cb122-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Population&quot;</span>, </span>
-<span id="cb122-8"><a href="普通线性模型---回归-第一部分.html#cb122-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Violent Crimes&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
-<p>并计算皮尔逊相关系数。</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="普通线性模型---回归-第一部分.html#cb123-1" tabindex="-1"></a><span class="fu">rcorr</span>(crime_filtered<span class="sc">$</span>Population, crime_filtered<span class="sc">$</span>Violent_Crimes)</span></code></pre></div>
-<pre><code>##      x    y
-## x 1.00 0.69
-## y 0.69 1.00
-## 
-## n
-##      x    y
-## x 1659 1653
-## y 1653 1653
-## 
-## P
-##   x  y 
-## x     0
-## y  0</code></pre>
-<p>仍然存在明显的正相关关系（r = 0.69）。让我们建立一个线性模型。数据集包含大量数据，每个城市每年都会出现多次。对于我们的线性模型，我们的观察结果需要相互独立，所以让我们只关注2015年。这样每个城市只会出现一次。</p>
-<p>首先我们应用我们的过滤器。</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="普通线性模型---回归-第一部分.html#cb125-1" tabindex="-1"></a>crime_filtered <span class="ot">&lt;-</span> <span class="fu">filter</span>(crime_filtered, Year <span class="sc">==</span> <span class="dv">2015</span>)</span></code></pre></div>
-<p>然后我们构建一个图。我使用<code>geom_text()</code>图层来绘制城市名称，并将check_overlap参数设置为<code>TRUE</code>以确保标签不重叠。</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="普通线性模型---回归-第一部分.html#cb126-1" tabindex="-1"></a>crime_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb126-2"><a href="普通线性模型---回归-第一部分.html#cb126-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Population, <span class="at">y =</span> Violent_Crimes, <span class="at">label =</span> City)) <span class="sc">+</span> </span>
-<span id="cb126-3"><a href="普通线性模型---回归-第一部分.html#cb126-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb126-4"><a href="普通线性模型---回归-第一部分.html#cb126-4" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">nudge_y =</span> <span class="dv">500</span>, <span class="at">check_overlap =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
-<span id="cb126-5"><a href="普通线性模型---回归-第一部分.html#cb126-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb126-6"><a href="普通线性模型---回归-第一部分.html#cb126-6" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1800000</span>) <span class="sc">+</span></span>
-<span id="cb126-7"><a href="普通线性模型---回归-第一部分.html#cb126-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb126-8"><a href="普通线性模型---回归-第一部分.html#cb126-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) <span class="sc">+</span></span>
-<span id="cb126-9"><a href="普通线性模型---回归-第一部分.html#cb126-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Population&quot;</span>, </span>
-<span id="cb126-10"><a href="普通线性模型---回归-第一部分.html#cb126-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Violent Crimes&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
-<p>这显示了一个明显的正线性关系，所以让我们计算一下皮尔逊相关系数。</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="普通线性模型---回归-第一部分.html#cb127-1" tabindex="-1"></a><span class="fu">rcorr</span>(crime_filtered<span class="sc">$</span>Population, crime_filtered<span class="sc">$</span>Violent_Crimes)</span></code></pre></div>
-<pre><code>##      x    y
-## x 1.00 0.65
-## y 0.65 1.00
-## 
-## n
-##    x  y
-## x 42 40
-## y 40 40
-## 
-## P
-##   x  y 
-## x     0
-## y  0</code></pre>
-</div>
-<div id="建模数据" class="section level3 unnumbered hasAnchor">
-<h3>建模数据<a href="普通线性模型---回归-第一部分.html#建模数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>想象我们是城市规划师，我们想知道暴力犯罪可能随人口规模增加而增加的程度。换句话说，我们想弄清楚暴力犯罪率是如何由人口规模预测出来的。</p>
-<p>我们将构建两个线性模型 - 第一个<code>model1</code> ，我们使用结果变量的平均值作为预测变量，第二个<code>model2</code> ，我们使用人口规模来预测暴力犯罪结果。</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="普通线性模型---回归-第一部分.html#cb129-1" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Violent_Crimes <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> crime_filtered)</span>
-<span id="cb129-2"><a href="普通线性模型---回归-第一部分.html#cb129-2" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Violent_Crimes <span class="sc">~</span> Population, <span class="at">data =</span> crime_filtered)</span></code></pre></div>
-</div>
-<div id="检查我们的假设" class="section level3 unnumbered hasAnchor">
-<h3>检查我们的假设<a href="普通线性模型---回归-第一部分.html#检查我们的假设" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>让我们使用performance包中的<code>check_model()</code>函数来检查我们模型的假设。</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="普通线性模型---回归-第一部分.html#cb130-1" tabindex="-1"></a><span class="fu">check_model</span>(model2)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
-<p>我们的数据集很小，所以我们的一些诊断图看起来不太好。稍后我们会回到有影响力的异常值（第29个案例），但现在让我们使用<code>anova()</code>函数来查看以人口作为预测变量的模型是否比仅使用均值的模型更好。</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="普通线性模型---回归-第一部分.html#cb131-1" tabindex="-1"></a><span class="fu">anova</span>(model1, model2)</span></code></pre></div>
+<div id="对数据建模" class="section level3 unnumbered hasAnchor">
+<h3>对数据建模<a href="普通线性模型---回归-第二部分.html#对数据建模" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们首先将进行分层回归 - 我们将构建一个模型（我们将其称为<code>model0</code>），该模型是我们结果变量的平均值，另一个模型（<code>model1</code>）包含所有的预测变量：</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="普通线性模型---回归-第二部分.html#cb141-1" tabindex="-1"></a>model0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(corr_spell <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> MRes_tut2)</span>
+<span id="cb141-2"><a href="普通线性模型---回归-第二部分.html#cb141-2" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(corr_spell <span class="sc">~</span> age <span class="sc">+</span> RA <span class="sc">+</span> std_RA <span class="sc">+</span> std_SPELL, <span class="at">data =</span> MRes_tut2)</span></code></pre></div>
+<p>让我们将它们相互比较：</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="普通线性模型---回归-第二部分.html#cb142-1" tabindex="-1"></a><span class="fu">anova</span>(model0, model1)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
-## Model 1: Violent_Crimes ~ 1
-## Model 2: Violent_Crimes ~ Population
-##   Res.Df       RSS Df Sum of Sq      F    Pr(&gt;F)    
-## 1     39 445568991                                  
-## 2     38 257690819  1 187878173 27.705 5.813e-06 ***
+## Model 1: corr_spell ~ 1
+## Model 2: corr_spell ~ age + RA + std_RA + std_SPELL
+##   Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    
+## 1     46 26348.4                                  
+## 2     42  3901.1  4     22447 60.417 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>这是 - 模型不同，你会看到残差平方和（或误差）在第二个模型中较小（该模型以人口为预测变量）。这意味着我们观测数据与回归线模型<code>model2</code>之间的偏差明显小于我们观测数据与平均值作为我们数据模型<code>model1</code>之间的偏差。所以让我们得到<code>model2</code>的参数估计。</p>
+<p>我们看到这些模型彼此不同（查看比较的p值），并且具有四个预测变量的模型具有较低的残差（RSS）值，这意味着模型与观测数据之间的误差相对于较简单的仅有截距的模型（即均值）和观测数据较小。</p>
 </div>
-<div id="解读我们的模型" class="section level3 unnumbered hasAnchor">
-<h3>解读我们的模型<a href="普通线性模型---回归-第一部分.html#解读我们的模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="普通线性模型---回归-第一部分.html#cb133-1" tabindex="-1"></a><span class="fu">summary</span>(model2)</span></code></pre></div>
+<div id="检查我们的假设-1" class="section level3 unnumbered hasAnchor">
+<h3>检查我们的假设<a href="普通线性模型---回归-第二部分.html#检查我们的假设-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>好的，所以它们是不同的 - 现在让我们来绘制关于我们模型假设的信息 - 记住，我们对我们的案例的Cook’s distance值特别感兴趣…</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="普通线性模型---回归-第二部分.html#cb144-1" tabindex="-1"></a><span class="fu">check_model</span>(model1)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<p>误差（errors）在我们拟合的值上分布相对均匀（同方差性） - 尽管对于高拟合值而言稍微糟糕一些 - 从 Q-Q 图中我们可以看出它们看起来相当正常（它们应该遵循对角线）。那么有关有影响力的案例呢？所以，第 10 个案例看起来有点可疑 - 它有一个较高的 Cook 距离值 - 这意味着它对我们的模型产生了不成比例的影响。让我们使用 <code>filter()</code> 函数将其排除 - 符号 <code>!=</code> 表示“不等于”，因此我们选择除了第 10 个案例以外的值。</p>
+</div>
+<div id="放弃一个有影响力的案例influential-case" class="section level3 unnumbered hasAnchor">
+<h3>放弃一个有影响力的案例(Influential Case)<a href="普通线性模型---回归-第二部分.html#放弃一个有影响力的案例influential-case" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="普通线性模型---回归-第二部分.html#cb145-1" tabindex="-1"></a>MRes_tut2_drop10 <span class="ot">&lt;-</span> <span class="fu">filter</span>(MRes_tut2, case <span class="sc">!=</span> <span class="st">&quot;10&quot;</span>)</span></code></pre></div>
+</div>
+<div id="重新建模数据" class="section level3 unnumbered hasAnchor">
+<h3>重新建模数据<a href="普通线性模型---回归-第二部分.html#重新建模数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们现在创建另一个模型（<code>model2</code>），不包括 Case 10。</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="普通线性模型---回归-第二部分.html#cb146-1" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(corr_spell <span class="sc">~</span> age <span class="sc">+</span> RA <span class="sc">+</span> std_RA <span class="sc">+</span> std_SPELL, <span class="at">data =</span> MRes_tut2_drop10)</span></code></pre></div>
+<p>让我们再次使用<code>check_model()</code>检查模型假设。</p>
+</div>
+<div id="检查我们的假设-2" class="section level3 unnumbered hasAnchor">
+<h3>检查我们的假设<a href="普通线性模型---回归-第二部分.html#检查我们的假设-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="普通线性模型---回归-第二部分.html#cb147-1" tabindex="-1"></a><span class="fu">check_model</span>(model2)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p>现在，让我们来看一下由VIF测量得出的多重共线性值：</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="普通线性模型---回归-第二部分.html#cb148-1" tabindex="-1"></a><span class="fu">vif</span>(model2)</span></code></pre></div>
+<pre><code>##       age        RA    std_RA std_SPELL 
+##  3.843462 14.763168 14.672084  3.140457</code></pre>
+<p>看起来 RA 和 std_RA 有问题。我们可以使用 rcorr() 函数来研究它们之间的相关性：</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="普通线性模型---回归-第二部分.html#cb150-1" tabindex="-1"></a><span class="fu">rcorr</span>(MRes_tut2_drop10<span class="sc">$</span>RA, MRes_tut2_drop10<span class="sc">$</span>std_RA)</span></code></pre></div>
+<pre><code>##      x    y
+## x 1.00 0.88
+## y 0.88 1.00
+## 
+## n= 46 
+## 
+## 
+## P
+##   x  y 
+## x     0
+## y  0</code></pre>
+</div>
+<div id="重新建模数据-1" class="section level3 unnumbered hasAnchor">
+<h3>重新建模数据<a href="普通线性模型---回归-第二部分.html#重新建模数据-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>相关性很高（0.88），所以让我们排除具有最高VIF值的预测变量（即RA），并构建一个新模型：</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="普通线性模型---回归-第二部分.html#cb152-1" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(corr_spell <span class="sc">~</span> age <span class="sc">+</span> std_RA <span class="sc">+</span> std_SPELL, <span class="at">data =</span> MRes_tut2_drop10)</span>
+<span id="cb152-2"><a href="普通线性模型---回归-第二部分.html#cb152-2" tabindex="-1"></a><span class="fu">vif</span>(model3)</span></code></pre></div>
+<pre><code>##       age    std_RA std_SPELL 
+##  1.190827  2.636186  2.821235</code></pre>
+</div>
+<div id="检查我们的假设-3" class="section level3 unnumbered hasAnchor">
+<h3>检查我们的假设<a href="普通线性模型---回归-第二部分.html#检查我们的假设-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>这些值现在看起来还不错。让我们再次检查模型假设。</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="普通线性模型---回归-第二部分.html#cb154-1" tabindex="-1"></a><span class="fu">check_model</span>(model3)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+</div>
+<div id="总结模型" class="section level3 unnumbered hasAnchor">
+<h3>总结模型<a href="普通线性模型---回归-第二部分.html#总结模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>现在让我们生成系数（ coefficients），因为这看起来像一个合理的模型。</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="普通线性模型---回归-第二部分.html#cb155-1" tabindex="-1"></a><span class="fu">summary</span>(model3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = Violent_Crimes ~ Population, data = crime_filtered)
+## lm(formula = corr_spell ~ age + std_RA + std_SPELL, data = MRes_tut2_drop10)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -5465.8 -1633.4  -809.1   684.3  6213.8 
+## -19.801  -6.907   1.327   5.155  24.669 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 9.443e+02  9.216e+02   1.025    0.312    
-## Population  6.963e-03  1.323e-03   5.264 5.81e-06 ***
+## (Intercept) -209.4400    26.7210  -7.838 9.43e-10 ***
+## age            1.1033     0.2133   5.172 6.09e-06 ***
+## std_RA         0.3804     0.1385   2.747  0.00883 ** 
+## std_SPELL      1.2107     0.1650   7.339 4.78e-09 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 2604 on 38 degrees of freedom
-##   (2 observations deleted due to missingness)
-## Multiple R-squared:  0.4217, Adjusted R-squared:  0.4064 
-## F-statistic: 27.71 on 1 and 38 DF,  p-value: 5.813e-06</code></pre>
-<p>截距对应于我们的回归线与y轴相交的地方，人口参数对应于我们线的斜率。我们可以看到，每增加1个人口，暴力犯罪率就会额外增加0.006963。</p>
-<p>对于一个人口约一百万的城市，将会有大约7907起暴力犯罪。我们通过将我们的预测值（0.006963）乘以1,000,000，然后加上截距（944.3）来计算得出这个结果。这给我们7907.3起犯罪案件 - 这与我们在上面的回归线上看到的情况相符。我们可能有一些异常值 - 你如何找出这些异常值？尝试排除你发现的任何异常值并重新构建你的模型。</p>
+## Residual standard error: 9.824 on 42 degrees of freedom
+## Multiple R-squared:  0.8388, Adjusted R-squared:  0.8273 
+## F-statistic: 72.87 on 3 and 42 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="普通线性模型---回归-第二部分.html#cb157-1" tabindex="-1"></a>model0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(corr_spell <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> MRes_tut2_drop10)</span>
+<span id="cb157-2"><a href="普通线性模型---回归-第二部分.html#cb157-2" tabindex="-1"></a><span class="fu">anova</span>(model3, model0)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: corr_spell ~ age + std_RA + std_SPELL
+## Model 2: corr_spell ~ 1
+##   Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    
+## 1     42  4053.5                                  
+## 2     45 25151.0 -3    -21098 72.866 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>我们将方程写成如下形式：</p>
+<p><code>Spelled correct = -209.44 + 1.10(age) + 0.38(std_RA) + 1.21(std_SPELL) + residual</code></p>
 </div>
-<div id="作业-4" class="section level3 unnumbered hasAnchor">
-<h3>作业<a href="普通线性模型---回归-第一部分.html#作业-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>您现在有三个任务：
-1. 检查2015年人口规模和抢劫案件之间是否存在相同的关系。
-2. 2015年暴力犯罪数量是否预测了房价？
-3. 2015年人口规模是否预测了房价？</p>
+</div>
+<div id="逐步回归" class="section level2 unnumbered hasAnchor">
+<h2>逐步回归<a href="普通线性模型---回归-第二部分.html#逐步回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>我们还可以进行逐步回归 - 向前是当您从空模型开始并添加预测变量，直到它们不能解释更多方差时，向后是当您从完整模型开始并删除预测变量，直到删除开始影响模型的预测能力。 让我们保留案例 10 并删除高 VIF 预测变量 (RA)。 这对于具有大量预测变量的模型非常方便，其中顺序回归的顺序不明显。</p>
+<div id="对数据进行建模" class="section level3 unnumbered hasAnchor">
+<h3>对数据进行建模<a href="普通线性模型---回归-第二部分.html#对数据进行建模" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="普通线性模型---回归-第二部分.html#cb159-1" tabindex="-1"></a>model0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(corr_spell <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> MRes_tut2_drop10)</span>
+<span id="cb159-2"><a href="普通线性模型---回归-第二部分.html#cb159-2" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(corr_spell <span class="sc">~</span> age <span class="sc">+</span> std_RA <span class="sc">+</span> std_SPELL, <span class="at">data =</span> MRes_tut2_drop10)</span></code></pre></div>
+<p>让我们向前逐步回归：</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="普通线性模型---回归-第二部分.html#cb160-1" tabindex="-1"></a>steplimitsf <span class="ot">&lt;-</span> <span class="fu">step</span>(model0, <span class="at">scope =</span> <span class="fu">list</span> (<span class="at">lower =</span> model0, <span class="at">upper =</span> model1), <span class="at">direction =</span> <span class="st">&quot;forward&quot;</span>)</span></code></pre></div>
+<pre><code>## Start:  AIC=291.98
+## corr_spell ~ 1
+## 
+##             Df Sum of Sq     RSS    AIC
+## + std_SPELL  1   17802.2  7348.8 237.39
+## + std_RA     1   14780.1 10370.9 253.23
+## &lt;none&gt;                   25151.0 291.98
+## + age        1      48.7 25102.3 293.89
+## 
+## Step:  AIC=237.39
+## corr_spell ~ std_SPELL
+## 
+##          Df Sum of Sq    RSS    AIC
+## + age     1   2567.20 4781.6 219.62
+## + std_RA  1    714.14 6634.7 234.69
+## &lt;none&gt;                7348.8 237.39
+## 
+## Step:  AIC=219.62
+## corr_spell ~ std_SPELL + age
+## 
+##          Df Sum of Sq    RSS    AIC
+## + std_RA  1     728.1 4053.5 214.02
+## &lt;none&gt;                4781.6 219.62
+## 
+## Step:  AIC=214.02
+## corr_spell ~ std_SPELL + age + std_RA</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="普通线性模型---回归-第二部分.html#cb162-1" tabindex="-1"></a><span class="fu">summary</span>(steplimitsf)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = corr_spell ~ std_SPELL + age + std_RA, data = MRes_tut2_drop10)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -19.801  -6.907   1.327   5.155  24.669 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -209.4400    26.7210  -7.838 9.43e-10 ***
+## std_SPELL      1.2107     0.1650   7.339 4.78e-09 ***
+## age            1.1033     0.2133   5.172 6.09e-06 ***
+## std_RA         0.3804     0.1385   2.747  0.00883 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 9.824 on 42 degrees of freedom
+## Multiple R-squared:  0.8388, Adjusted R-squared:  0.8273 
+## F-statistic: 72.87 on 3 and 42 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>向后逐步回归：</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="普通线性模型---回归-第二部分.html#cb164-1" tabindex="-1"></a>steplimitsb <span class="ot">&lt;-</span> <span class="fu">step</span>(model1, <span class="at">direction =</span> <span class="st">&quot;back&quot;</span>)</span></code></pre></div>
+<pre><code>## Start:  AIC=214.02
+## corr_spell ~ age + std_RA + std_SPELL
+## 
+##             Df Sum of Sq    RSS    AIC
+## &lt;none&gt;                   4053.5 214.02
+## - std_RA     1     728.1 4781.6 219.62
+## - age        1    2581.2 6634.7 234.69
+## - std_SPELL  1    5198.3 9251.8 249.98</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="普通线性模型---回归-第二部分.html#cb166-1" tabindex="-1"></a><span class="fu">summary</span>(steplimitsb)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = corr_spell ~ age + std_RA + std_SPELL, data = MRes_tut2_drop10)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -19.801  -6.907   1.327   5.155  24.669 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -209.4400    26.7210  -7.838 9.43e-10 ***
+## age            1.1033     0.2133   5.172 6.09e-06 ***
+## std_RA         0.3804     0.1385   2.747  0.00883 ** 
+## std_SPELL      1.2107     0.1650   7.339 4.78e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 9.824 on 42 degrees of freedom
+## Multiple R-squared:  0.8388, Adjusted R-squared:  0.8273 
+## F-statistic: 72.87 on 3 and 42 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>在逐步回归中使用向前和向后回归</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="普通线性模型---回归-第二部分.html#cb168-1" tabindex="-1"></a>steplimitsboth <span class="ot">&lt;-</span> <span class="fu">step</span>(model0, <span class="at">scope =</span> <span class="fu">list</span> (<span class="at">upper =</span> model1), <span class="at">direction =</span> <span class="st">&quot;both&quot;</span>)</span></code></pre></div>
+<pre><code>## Start:  AIC=291.98
+## corr_spell ~ 1
+## 
+##             Df Sum of Sq     RSS    AIC
+## + std_SPELL  1   17802.2  7348.8 237.39
+## + std_RA     1   14780.1 10370.9 253.23
+## &lt;none&gt;                   25151.0 291.98
+## + age        1      48.7 25102.3 293.89
+## 
+## Step:  AIC=237.39
+## corr_spell ~ std_SPELL
+## 
+##             Df Sum of Sq     RSS    AIC
+## + age        1    2567.2  4781.6 219.62
+## + std_RA     1     714.1  6634.7 234.69
+## &lt;none&gt;                    7348.8 237.39
+## - std_SPELL  1   17802.2 25151.0 291.98
+## 
+## Step:  AIC=219.62
+## corr_spell ~ std_SPELL + age
+## 
+##             Df Sum of Sq     RSS    AIC
+## + std_RA     1     728.1  4053.5 214.02
+## &lt;none&gt;                    4781.6 219.62
+## - age        1    2567.2  7348.8 237.39
+## - std_SPELL  1   20320.7 25102.3 293.89
+## 
+## Step:  AIC=214.02
+## corr_spell ~ std_SPELL + age + std_RA
+## 
+##             Df Sum of Sq    RSS    AIC
+## &lt;none&gt;                   4053.5 214.02
+## - std_RA     1     728.1 4781.6 219.62
+## - age        1    2581.2 6634.7 234.69
+## - std_SPELL  1    5198.3 9251.8 249.98</code></pre>
+</div>
+<div id="检查我们的假设-4" class="section level3 unnumbered hasAnchor">
+<h3>检查我们的假设<a href="普通线性模型---回归-第二部分.html#检查我们的假设-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="普通线性模型---回归-第二部分.html#cb170-1" tabindex="-1"></a><span class="fu">check_model</span>(steplimitsboth)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<p>这些看起来不错。</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="普通线性模型---回归-第二部分.html#cb171-1" tabindex="-1"></a><span class="fu">summary</span>(steplimitsboth)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = corr_spell ~ std_SPELL + age + std_RA, data = MRes_tut2_drop10)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -19.801  -6.907   1.327   5.155  24.669 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -209.4400    26.7210  -7.838 9.43e-10 ***
+## std_SPELL      1.2107     0.1650   7.339 4.78e-09 ***
+## age            1.1033     0.2133   5.172 6.09e-06 ***
+## std_RA         0.3804     0.1385   2.747  0.00883 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 9.824 on 42 degrees of freedom
+## Multiple R-squared:  0.8388, Adjusted R-squared:  0.8273 
+## F-statistic: 72.87 on 3 and 42 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>您会看到在每种情况下都会得到相同的最终模型。 我们有三个重要的预测因子。</p>
+</div>
+<div id="根据p值输入预测变量" class="section level3 unnumbered hasAnchor">
+<h3>根据p值输入预测变量<a href="普通线性模型---回归-第二部分.html#根据p值输入预测变量" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>我们还可以使用<code>olsrr</code>包中的<code>ols_step_forward_p()</code>函数 - 它的工作原理是根据p值输入预测变量来找到最佳模型。 <code>olsrr</code>包中还有其他方法。 要查看它们，请在控制台窗口中输入<code>olsrr::</code> 。</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="普通线性模型---回归-第二部分.html#cb173-1" tabindex="-1"></a>pmodel <span class="ot">&lt;-</span> <span class="fu">ols_step_forward_p</span>(model1)</span>
+<span id="cb173-2"><a href="普通线性模型---回归-第二部分.html#cb173-2" tabindex="-1"></a>pmodel</span></code></pre></div>
+<pre><code>## 
+##                              Selection Summary                              
+## ---------------------------------------------------------------------------
+##         Variable                   Adj.                                        
+## Step     Entered     R-Square    R-Square     C(p)        AIC        RMSE      
+## ---------------------------------------------------------------------------
+##    1    std_SPELL      0.7078      0.7012    34.1439    369.9304    12.9236    
+##    2    age            0.8099      0.8010     9.5442    352.1614    10.5452    
+##    3    std_RA         0.8388      0.8273     4.0000    346.5624     9.8241    
+## ---------------------------------------------------------------------------</code></pre>
+<p>在这种情况下，具有最低 AIC 值的模型也是通过基于p值的顺序过程统计得出的模型 - 但情况可能并不总是如此。</p>
 </div>
 </div>
-<div id="帮助我们改进本节课程-5" class="section level2 unnumbered hasAnchor">
-<h2>帮助我们改进本节课程<a href="普通线性模型---回归-第一部分.html#帮助我们改进本节课程-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="帮助我们改进本节课程-6" class="section level2 unnumbered hasAnchor">
+<h2>帮助我们改进本节课程<a href="普通线性模型---回归-第二部分.html#帮助我们改进本节课程-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>此处应插入文本和反馈二维码或问卷链接</em></p>
 
 </div>
@@ -618,8 +756,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="普通线性模型---回归-第二部分.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="普通线性模型---回归-第一部分.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="一般线性模型---方差分析第-1-部分.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -650,7 +788,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-RegressionPart1.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-RegressionPart2.Rmd",
 "text": "Edit"
 },
 "history": {

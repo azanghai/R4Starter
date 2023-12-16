@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 一般线性模型 - 方差分析第 1 部分 | R语言入门</title>
+  <title>Chapter 9 一般线性模型 - 方差分析第 1 部分 | R语言入门</title>
   <meta name="description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 一般线性模型 - 方差分析第 1 部分 | R语言入门" />
+  <meta property="og:title" content="Chapter 9 一般线性模型 - 方差分析第 1 部分 | R语言入门" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
   <meta property="og:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="github-repo" content="azanghai/R4Starter" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 一般线性模型 - 方差分析第 1 部分 | R语言入门" />
+  <meta name="twitter:title" content="Chapter 9 一般线性模型 - 方差分析第 1 部分 | R语言入门" />
   
   <meta name="twitter:description" content="这是一个介绍如何使用R语言的入门教程。" />
   <meta name="twitter:image" content="https://github.com/azanghai/R4Starter/Pictures/CoverImage.png" />
@@ -23,7 +23,7 @@
 <meta name="author" content="文庭" />
 
 
-<meta name="date" content="2023-12-15" />
+<meta name="date" content="2023-12-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,10 +165,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>欢迎</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习目标"><i class="fa fa-check"></i>学习目标</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#时间安排"><i class="fa fa-check"></i>时间安排</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#学习形式"><i class="fa fa-check"></i>学习形式</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#关于r语言课程"><i class="fa fa-check"></i>关于R语言课程</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#课程是如何开展的"><i class="fa fa-check"></i>课程是如何开展的？</a></li>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#我可以参加课程嘛"><i class="fa fa-check"></i><b>0.1</b> 我可以参加课程嘛？</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>1</b> 在开始之前</a>
+<li class="chapter" data-level="1" data-path="联系我们.html"><a href="联系我们.html"><i class="fa fa-check"></i><b>1</b> 联系我们</a></li>
+<li class="chapter" data-level="2" data-path="在开始之前.html"><a href="在开始之前.html"><i class="fa fa-check"></i><b>2</b> 在开始之前</a>
 <ul>
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#开放研究和可重复性"><i class="fa fa-check"></i>开放研究和可重复性</a>
 <ul>
@@ -185,7 +188,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#总结"><i class="fa fa-check"></i>总结</a></li>
 <li class="chapter" data-level="" data-path="在开始之前.html"><a href="在开始之前.html#帮助我们改进本节课程"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>2</b> 开源软件和R语言</a>
+<li class="chapter" data-level="3" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html"><i class="fa fa-check"></i><b>3</b> 开源软件和R语言</a>
 <ul>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开源软件"><i class="fa fa-check"></i>开源软件</a>
 <ul>
@@ -202,7 +205,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#关于r的书籍"><i class="fa fa-check"></i>关于R的书籍</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#hadley-wickham"><i class="fa fa-check"></i>Hadley Wickham</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#r语言被许多机构广泛使用"><i class="fa fa-check"></i>R语言被许多机构广泛使用</a></li>
-<li class="chapter" data-level="2.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>2.0.1</b> 做好准备！上手编写代码！</a></li>
+<li class="chapter" data-level="3.0.1" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#做好准备上手编写代码"><i class="fa fa-check"></i><b>3.0.1</b> 做好准备！上手编写代码！</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#入门"><i class="fa fa-check"></i>入门</a>
 <ul>
@@ -211,7 +214,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#开始你的第一个脚本"><i class="fa fa-check"></i>开始你的第一个脚本</a></li>
 <li class="chapter" data-level="" data-path="开源软件和r语言.html"><a href="开源软件和r语言.html#帮助我们改进本节课程-1"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>3</b> 数据整理和总结</a>
+<li class="chapter" data-level="4" data-path="数据整理和总结.html"><a href="数据整理和总结.html"><i class="fa fa-check"></i><b>4</b> 数据整理和总结</a>
 <ul>
 <li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#数据整理"><i class="fa fa-check"></i>数据整理</a>
 <ul>
@@ -240,7 +243,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="数据整理和总结.html"><a href="数据整理和总结.html#帮助我们改进本节课程-2"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<li class="chapter" data-level="5" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>5</b> 数据可视化</a>
 <ul>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#概述-3"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#ggplot2-的基础知识"><i class="fa fa-check"></i>ggplot2 的基础知识</a></li>
@@ -269,13 +272,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#附加资源"><i class="fa fa-check"></i>附加资源</a></li>
 <li class="chapter" data-level="" data-path="数据可视化.html"><a href="数据可视化.html#帮助我们改进本节课程-3"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>5</b> R Markdown</a>
+<li class="chapter" data-level="6" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>6</b> R Markdown</a>
 <ul>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#概述-4"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#作业-3"><i class="fa fa-check"></i>作业</a></li>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#帮助我们改进本节课程-4"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>6</b> 普通线性模型 - 回归 第一部分</a>
+<li class="chapter" data-level="7" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第一部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#概述-5"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#简单线性回归"><i class="fa fa-check"></i>简单线性回归</a>
@@ -292,7 +295,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第一部分.html"><a href="普通线性模型---回归-第一部分.html#帮助我们改进本节课程-5"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>7</b> 普通线性模型 - 回归 第二部分</a>
+<li class="chapter" data-level="8" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html"><i class="fa fa-check"></i><b>8</b> 普通线性模型 - 回归 第二部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#概述-6"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#多元回归"><i class="fa fa-check"></i>多元回归</a>
@@ -317,7 +320,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="普通线性模型---回归-第二部分.html"><a href="普通线性模型---回归-第二部分.html#帮助我们改进本节课程-6"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>8</b> 一般线性模型 - 方差分析第 1 部分</a>
+<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 1 部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#概述-7"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#参与者之间的方差分析between-participants-anova"><i class="fa fa-check"></i>参与者之间的方差分析（Between Participants ANOVA）</a>
@@ -360,7 +363,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-1-部分.html"><a href="一般线性模型---方差分析第-1-部分.html#帮助我们改进本节课程-7"><i class="fa fa-check"></i>帮助我们改进本节课程</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>9</b> 一般线性模型 - 方差分析第 2 部分</a>
+<li class="chapter" data-level="10" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html"><i class="fa fa-check"></i><b>10</b> 一般线性模型 - 方差分析第 2 部分</a>
 <ul>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#概述-8"><i class="fa fa-check"></i>概述</a></li>
 <li class="chapter" data-level="" data-path="一般线性模型---方差分析第-2-部分.html"><a href="一般线性模型---方差分析第-2-部分.html#建立我们的ancova"><i class="fa fa-check"></i>建立我们的ANCOVA</a>
@@ -402,8 +405,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="一般线性模型---方差分析第-1-部分" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Chapter 8</span> 一般线性模型 - 方差分析第 1 部分<a href="一般线性模型---方差分析第-1-部分.html#一般线性模型---方差分析第-1-部分" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="一般线性模型---方差分析第-1-部分" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> 一般线性模型 - 方差分析第 1 部分<a href="一般线性模型---方差分析第-1-部分.html#一般线性模型---方差分析第-1-部分" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>在本次研讨会中，我们将在 R 模型构建的背景下探索参与者设计、重复测量设计和因子设计之间的方差分析 (ANOVA)。 您将学习如何使用 <code>{afex}</code> 包构建具有 III 型平方和的模型，以及如何使用<code>{emmeans}</code> 包进行后续测试以探索主效应和相互作用。</p>
 <div id="概述-7" class="section level2 unnumbered hasAnchor">
 <h2>概述<a href="一般线性模型---方差分析第-1-部分.html#概述-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -430,7 +433,7 @@ div.csl-indent {
 </div>
 <div id="读取我们的数据" class="section level3 unnumbered hasAnchor">
 <h3>读取我们的数据<a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们有 45 名参与者参与参与者之间的设计，我们感兴趣的是饮用的饮料对运动任务能力的影响。 我们的实验因素（饮料类型）有 3 个级别。 这些是水与单份浓缩咖啡与双份浓缩咖啡，而能力是我们在连续范围内测量的 DV。 让我们读入我们的数据。数据可以在<a href="插入链接">这里</a>下载</p>
+<p>我们有 45 名参与者参与参与者之间的设计，我们感兴趣的是饮用的饮料对运动任务能力的影响。 我们的实验因素（饮料类型）有 3 个级别。 这些是水与单份浓缩咖啡与双份浓缩咖啡，而能力是我们在连续范围内测量的 DV。 让我们读入我们的数据。数据可以在<a href="https://cyouthchange.feishu.cn/file/WkhBbZBtuoMJqPx9d4CcOh6Enec?from=from_copylink">这里</a>下载</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="一般线性模型---方差分析第-1-部分.html#cb176-1" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/cond.csv&quot;</span>)</span>
 <span id="cb176-2"><a href="一般线性模型---方差分析第-1-部分.html#cb176-2" tabindex="-1"></a><span class="fu">head</span>(my_data)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
@@ -480,9 +483,15 @@ div.csl-indent {
 <span id="cb182-7"><a href="一般线性模型---方差分析第-1-部分.html#cb182-7" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
 <span id="cb182-8"><a href="一般线性模型---方差分析第-1-部分.html#cb182-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb182-9"><a href="一般线性模型---方差分析第-1-部分.html#cb182-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) </span></code></pre></div>
-<pre><code>## Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use &quot;none&quot; instead as of ggplot2 3.3.4.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## Warning: The `&lt;scale&gt;` argument of `guides()`
+## cannot be `FALSE`. Use &quot;none&quot;
+## instead as of ggplot2 3.3.4.
+## This warning is displayed once every
+## 8 hours.
+## Call
+## `lifecycle::last_lifecycle_warnings()`
+## to see where this warning was
+## generated.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
 <p>我们构建了一个可视化，其中使用<code>geom_jitter()</code>函数绘制了原始数据点，并使用<code>geom_violin()</code>函数绘制了每个条件的分布形状。 我们还使用<code>stat_summary()</code>函数以平均值和平均值附近的置信区间的形式添加了一些汇总数据。</p>
 </div>
@@ -551,7 +560,7 @@ div.csl-indent {
 <p>现在您有机会使用我在上面视频中检查的数据。 假设我们有一个实验，要求 32 名参与者学习如何发音不同复杂程度的单词 - Very Easy、Easy、Hard 和 Very Hard。 他们在最初接触阶段就看到了这些词。 休息 30 分钟后，我们对参与者进行了测试，要求他们在计算机屏幕上出现单词时大声说出这些单词。 我们以秒为单位记录了他们的时间。 我们想知道他们对于每个单词复杂程度的响应时间是否存在差异。</p>
 <div id="读取我们的数据-1" class="section level3 unnumbered hasAnchor">
 <h3>读取我们的数据<a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>首先我们读入数据。数据可以在<a href="">这里</a>下载</p>
+<p>首先我们读入数据。数据可以在<a href="https://cyouthchange.feishu.cn/file/Mx7mbY1ssoLxuexd78Scn4nqnR5?from=from_copylink">这里</a>下载</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="一般线性模型---方差分析第-1-部分.html#cb192-1" tabindex="-1"></a>rm_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/rm_data.csv&quot;</span>)</span>
 <span id="cb192-2"><a href="一般线性模型---方差分析第-1-部分.html#cb192-2" tabindex="-1"></a><span class="fu">head</span>(rm_data)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
@@ -682,7 +691,7 @@ div.csl-indent {
 </center>
 <div id="读取我们的数据-2" class="section level3 unnumbered hasAnchor">
 <h3>读取我们的数据<a href="一般线性模型---方差分析第-1-部分.html#读取我们的数据-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>数据可以在<a href="插入链接">这里</a>下载</p>
+<p>数据可以在<a href="https://cyouthchange.feishu.cn/file/VWYybmhFAoezxoxT7H9cy7dvnki?from=from_copylink">这里</a>下载</p>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="一般线性模型---方差分析第-1-部分.html#cb206-1" tabindex="-1"></a>factorial_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Dataset/factorial_data.csv&quot;</span>)</span>
 <span id="cb206-2"><a href="一般线性模型---方差分析第-1-部分.html#cb206-2" tabindex="-1"></a><span class="fu">head</span>(factorial_data)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
@@ -714,7 +723,9 @@ div.csl-indent {
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="一般线性模型---方差分析第-1-部分.html#cb210-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
 <span id="cb210-2"><a href="一般线性模型---方差分析第-1-部分.html#cb210-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Context, Sentence) <span class="sc">%&gt;%</span></span>
 <span id="cb210-3"><a href="一般线性模型---方差分析第-1-部分.html#cb210-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(RT), <span class="at">sd_rt =</span> <span class="fu">sd</span>(RT))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by
+## &#39;Context&#39;. You can override using
+## the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 4 × 4
 ## # Groups:   Context [2]
 ##   Context  Sentence mean_rt sd_rt
@@ -731,7 +742,9 @@ div.csl-indent {
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="一般线性模型---方差分析第-1-部分.html#cb215-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
 <span id="cb215-2"><a href="一般线性模型---方差分析第-1-部分.html#cb215-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Context, Sentence) <span class="sc">%&gt;%</span></span>
 <span id="cb215-3"><a href="一般线性模型---方差分析第-1-部分.html#cb215-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(RT, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">sd_rt =</span> <span class="fu">sd</span>(RT, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by
+## &#39;Context&#39;. You can override using
+## the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 4 × 4
 ## # Groups:   Context [2]
 ##   Context  Sentence mean_rt sd_rt
@@ -819,22 +832,22 @@ div.csl-indent {
 <p>现在希望你自己解决以下问题。</p>
 <div id="问题1" class="section level3 unnumbered hasAnchor">
 <h3>问题1<a href="一般线性模型---方差分析第-1-部分.html#问题1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们的第一个数据文件名为 ANOVA_data1.csv，可以在<a href="">此处</a>找到：</p>
+<p>我们的第一个数据文件名为 ANOVA_data1.csv，可以在<a href="https://cyouthchange.feishu.cn/file/EsknbOcoyoP3YsxV5w9c53EWnOg?from=from_copylink">此处</a>找到：</p>
 <p>24 名参与者对常见（即高词汇频率，high lexical frequency）或罕见（即低词汇频率，low lexical frequency）的单词进行了回答。 这是我们的 IV，编码为“high”与“ low”。 我们的 DV 是反应时间（reaction time），编码为“RT”。 被试编号（Subject number）编码为“Subject”。 我们想知道条件之间是否存在差异（如果有，差异在哪里）。 可视化数据、生成描述性并运行适当的方差分析以确定我们的自变量（Condition）是否对因变量 (RT) 有影响。</p>
 </div>
 <div id="问题2" class="section level3 unnumbered hasAnchor">
 <h3>问题2<a href="一般线性模型---方差分析第-1-部分.html#问题2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们的第二个数据文件名为 ANOVA_data2.csv，可以在<a href="">此处</a>找到：</p>
+<p>我们的第二个数据文件名为 ANOVA_data2.csv，可以在<a href="https://cyouthchange.feishu.cn/file/Tv3YbkqpBodj8jxm2oncUudGnnd?from=from_copylink">此处</a>找到：</p>
 <p>这些数据也来自反应时间实验，但设计稍微复杂一些。48 名参与者对一个词的反应频率有所不同。 这个因素是参与者之间的因素(between participants)，我们有四个级别，编码为“very low”、“low”、“high”和“very high”。 我们的 DV 是反应时间，编码为“RT”。 被试编号编码为“Subject”。 我们想知道我们的条件(condition)是否存在差异（如果有，差异在哪里）。</p>
 </div>
 <div id="问题3" class="section level3 unnumbered hasAnchor">
 <h3>问题3<a href="一般线性模型---方差分析第-1-部分.html#问题3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们的第三个数据文件称为 ANOVA_data3.csv，可以在<a href="">此处</a>找到：</p>
+<p>我们的第三个数据文件称为 ANOVA_data3.csv，可以在<a href="https://cyouthchange.feishu.cn/file/HPVvbdYaxogDQOxedSgcc6dInmd?from=from_copylink">此处</a>找到：</p>
 <p>这些数据来自 2 x 2 重复测量反应时间实验。 我们感兴趣的是参与者对大图像与小图像、彩色图像与黑白图像的反应速度。 我们预计大彩色图像的响应速度将比小黑白图像的响应速度更快。 我们不确定小彩色图像和大黑白图像。 我们测量了 24 名参与者在这四种情况下对图像的反应时间。 我们想要确定我们的条件是否存在差异（如果有，差异在哪里）。</p>
 </div>
 <div id="问题4" class="section level3 unnumbered hasAnchor">
 <h3>问题4<a href="一般线性模型---方差分析第-1-部分.html#问题4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>我们的第四个数据文件称为 ANOVA_data4.csv，可以在<a href="">此处</a>找到：</p>
+<p>我们的第四个数据文件称为 ANOVA_data4.csv，可以在<a href="https://cyouthchange.feishu.cn/file/B4GSbW3FeoZ7yixloCtcV3KcnFh?from=from_copylink">此处</a>找到：</p>
 <p>这些数据来自 2 x 2 x 3 混合设计实验，我们测量了人们对简单或困难的数学问题的反应时间，以及他们必须在时间压力或无时间压力下做出反应的时间。 这是我们的前两个因素，并且是重复测量（即，每个人都看到了所有 4 个条件）。 我们的第三个因素是受试者之间的因素，对应于我们的参与者是否属于三组之一。 这些小组是心理学学生、数学学生和艺术学生。 我们想知道参与者在时间压力下和没有时间压力下在数学问题上的表现受到他们属于这三个组中哪一组的影响。 进行适当的方差分析来回答这个问题。 请记住从一些数据可视化开始。</p>
 </div>
 </div>
