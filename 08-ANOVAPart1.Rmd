@@ -11,7 +11,7 @@
 在第二个视频中，我将向您展示如何使用`{afex}`包在 R 中构建参与者之间的方差分析模型。
 
 <center>
-<iframe src="//player.bilibili.com/player.html?aid=324813497&bvid=BV1pw411x7dK&cid=1369827500&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+<iframe src="//player.bilibili.com/player.html?aid=324813497&bvid=BV1pw411x7dK&cid=1369827500&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
 观看完上面的视频后，就轮到您在 R 中为参与者之间的设计构建您的第一个方差分析了。请按照以下说明构建该模型。

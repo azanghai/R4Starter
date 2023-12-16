@@ -7,7 +7,7 @@
 首先，我想让您观看以下视频，这些视频从复习相关性的基础知识开始，然后再介绍我们如何构建回归模型。
 
 <center>
-<iframe src="//player.bilibili.com/player.html?aid=409805552&bvid=BV1BG411a7Ya&cid=1369827809&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+<iframe src="//player.bilibili.com/player.html?aid=409805552&bvid=BV1BG411a7Ya&cid=1369827809&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
 Dataset1.csv可以在[这里](https://cyouthchange.feishu.cn/file/Xkkdb3tgkodsnix5dstcxkmsn1f?from=from_copylink)下载
@@ -17,7 +17,7 @@ Dataset1.csv可以在[这里](https://cyouthchange.feishu.cn/file/Xkkdb3tgkodsni
 在观看了上面的视频之后，我希望你能够通过下面的一个简单线性回归的例子在R中进行实践。记得创建一个新的`.Rproj`文件来保持事物的有序。
 
 <center>
-<iframe src="//player.bilibili.com/player.html?aid=409866987&bvid=BV1oG411a7Ud&cid=1369827729&p=1" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
+<iframe src="//player.bilibili.com/player.html?aid=409866987&bvid=BV1oG411a7Ud&cid=1369827729&p=1&autoplay=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe> 
 </center>
 
 ### 我们需要的R包 {-}
