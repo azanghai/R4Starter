@@ -23,7 +23,7 @@
 <meta name="author" content="文庭" />
 
 
-<meta name="date" content="2023-12-16" />
+<meta name="date" content="2023-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -407,7 +407,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="数据整理和总结" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> 数据整理和总结<a href="数据整理和总结.html#数据整理和总结" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>在本次研讨会中，我将向您介绍许多关键包，Tidyverse这些包包含大量用于处理整齐格式数据的函数。通过使我们的数据整理可重现（即，通过用 R 进行编码），我们可以在添加新数据时轻松地重新运行分析流程的此阶段。数据整理阶段的可重复性是分析过程的关键部分，但在需要确保其可重复性方面经常被忽视。本次研讨会分为两个部分。第一个重点是数据整理，第二部分是数据总结。</p>
+<p>在本次研讨会中，我将向您介绍许多关键包，Tidyverse这些包包含大量用于处理整齐格式数据的函数。通过使我们的数据整理可重现（即，通过用 R 进行编码），我们可以在添加新数据时轻松地重新运行分析流程。数据整理阶段的可重复性是分析过程的关键部分，但在需要确保其可重复性方面经常被忽视。本次研讨会分为两个部分。第一个重点是数据整理，第二部分是数据总结。</p>
 <div id="数据整理" class="section level2 unnumbered hasAnchor">
 <h2>数据整理<a href="数据整理和总结.html#数据整理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="概述-1" class="section level3 unnumbered hasAnchor">
@@ -424,9 +424,9 @@ div.csl-indent {
 <p>让我们首先看一下数据整理。我们将从 Tidyverse 附带的数据集开始。该数据集<code>mpg</code>包含 1999 年至 2008 年美国 38 种流行车型的燃油经济性数据。</p>
 <p>首先，我们需要tidyverse使用以下内容加载库：</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="数据整理和总结.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<p>如果您在没有先在计算机上安装 Tidyverse 的情况下运行此行，您将遇到错误。R 包只需要安装一次，因此如果您想第一次将其加载到库中，则需要使用<code>install.packages(*packagename*)</code>。</p>
+<p>如果您在没有先在计算机上安装 Tidyverse 的情况下运行此行，您将遇到错误。R 包只需要安装一次，因此如果您想第一次将其加载到库中，则需要使用<code>install.packages(*"packagename"*)</code>。</p>
 <p>对于<code>tidyverse</code>我们需要安装它：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="数据整理和总结.html#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="数据整理和总结.html#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>安装<code>tidyverse</code>后，您可以使用<code>library()</code>功能将其加载到您的库中。您只需在计算机上安装一次软件包（除非您已更新 R 或者您想要安装特定软件包的最新版本）。当您编写 R 脚本时，您永远不想在脚本主体中拥有该函数<code>install.packages()</code>，就好像其他人运行您的脚本一样，这会更新他们计算机上的包（他们可能不想要）。</p>
 </div>
 <div id="数据集mpg" class="section level3 unnumbered hasAnchor">
@@ -672,7 +672,7 @@ class - “type” of car</p>
 ## 4           1 PrimeB_TargetB   765
 ## 5           2 PrimeA_TargetA  1042
 ## 6           2 PrimeA_TargetB  1050</code></pre>
-<p>我们现在需要将我们的条件列分成两个 - 一个用于我们的第一个因素（Prime），另一个用于我们的第二个因素（Target）。<code>separate()</code> 函数正是做这个的 - 当与管道化的tibble一起使用时，它需要知道我们想要分离哪一列，通过分离原始列来创建什么新列，以及我们想要基于什么来进行分离。在下面的示例中，我们告诉 <code>separate()</code> 我们想要将标记为 <code>condition</code> 的列分成两个新列，称为 <code>Prime</code> 和 <code>Target</code>，并且我们想要在要被分离的列中出现 <code>_</code> 的任何地方进行这种分离。</p>
+<p>我们现在需要将我们的条件列分成两个 - 一个用于我们的第一个因素（Prime），另一个用于我们的第二个因素（Target）。<code>separate()</code> 函数正是做这个的 — 当与管道化的tibble一起使用时，它需要知道我们想要分离哪一列，通过分离原始列来创建什么新列，以及我们想要基于什么来进行分离。在下面的示例中，我们告诉 <code>separate()</code> 我们想要将标记为 <code>condition</code> 的列分成两个新列，称为 <code>Prime</code> 和 <code>Target</code>，并且我们想要在要被分离的列中出现 <code>_</code> 的任何地方进行这种分离。</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="数据整理和总结.html#cb31-1" tabindex="-1"></a>my_messy_data <span class="sc">%&gt;%</span> </span>
 <span id="cb31-2"><a href="数据整理和总结.html#cb31-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">recode</span>(condition,</span>
 <span id="cb31-3"><a href="数据整理和总结.html#cb31-3" tabindex="-1"></a>                            <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;PrimeA_TargetA&quot;</span>,</span>
