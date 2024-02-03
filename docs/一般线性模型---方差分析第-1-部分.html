@@ -23,7 +23,7 @@
 <meta name="author" content="文庭" />
 
 
-<meta name="date" content="2023-12-20" />
+<meta name="date" content="2024-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -475,11 +475,11 @@ div.csl-indent {
 <span id="cb182-7"><a href="一般线性模型---方差分析第-1-部分.html#cb182-7" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
 <span id="cb182-8"><a href="一般线性模型---方差分析第-1-部分.html#cb182-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb182-9"><a href="一般线性模型---方差分析第-1-部分.html#cb182-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>)) </span></code></pre></div>
-<pre><code>## Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use &quot;none&quot; instead as
-## of ggplot2 3.3.4.
+<pre><code>## Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use
+## &quot;none&quot; instead as of ggplot2 3.3.4.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this
+## warning was generated.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
 <p>我们构建了一个可视化，其中使用<code>geom_jitter()</code>函数绘制了原始数据点，并使用<code>geom_violin()</code>函数绘制了每个条件的分布形状。 我们还使用<code>stat_summary()</code>函数以平均值和平均值附近的置信区间的形式添加了一些汇总数据。</p>
 </div>
@@ -703,8 +703,8 @@ div.csl-indent {
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="一般线性模型---方差分析第-1-部分.html#cb210-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
 <span id="cb210-2"><a href="一般线性模型---方差分析第-1-部分.html#cb210-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Context, Sentence) <span class="sc">%&gt;%</span></span>
 <span id="cb210-3"><a href="一般线性模型---方差分析第-1-部分.html#cb210-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(RT), <span class="at">sd_rt =</span> <span class="fu">sd</span>(RT))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override using the
-## `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override
+## using the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 4 × 4
 ## # Groups:   Context [2]
 ##   Context  Sentence mean_rt sd_rt
@@ -721,8 +721,8 @@ div.csl-indent {
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="一般线性模型---方差分析第-1-部分.html#cb215-1" tabindex="-1"></a>factorial_data_tidied <span class="sc">%&gt;%</span></span>
 <span id="cb215-2"><a href="一般线性模型---方差分析第-1-部分.html#cb215-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Context, Sentence) <span class="sc">%&gt;%</span></span>
 <span id="cb215-3"><a href="一般线性模型---方差分析第-1-部分.html#cb215-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rt =</span> <span class="fu">mean</span>(RT, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">sd_rt =</span> <span class="fu">sd</span>(RT, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override using the
-## `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Context&#39;. You can override
+## using the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 4 × 4
 ## # Groups:   Context [2]
 ##   Context  Sentence mean_rt sd_rt
