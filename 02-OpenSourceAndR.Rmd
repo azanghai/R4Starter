@@ -172,7 +172,7 @@ knitr::include_graphics("Pictures/codingmeme02.png")
 
 接下来将展示如何安装 R（语言）和 RStudio Desktop（用于使用该语言的 IDE）。您可以从[此处](https://www.stats.bris.ac.uk/R/)下载适用于各种平台的 R，包括 Mac OS、Windows 和 Ubuntu。要下载免费的 RStudio Desktop，只需转到[此处](https://rstudio.com/products/rstudio/download/)。
 
-如果您遇到了网络访问问题，也可以通过这个飞书链接下载我们预下载的[Windows版本的R]()和[MacOs版本的R]()，以及[Windows版本的RStudio Desktop]()和[MacOs版本的RStudio Desktop]()。
+如果您遇到了网络访问问题，也可以通过这个飞书链接下载我们预下载的[Windows版本的R](https://cyouthchange.feishu.cn/file/TEuOb4ymMoJWVaxeQqlceBIfncc?from=from_copylink)和[MacOs版本的R Apple silicon (M1/M2)](https://cyouthchange.feishu.cn/file/AN05bjiPWoHlnBxZZpzconGgnCc?from=from_copylink)，[MacOs版本的R Intel Macs](https://cyouthchange.feishu.cn/file/UahJbk9LvopruNx0Zf4cwudvnbh?from=from_copylink)以及[Windows 10/11版本的RStudio Desktop](https://cyouthchange.feishu.cn/file/MWzDbnH02oj6uGx7qd0cNTkpnug?from=from_copylink)和[MacOs 12 + 版本的RStudio Desktop](https://cyouthchange.feishu.cn/file/T2lYb2tCyoHg7txTL30cZ5vPnwg?from=from_copylink)。
 
 如果您使用的是 Chromebook，或拥有平板电脑，或者在计算机上安装 R 和 RStudio Desktop 时遇到困难，则可以使用[RStudio Cloud](https://rstudio.cloud/)在浏览器中运行 RStudio 环境。您需要注册，有一个免费计划可供您每月使用 RStudio Cloud 15 小时。**不过我们强烈建议您在本地安装R与RStudio Desktop**。
 
