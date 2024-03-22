@@ -6,4 +6,4 @@ During my studies under Professor Andrew Stewart, I was inspired by his selfless
 
 Through this series of lessons, I hope that you will master the basic syntax of the R language, be able to write R code and create R Markdown documents for data preprocessing, analysis, presentation, and reporting, as well as gain a fundamental understanding of statistical analysis methods.
 
-Content deploy at https://azanghai.github.io/R4Starter/
+Content deploy at https://azanghai.github.io/R4Starter/ and https://r4starter.netlify.app/
